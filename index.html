@@ -17,6 +17,17 @@
             overflow-x: hidden;
         }
 
+        /* Bottone Lingua */
+        #langSwitcher {
+            position: fixed; top: 20px; right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid white; color: white;
+            padding: 8px 15px; border-radius: 20px;
+            cursor: pointer; z-index: 1001; font-weight: bold;
+            backdrop-filter: blur(5px); transition: 0.3s;
+        }
+        #langSwitcher:hover { background: white; color: black; }
+
         header { text-align: center; padding: 60px 20px; }
         .main-logo { max-width: 400px; width: 100%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 170, 255, 0.3); margin-bottom: 25px; }
 
@@ -53,54 +64,83 @@
         /* TASTO MUSICA FLOTTANTE */
         #musicToggle {
             position: fixed; bottom: 20px; right: 20px;
-            background: rgba(0, 170, 255, 0.2);
-            border: 2px solid #00aaff; color: white;
+            background: rgba(255, 0, 0, 0.3);
+            border: 2px solid #ff4444; color: white;
             padding: 10px 20px; border-radius: 30px;
             cursor: pointer; z-index: 1000; font-weight: bold;
             backdrop-filter: blur(5px);
         }
 
-        #audioStatus { font-size: 0.7rem; display: block; margin-top: 5px; color: #00aaff; }
+        #audioStatus { font-size: 0.7rem; display: block; margin-top: 5px; color: #ffcccc; }
+        
+        /* Gestione Lingue */
+        .lang-en { display: none; }
     </style>
 </head>
 <body>
 
+    <button id="langSwitcher">EN / IT</button>
+
     <header>
         <img src="logo.png" alt="CalamaroOS Logo" class="main-logo">
         <p class="hero-text">
-            <strong>CalamaroOS</strong> porta la potenza di Gentoo a tutti.
-            Il nostro obiettivo è permetterti di imparare a dominare la migliore distribuzione Linux,
-            partendo da un'installazione semplificata con Calamares, restando fedeli al cuore Gentoo.
+            <span class="lang-it"><strong>CalamaroOS</strong> porta la potenza di Gentoo a tutti. Il nostro obiettivo è permetterti di imparare a dominare la migliore distribuzione Linux, partendo da un'installazione semplificata con Calamares, restando fedeli al cuore Gentoo.</span>
+            <span class="lang-en"><strong>CalamaroOS</strong> brings the power of Gentoo to everyone. Our goal is to let you learn to master the best Linux distribution, starting from a simplified installation with Calamares, while staying true to the Gentoo core.</span>
         </p>
-        <a href="https://sourceforge.net/projects/calamaroos/postdownload" class="download-btn">SCARICA ISO UNIVERSALE</a>
+        <a href="https://sourceforge.net/projects/calamaroos/postdownload" class="download-btn">
+            <span class="lang-it">SCARICA ISO UNIVERSALE</span>
+            <span class="lang-en">DOWNLOAD UNIVERSAL ISO</span>
+        </a>
     </header>
 
     <section class="features">
         <div class="card">
             <h3>🚀 Gentoo Stage 3</h3>
-            <p>Utilizziamo i <strong>pacchetti binari ufficiali</strong>. Se non presenti, il sistema compila dai sorgenti automaticamente sul tuo hardware.</p>
+            <p>
+                <span class="lang-it">Utilizziamo i <strong>pacchetti binari ufficiali</strong>. Se non presenti, il sistema compila dai sorgenti automaticamente sul tuo hardware.</span>
+                <span class="lang-en">We use <strong>official binary packages</strong>. If not present, the system automatically compiles from source on your hardware.</span>
+            </p>
         </div>
         <div class="card">
             <h3>⚙️ Systemd & KDE</h3>
-            <p>Profilo <strong>desktop-systemd</strong> ottimizzato. Un ambiente moderno, fluido e pronto all'uso senza configurazioni manuali estenuanti.</p>
+            <p>
+                <span class="lang-it">Profilo <strong>desktop-systemd</strong> ottimizzato. Un ambiente moderno, fluido e pronto all'uso senza configurazioni manuali estenuanti.</span>
+                <span class="lang-en">Optimized <strong>desktop-systemd</strong> profile. A modern, fluid, and ready-to-use environment without exhausting manual configurations.</span>
+            </p>
         </div>
         <div class="card">
             <h3>🌍 ISO Universale</h3>
-            <p>Un'unica immagine pronta per ogni hardware a 64-bit. Installa Gentoo in pochi minuti grazie all'interfaccia grafica di <strong>Calamares</strong>.</p>
+            <p>
+                <span class="lang-it">Un'unica immagine pronta per ogni hardware a 64-bit. Installa Gentoo in pochi minuti grazie all'interfaccia grafica di <strong>Calamares</strong>.</span>
+                <span class="lang-en">A single image ready for any 64-bit hardware. Install Gentoo in minutes thanks to the <strong>Calamares</strong> graphical interface.</span>
+            </p>
         </div>
     </section>
 
     <footer>
         <div class="credits">
             <p>CalamaroOS 2026 | Basato su Gentoo Linux</p>
-            <p>🎵 Un ringraziamento speciale a <strong>Alexander Nakarada</strong> per la musica di sottofondo.</p>
-            <p>Sostieni l'artista: <a href="https://breakingcopyright.com/artist/alexander-nakarada" target="_blank">Alexander Nakarada su BreakingCopyright</a></p>
+            <p>
+                <span class="lang-it">🎵 Un ringraziamento speciale a <strong>Alexander Nakarada</strong> per la musica di sottofondo.</span>
+                <span class="lang-en">🎵 Special thanks to <strong>Alexander Nakarada</strong> for the background music.</span>
+            </p>
+            <p>
+                <span class="lang-it">Sostieni l'artista:</span>
+                <span class="lang-en">Support the artist:</span>
+                <a href="https://breakingcopyright.com/artist/alexander-nakarada" target="_blank">Alexander Nakarada su BreakingCopyright</a>
+            </p>
         </div>
     </footer>
 
     <button id="musicToggle">
-        <span id="btnText">🔈 AUDIO: OFF</span>
-        <span id="audioStatus">Clicca per attivare</span>
+        <span id="btnText">
+            <span class="lang-it">🔇 CLICCA QUI PER ATTIVARE L'AUDIO</span>
+            <span class="lang-en">🔇 CLICK HERE TO ACTIVATE AUDIO</span>
+        </span>
+        <span id="audioStatus">
+            <span class="lang-it">Clicca per attivare</span>
+            <span class="lang-en">Click to activate</span>
+        </span>
     </button>
 
     <audio id="bgMusic" loop preload="auto">
@@ -112,34 +152,56 @@
         const btn = document.getElementById('musicToggle');
         const btnText = document.getElementById('btnText');
         const statusText = document.getElementById('audioStatus');
+        const langSwitcher = document.getElementById('langSwitcher');
 
-        function startAudio() {
-            audio.play().then(() => {
-                btnText.innerText = "🔊 AUDIO: ON";
+        // --- Logica Lingue ---
+        langSwitcher.addEventListener('click', function() {
+            let itaTexts = document.querySelectorAll('.lang-it');
+            let engTexts = document.querySelectorAll('.lang-en');
+
+            if (itaTexts[0].style.display !== 'none') {
+                // Passa a Inglese
+                itaTexts.forEach(el => el.style.display = 'none');
+                engTexts.forEach(el => el.style.display = 'inline'); // inline per testi dentro paragrafi
+                // Gestione speciale per i blocchi di testo nel bottone che sono span
+                document.querySelectorAll('#btnText .lang-en, #audioStatus .lang-en').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('#btnText .lang-it, #audioStatus .lang-it').forEach(el => el.style.display = 'none');
+            } else {
+                // Passa a Italiano
+                itaTexts.forEach(el => el.style.display = 'inline');
+                engTexts.forEach(el => el.style.display = 'none');
+                document.querySelectorAll('#btnText .lang-en, #audioStatus .lang-en').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('#btnText .lang-it, #audioStatus .lang-it').forEach(el => el.style.display = 'inline');
+            }
+        });
+        
+        // Forza visualizzazione iniziale corretta per le lingue
+        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+
+        // --- Logica Audio ---
+        audio.pause();
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (audio.paused) {
+                audio.play();
+                // Testo ON (Multilingua)
+                btnText.innerHTML = '<span class="lang-it">🔊 AUDIO: ON</span><span class="lang-en">🔊 AUDIO: ON</span>';
                 statusText.style.display = "none";
                 btn.style.background = "rgba(0, 170, 255, 0.5)";
-            }).catch(error => {
-                console.log("In attesa di interazione...");
-            });
-        }
-
-   // Stato iniziale: Audio OFF ma tasto evidente
-    audio.pause();
-    btnText.innerText = "🔇 CLICCA QUI PER ATTIVARE L'AUDIO";
-    btn.style.background = "rgba(255, 0, 0, 0.3)"; // Sfondo rosso leggero per attirare l'attenzione
-
-    // Tasto manuale per ON/OFF
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (audio.paused) {
-            audio.play();
-            btnText.innerText = "🔊 AUDIO: ON";
-            statusText.style.display = "none";
-            btn.style.background = "rgba(0, 170, 255, 0.5)"; // Sfondo blu quando attivo
-        } else {
-            audio.pause();
-            btnText.innerText = "🔇 AUDIO: OFF (Clicca per attivare)";
-            btn.style.background = "rgba(255, 0, 0, 0.3)"; // Sfondo rosso quando spento
-        }
-    });
-</script>
+                btn.style.borderColor = "#00aaff";
+            } else {
+                audio.pause();
+                // Testo OFF (Multilingua)
+                btnText.innerHTML = '<span class="lang-it">🔇 CLICCA QUI PER ATTIVARE L\'AUDIO</span><span class="lang-en">🔇 CLICK HERE TO ACTIVATE AUDIO</span>';
+                statusText.style.display = "block";
+                statusText.innerHTML = '<span class="lang-it">Clicca per attivare</span><span class="lang-en">Click to activate</span>';
+                btn.style.background = "rgba(255, 0, 0, 0.3)";
+                btn.style.borderColor = "#ff4444";
+            }
+            // Mantiene la lingua corrente dopo il click
+            langSwitcher.click(); langSwitcher.click(); 
+        });
+    </script>
+</body>
+</html>
