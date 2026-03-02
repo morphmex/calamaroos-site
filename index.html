@@ -123,25 +123,31 @@
             });
         }
 
-        // Prova ad avviare al primo click ovunque o movimento
-        document.body.addEventListener('mousedown', startAudio, { once: true });
-        document.body.addEventListener('touchstart', startAudio, { once: true });
-        document.body.addEventListener('keydown', startAudio, { once: true });
-
-        // Tasto manuale per ON/OFF
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (audio.paused) {
-                audio.play();
-                btnText.innerText = "🔊 AUDIO: ON";
-                statusText.style.display = "none";
-                btn.style.background = "rgba(0, 170, 255, 0.5)";
-            } else {
-                audio.pause();
-                btnText.innerText = "🔈 AUDIO: OFF";
-                btn.style.background = "rgba(0, 170, 255, 0.2)";
-            }
+        // Tenta di avviare l'audio all'avvio
+    window.addEventListener('load', () => {
+        audio.play().then(() => {
+            // Audio partito con successo
+            btnText.innerText = "🔊 AUDIO: ON";
+            statusText.style.display = "none";
+            btn.style.background = "rgba(0, 170, 255, 0.5)";
+        }).catch(error => {
+            // Autoplay bloccato dal browser, serve il click
+            console.log("Autoplay bloccato dal browser");
         });
-    </script>
-</body>
-</html>
+    });
+
+    // Tasto manuale per ON/OFF
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (audio.paused) {
+            audio.play();
+            btnText.innerText = "🔊 AUDIO: ON";
+            statusText.style.display = "none";
+            btn.style.background = "rgba(0, 170, 0.5)";
+        } else {
+            audio.pause();
+            btnText.innerText = "🔈 AUDIO: OFF";
+            btn.style.background = "rgba(0, 170, 255, 0.2)";
+        }
+    });
+</script>
