@@ -123,18 +123,10 @@
             });
         }
 
-        // Tenta di avviare l'audio all'avvio
-    window.addEventListener('load', () => {
-        audio.play().then(() => {
-            // Audio partito con successo
-            btnText.innerText = "🔊 AUDIO: ON";
-            statusText.style.display = "none";
-            btn.style.background = "rgba(0, 170, 255, 0.5)";
-        }).catch(error => {
-            // Autoplay bloccato dal browser, serve il click
-            console.log("Autoplay bloccato dal browser");
-        });
-    });
+   // Stato iniziale: Audio OFF ma tasto evidente
+    audio.pause();
+    btnText.innerText = "🔇 CLICCA QUI PER ATTIVARE L'AUDIO";
+    btn.style.background = "rgba(255, 0, 0, 0.3)"; // Sfondo rosso leggero per attirare l'attenzione
 
     // Tasto manuale per ON/OFF
     btn.addEventListener('click', (e) => {
@@ -143,11 +135,11 @@
             audio.play();
             btnText.innerText = "🔊 AUDIO: ON";
             statusText.style.display = "none";
-            btn.style.background = "rgba(0, 170, 0.5)";
+            btn.style.background = "rgba(0, 170, 255, 0.5)"; // Sfondo blu quando attivo
         } else {
             audio.pause();
-            btnText.innerText = "🔈 AUDIO: OFF";
-            btn.style.background = "rgba(0, 170, 255, 0.2)";
+            btnText.innerText = "🔇 AUDIO: OFF (Clicca per attivare)";
+            btn.style.background = "rgba(255, 0, 0, 0.3)"; // Sfondo rosso quando spento
         }
     });
 </script>
