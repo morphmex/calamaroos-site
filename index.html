@@ -3,157 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalamaroOS | Official Site</title>
+    <title>CalamaroOS | Official Hub</title>
     <style>
-        :root { --main-blue: #00aaff; --dark-bg: rgba(0, 0, 0, 0.9); }
+        /* BASE */
         * { box-sizing: border-box; }
         body, html {
             margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            color: white; min-height: 100vh;
-            background: url('logo.png') no-repeat center center fixed;
-            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            background: #050a0f; color: white;
+            display: flex; min-height: 100vh;
         }
 
-        /* --- LAYOUT PRINCIPALE (La tua vecchia struttura) --- */
-        .main-wrapper { display: flex; min-height: 100vh; background: rgba(0,0,0,0.7); }
-        
-        /* Barra Laterale */
+        /* SIDEBAR (La tua barra laterale) */
         .sidebar {
-            width: 250px; background: rgba(0,0,0,0.85);
-            border-right: 1px solid var(--main-blue);
-            padding: 20px; display: flex; flex-direction: column; gap: 15px;
+            width: 300px;
+            background: rgba(0, 20, 40, 0.95);
+            border-right: 2px solid #00aaff;
+            padding: 20px;
+            position: fixed; height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
         }
-        .sidebar h3 { color: var(--main-blue); font-size: 1.2rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
+
+        /* CONTENUTO PRINCIPALE (La tua vecchia pagina) */
+        .main-content {
+            margin-left: 300px; /* Lascia spazio alla sidebar */
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('logo.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        /* SEZIONE NEWS (Dentro la Sidebar) */
+        .news-box {
+            background: rgba(0, 170, 255, 0.1);
+            border: 1px solid #00aaff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .news-box h2 { color: #00aaff; font-size: 1.1rem; margin-top: 0; }
         
-        /* Tasto Speciale Nuova Uscita */
-        .btn-news {
-            background: linear-gradient(45deg, #ff4444, #cc0000);
-            color: white; border: none; padding: 15px; border-radius: 8px;
-            cursor: pointer; font-weight: bold; text-align: center;
-            animation: pulse 2s infinite; transition: 0.3s;
+        /* SELETTORE LINGUA NEWS */
+        .lang-switcher {
+            display: flex; gap: 5px; margin-bottom: 10px; flex-wrap: wrap;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        .btn-news:hover { filter: brightness(1.2); }
+        .l-btn {
+            background: #222; border: 1px solid #444; color: white;
+            padding: 3px 7px; border-radius: 5px; cursor: pointer; font-size: 0.7rem;
+        }
+        .l-btn.active { background: #00aaff; border-color: white; }
 
-        .content { flex: 1; padding: 50px; text-align: center; }
+        /* TESTI NEWS (Nascosti di base, mostrati via JS) */
+        .n-text { display: none; font-size: 0.85rem; line-height: 1.4; }
+        .n-text.active { display: block; }
+        .n-text ul { padding-left: 20px; }
 
-        /* --- MODAL (La finestra delle Novità) --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); display: none; /* Nascosto di base */
-            justify-content: center; align-items: center; z-index: 2000;
-            backdrop-filter: blur(8px);
-        }
-        .modal-content {
-            background: #1a1a1a; width: 90%; max-width: 800px;
-            border-radius: 20px; border: 2px solid var(--main-blue);
-            position: relative; padding: 40px; max-height: 90vh; overflow-y: auto;
-        }
-        .close-modal {
-            position: absolute; top: 15px; right: 20px;
-            font-size: 30px; cursor: pointer; color: var(--main-blue);
+        .dl-link {
+            display: block; background: #00aaff; color: white;
+            text-decoration: none; padding: 10px; border-radius: 5px;
+            margin-top: 15px; font-weight: bold; font-size: 0.8rem;
         }
 
-        /* Selettore Lingue dentro il Modal */
-        .modal-lang-bar { display: flex; gap: 8px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
-        .m-lang-btn {
-            background: #333; border: 1px solid var(--main-blue); color: white;
-            padding: 5px 12px; border-radius: 10px; cursor: pointer;
-        }
-        .m-lang-btn.active { background: var(--main-blue); }
-
-        .lang-section { display: none; text-align: left; }
-        .lang-section.active { display: block; }
-        
-        .password-box {
-            background: rgba(0, 170, 255, 0.1); border: 1px dashed var(--main-blue);
-            padding: 10px; border-radius: 10px; margin-top: 20px; text-align: center;
+        /* PASSWORD BOX */
+        .pw-info {
+            background: rgba(255,255,255,0.1); padding: 5px;
+            border-radius: 5px; font-family: monospace; font-size: 0.8rem; margin-top: 10px;
         }
 
-        #musicToggle { position: fixed; bottom: 20px; right: 20px; z-index: 3000; }
+        /* MEDIA QUERIES PER CELLULARI */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; position: relative; height: auto; }
+            .main-content { margin-left: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="main-wrapper">
-        <nav class="sidebar">
-            <h3>CalamaroOS</h3>
-            <button class="btn-news" onclick="openModal()">🔥 NUOVA USCITA 2026</button>
-            <a href="#" style="color:white; text-decoration:none;">Home</a>
-            <a href="#" style="color:white; text-decoration:none;">Documentazione</a>
-            <a href="#" style="color:white; text-decoration:none;">Contatti</a>
-        </nav>
-
-        <main class="content">
-            <h1>Benvenuti su CalamaroOS</h1>
-            <p>Il cuore di Gentoo, l'anima del mare.</p>
-            <img src="logo.png" style="max-width: 200px; opacity: 0.5;">
-        </main>
-    </div>
-
-    <div id="newsModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+    <aside class="sidebar">
+        <h1 style="color:#00aaff; font-size: 1.5rem;">⚓ CalamaroOS</h1>
+        <p style="font-size: 0.9rem; color: #ccc;">Gentoo Stage 3 & Systemd</p>
+        
+        <div class="news-box">
+            <h2>📢 ULTIME NOVITÀ</h2>
             
-            <div class="modal-lang-bar">
-                <button class="m-lang-btn active" onclick="switchM('it')">IT</button>
-                <button class="m-lang-btn" onclick="switchM('en')">EN</button>
-                <button class="m-lang-btn" onclick="switchM('zh')">中文</button>
-                <button class="m-lang-btn" onclick="switchM('ja')">日本語</button>
-                <button class="m-lang-btn" onclick="switchM('ar')">العربية</button>
-                <button class="m-lang-btn" onclick="switchM('eo')">EO</button>
+            <div class="lang-switcher">
+                <button class="l-btn active" onclick="setN('it')">IT</button>
+                <button class="l-btn" onclick="setN('en')">EN</button>
+                <button class="l-btn" onclick="setN('zh')">ZH</button>
+                <button class="l-btn" onclick="setN('ja')">JA</button>
+                <button class="l-btn" onclick="setN('ar')">AR</button>
+                <button class="l-btn" onclick="setN('eo')">EO</button>
             </div>
 
-            <div id="m-it" class="lang-section active">
-                <h2 style="color:var(--main-blue)">⚓ Release 2026.03.19</h2>
+            <div id="it" class="n-text active">
+                <strong>Release 2026.03.19</strong>
                 <ul>
-                    <li><strong>Noto CJK:</strong> Supporto totale lingue orientali (niente più quadratini).</li>
-                    <li><strong>Flatpak + Discover:</strong> Installazione app grafica immediata.</li>
-                    <li><strong>Nuovi FileSystem:</strong> BTRFS, XFS, F2FS supportati.</li>
+                    <li>Noto CJK: Caratteri asiatici perfetti.</li>
+                    <li>Flatpak + Discover integrati.</li>
+                    <li>Supporto BTRFS, XFS, F2FS.</li>
                 </ul>
-                <div class="password-box">Password terminale: <strong>calamaroos</strong></div>
+                <div class="pw-info">Pass: calamaroos</div>
             </div>
 
-            <div id="m-en" class="lang-section">
-                <h2 style="color:var(--main-blue)">⚓ Release 2026.03.19</h2>
+            <div id="en" class="n-text">
+                <strong>Release 2026.03.19</strong>
                 <ul>
-                    <li><strong>Noto CJK:</strong> Full support for Asian languages (no more square boxes).</li>
-                    <li><strong>Flatpak + Discover:</strong> Instant graphical app installation.</li>
-                    <li><strong>New FileSystems:</strong> BTRFS, XFS, F2FS supported.</li>
+                    <li>Noto CJK: Full Asian font support.</li>
+                    <li>Flatpak + Discover ready.</li>
+                    <li>BTRFS, XFS, F2FS support.</li>
                 </ul>
-                <div class="password-box">Terminal Password: <strong>calamaroos</strong></div>
+                <div class="pw-info">Pass: calamaroos</div>
             </div>
 
-            <div style="text-align:center; margin-top:30px;">
-                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" 
-                   style="background:var(--main-blue); color:white; padding:15px 30px; text-decoration:none; border-radius:50px; font-weight:bold;">
-                   SCARICA ISO (ZIP)
-                </a>
+            <div id="zh" class="n-text">
+                <strong>2026.03.19 版本</strong>
+                <ul>
+                    <li>Noto CJK: 完美的中日韩文字支持。</li>
+                    <li>Flatpak + Discover 预装。</li>
+                    <li>支持 BTRFS, XFS, F2FS。</li>
+                </ul>
             </div>
+
+            <div id="ja" class="n-text">
+                <strong>2026.03.19 リリース</strong>
+                <ul>
+                    <li>Noto CJK: 完全なCJK文字サポート。</li>
+                    <li>Flatpak + Discover 搭載。</li>
+                    <li>BTRFS, XFS, F2FS をサポート。</li>
+                </ul>
+            </div>
+
+            <div id="ar" class="n-text" style="direction: rtl;">
+                <strong>إصدار 2026.03.19</strong>
+                <ul>
+                    <li>دعم خطوط Noto CJK.</li>
+                    <li>تكامل Flatpak و Discover.</li>
+                    <li>دعم BTRFS, XFS, F2FS.</li>
+                </ul>
+            </div>
+
+            <div id="eo" class="n-text">
+                <strong>Eldono 2026.03.19</strong>
+                <ul>
+                    <li>Noto CJK: Plena subteno.</li>
+                    <li>Flatpak + Discover integritaj.</li>
+                    <li>BTRFS, XFS, F2FS subtenataj.</li>
+                </ul>
+            </div>
+
+            <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" class="dl-link">
+                📥 SCARICA ISO (ZIP)
+            </a>
         </div>
-    </div>
+    </aside>
+
+    <main class="main-content">
+        <img src="logo.png" alt="Logo" style="max-width: 250px; margin-bottom: 20px;">
+        <h1 style="font-size: 3rem;">Benvenuti nel Futuro</h1>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+            CalamaroOS è il sistema operativo basato su Gentoo Linux, 
+            progettato per essere universale, potente e veloce. 
+            Esplora la nostra documentazione o scarica l'ultima release dalla barra laterale.
+        </p>
+    </main>
 
     <script>
-        function openModal() { document.getElementById('newsModal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('newsModal').style.display = 'none'; }
-
-        function switchM(l) {
-            document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
-            document.getElementById('m-' + l).classList.add('active');
+        function setN(lang) {
+            // Nasconde tutti i testi news
+            document.querySelectorAll('.n-text').forEach(t => t.classList.remove('active'));
+            // Mostra quello selezionato
+            document.getElementById(lang).classList.add('active');
             
-            document.querySelectorAll('.m-lang-btn').forEach(b => b.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-
-            // Gestione RTL per Arabo
-            document.getElementById('newsModal').style.direction = (l === 'ar') ? 'rtl' : 'ltr';
-        }
-
-        // Chiudi se clicchi fuori dal modal
-        window.onclick = function(event) {
-            let modal = document.getElementById('newsModal');
-            if (event.target == modal) closeModal();
+            // Gestione bottoni attiva/disattiva
+            document.querySelectorAll('.l-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
         }
     </script>
+
 </body>
 </html>
