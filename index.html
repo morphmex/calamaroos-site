@@ -3,185 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalamaroOS | Official Hub</title>
+    <title>CalamaroOS | Gentoo Stage 3</title>
     <style>
-        /* BASE */
-        * { box-sizing: border-box; }
-        body, html {
+        body {
             margin: 0; padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: #050a0f; color: white;
-            display: flex; min-height: 100vh;
-        }
-
-        /* SIDEBAR (La tua barra laterale) */
-        .sidebar {
-            width: 300px;
-            background: rgba(0, 20, 40, 0.95);
-            border-right: 2px solid #00aaff;
-            padding: 20px;
-            position: fixed; height: 100vh;
-            overflow-y: auto;
-            z-index: 100;
-        }
-
-        /* CONTENUTO PRINCIPALE (La tua vecchia pagina) */
-        .main-content {
-            margin-left: 300px; /* Lascia spazio alla sidebar */
-            flex: 1;
-            padding: 40px;
+            font-family: sans-serif;
+            background-color: #050a0f; color: white;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('logo.png') no-repeat center center;
-            background-size: contain;
         }
-
-        /* SEZIONE NEWS (Dentro la Sidebar) */
-        .news-box {
-            background: rgba(0, 170, 255, 0.1);
-            border: 1px solid #00aaff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .news-box h2 { color: #00aaff; font-size: 1.1rem; margin-top: 0; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         
-        /* SELETTORE LINGUA NEWS */
-        .lang-switcher {
-            display: flex; gap: 5px; margin-bottom: 10px; flex-wrap: wrap;
+        /* Selettore Lingue Semplice */
+        .lang-nav { margin-bottom: 30px; }
+        .lang-btn {
+            background: #222; border: 1px solid #00aaff; color: white;
+            padding: 8px 15px; cursor: pointer; border-radius: 5px; margin: 2px;
         }
-        .l-btn {
-            background: #222; border: 1px solid #444; color: white;
-            padding: 3px 7px; border-radius: 5px; cursor: pointer; font-size: 0.7rem;
-        }
-        .l-btn.active { background: #00aaff; border-color: white; }
+        .lang-btn.active { background: #00aaff; }
 
-        /* TESTI NEWS (Nascosti di base, mostrati via JS) */
-        .n-text { display: none; font-size: 0.85rem; line-height: 1.4; }
-        .n-text.active { display: block; }
-        .n-text ul { padding-left: 20px; }
+        /* Blocchi Testo */
+        .content-block { display: none; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; border: 1px solid #333; }
+        .content-block.active { display: block; }
+        
+        h1 { color: #00aaff; }
+        ul { text-align: left; display: inline-block; }
+        li { margin-bottom: 10px; }
 
-        .dl-link {
-            display: block; background: #00aaff; color: white;
-            text-decoration: none; padding: 10px; border-radius: 5px;
-            margin-top: 15px; font-weight: bold; font-size: 0.8rem;
+        .dl-button {
+            display: inline-block; background: #00aaff; color: white;
+            padding: 20px 40px; text-decoration: none; border-radius: 50px;
+            font-weight: bold; margin-top: 30px; font-size: 1.2rem;
         }
-
-        /* PASSWORD BOX */
-        .pw-info {
-            background: rgba(255,255,255,0.1); padding: 5px;
-            border-radius: 5px; font-family: monospace; font-size: 0.8rem; margin-top: 10px;
-        }
-
-        /* MEDIA QUERIES PER CELLULARI */
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; position: relative; height: auto; }
-            .main-content { margin-left: 0; }
-        }
+        .pw-info { margin-top: 20px; color: #888; font-style: italic; }
     </style>
 </head>
 <body>
 
-    <aside class="sidebar">
-        <h1 style="color:#00aaff; font-size: 1.5rem;">⚓ CalamaroOS</h1>
-        <p style="font-size: 0.9rem; color: #ccc;">Gentoo Stage 3 & Systemd</p>
-        
-        <div class="news-box">
-            <h2>📢 ULTIME NOVITÀ</h2>
-            
-            <div class="lang-switcher">
-                <button class="l-btn active" onclick="setN('it')">IT</button>
-                <button class="l-btn" onclick="setN('en')">EN</button>
-                <button class="l-btn" onclick="setN('zh')">ZH</button>
-                <button class="l-btn" onclick="setN('ja')">JA</button>
-                <button class="l-btn" onclick="setN('ar')">AR</button>
-                <button class="l-btn" onclick="setN('eo')">EO</button>
-            </div>
+<div class="container">
+    <img src="logo.png" alt="CalamaroOS" style="max-width: 250px;">
+    
+    <div class="lang-nav">
+        <button class="lang-btn active" onclick="showL('it')">IT</button>
+        <button class="lang-btn" onclick="showL('en')">EN</button>
+        <button class="lang-btn" onclick="showL('zh')">中文</button>
+        <button class="lang-btn" onclick="showL('ja')">日本語</button>
+        <button class="lang-btn" onclick="showL('ar')">العربية</button>
+        <button class="lang-btn" onclick="showL('eo')">EO</button>
+    </div>
 
-            <div id="it" class="n-text active">
-                <strong>Release 2026.03.19</strong>
-                <ul>
-                    <li>Noto CJK: Caratteri asiatici perfetti.</li>
-                    <li>Flatpak + Discover integrati.</li>
-                    <li>Supporto BTRFS, XFS, F2FS.</li>
-                </ul>
-                <div class="pw-info">Pass: calamaroos</div>
-            </div>
+    <div id="it" class="content-block active">
+        <h1>Nuova Release CalamaroOS 2026</h1>
+        <p>L'evoluzione universale di Gentoo Stage 3.</p>
+        <ul>
+            <li><strong>Supporto Noto-CJK:</strong> Caratteri Cinesi, Giapponesi e Coreani perfetti.</li>
+            <li><strong>Flatpak & Discover:</strong> Installazione rapida di ogni programma.</li>
+            <li><strong>Nuovi File System:</strong> Supporto BTRFS, XFS e F2FS.</li>
+        </ul>
+        <div class="pw-info">Password terminale: calamaroos</div>
+    </div>
 
-            <div id="en" class="n-text">
-                <strong>Release 2026.03.19</strong>
-                <ul>
-                    <li>Noto CJK: Full Asian font support.</li>
-                    <li>Flatpak + Discover ready.</li>
-                    <li>BTRFS, XFS, F2FS support.</li>
-                </ul>
-                <div class="pw-info">Pass: calamaroos</div>
-            </div>
+    <div id="en" class="content-block">
+        <h1>New CalamaroOS 2026 Release</h1>
+        <p>The universal evolution of Gentoo Stage 3.</p>
+        <ul>
+            <li><strong>Noto-CJK Support:</strong> Perfect Chinese, Japanese, and Korean rendering.</li>
+            <li><strong>Flatpak & Discover:</strong> Quick installation for any app.</li>
+            <li><strong>New File Systems:</strong> BTRFS, XFS, and F2FS support.</li>
+        </ul>
+        <div class="pw-info">Terminal password: calamaroos</div>
+    </div>
 
-            <div id="zh" class="n-text">
-                <strong>2026.03.19 版本</strong>
-                <ul>
-                    <li>Noto CJK: 完美的中日韩文字支持。</li>
-                    <li>Flatpak + Discover 预装。</li>
-                    <li>支持 BTRFS, XFS, F2FS。</li>
-                </ul>
-            </div>
+    <div id="zh" class="content-block">
+        <h1>CalamaroOS 2026 新版本</h1>
+        <ul>
+            <li><strong>Noto-CJK 支持:</strong> 完美显示中日韩文字。</li>
+            <li><strong>Flatpak & Discover:</strong> 快速安装任何程序。</li>
+            <li><strong>新文件系统:</strong> 支持 BTRFS, XFS 和 F2FS。</li>
+        </ul>
+    </div>
 
-            <div id="ja" class="n-text">
-                <strong>2026.03.19 リリース</strong>
-                <ul>
-                    <li>Noto CJK: 完全なCJK文字サポート。</li>
-                    <li>Flatpak + Discover 搭載。</li>
-                    <li>BTRFS, XFS, F2FS をサポート。</li>
-                </ul>
-            </div>
+    <div id="ja" class="content-block">
+        <h1>CalamaroOS 2026 新リリース</h1>
+        <ul>
+            <li><strong>Noto-CJK 対応:</strong> 中日韓の文字を完璧に表示。</li>
+            <li><strong>Flatpak & Discover:</strong> あらゆるアプリを迅速にインストール。</li>
+            <li><strong>新ファイルシステム:</strong> BTRFS, XFS, F2FS をサポート。</li>
+        </ul>
+    </div>
 
-            <div id="ar" class="n-text" style="direction: rtl;">
-                <strong>إصدار 2026.03.19</strong>
-                <ul>
-                    <li>دعم خطوط Noto CJK.</li>
-                    <li>تكامل Flatpak و Discover.</li>
-                    <li>دعم BTRFS, XFS, F2FS.</li>
-                </ul>
-            </div>
-
-            <div id="eo" class="n-text">
-                <strong>Eldono 2026.03.19</strong>
-                <ul>
-                    <li>Noto CJK: Plena subteno.</li>
-                    <li>Flatpak + Discover integritaj.</li>
-                    <li>BTRFS, XFS, F2FS subtenataj.</li>
-                </ul>
-            </div>
-
-            <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" class="dl-link">
-                📥 SCARICA ISO (ZIP)
-            </a>
-        </div>
-    </aside>
-
-    <main class="main-content">
-        <img src="logo.png" alt="Logo" style="max-width: 250px; margin-bottom: 20px;">
-        <h1 style="font-size: 3rem;">Benvenuti nel Futuro</h1>
-        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
-            CalamaroOS è il sistema operativo basato su Gentoo Linux, 
-            progettato per essere universale, potente e veloce. 
-            Esplora la nostra documentazione o scarica l'ultima release dalla barra laterale.
-        </p>
-    </main>
-
-    <script>
-        function setN(lang) {
-            // Nasconde tutti i testi news
-            document.querySelectorAll('.n-text').forEach(t => t.classList.remove('active'));
-            // Mostra quello selezionato
-            document.getElementById(lang).classList.add('active');
-            
-            // Gestione bottoni attiva/disattiva
-            document.querySelectorAll('.l-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-    </script>
-
-</body>
-</html>
+    <div id="ar" class="content-block" style="direction: rtl;">
+        <h1>إصدار CalamaroOS 2026 الجديد</h1>
+        <ul>
+            <li><strong>دعم Noto-CJK:</strong> عرض مثالي للغات الآسيوية.</li>
+            <li><strong>Flatpak و Discover:</strong> تثبيت سريع للبرامج.</li>
+            <li><strong>أنظمة ملفات جديدة:</strong> دعم BTRFS, XFS, F2FS.</li>
+        </ul>
+    </div>
