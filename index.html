@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -8,200 +9,208 @@
         * { box-sizing: border-box; }
         body, html {
             margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Segoe UI', Tahoma, 'Noto Sans CJK SC', 'Noto Sans CJK JP', sans-serif;
             color: white; min-height: 100vh;
-            /* SFONDO CON IL TUO LOGO PNG */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
                         url('logo.png') no-repeat center center fixed;
             background-size: cover;
             overflow-x: hidden;
         }
 
-        /* Bottone Lingua */
-        #langSwitcher {
-            position: fixed; top: 20px; right: 20px;
+        .lang-bar {
+            position: fixed; top: 10px; right: 10px;
+            display: flex; gap: 5px; flex-wrap: wrap;
+            justify-content: flex-end; z-index: 1001;
+            max-width: 300px;
+        }
+        .lang-btn {
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid white; color: white;
-            padding: 8px 15px; border-radius: 20px;
-            cursor: pointer; z-index: 1001; font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.3); color: white;
+            padding: 5px 10px; border-radius: 15px;
+            cursor: pointer; font-size: 0.8rem; font-weight: bold;
             backdrop-filter: blur(5px); transition: 0.3s;
         }
-        #langSwitcher:hover { background: white; color: black; }
+        .lang-btn:hover, .lang-btn.active { background: #00aaff; border-color: white; }
 
-        header { text-align: center; padding: 60px 20px; }
-        .main-logo { max-width: 400px; width: 100%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 170, 255, 0.3); margin-bottom: 25px; }
+        header { text-align: center; padding: 80px 20px 20px 20px; }
+        .main-logo { max-width: 350px; width: 100%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 170, 255, 0.3); margin-bottom: 25px; }
+        
+        .iso-news {
+            max-width: 850px; margin: 20px auto;
+            padding: 30px; background: rgba(0, 170, 255, 0.05);
+            border: 1px solid rgba(0, 170, 255, 0.3); border-radius: 20px;
+            backdrop-filter: blur(10px); text-align: left;
+        }
+        .iso-news h2 { color: #00aaff; margin-top: 0; text-align: center; border-bottom: 1px solid rgba(0,170,255,0.2); padding-bottom: 10px; }
+        
+        .changelog-desc { margin: 15px 0; font-style: italic; color: #ddd; line-height: 1.6; }
+        .iso-news ul { list-style: none; padding: 0; }
+        .iso-news li { margin-bottom: 10px; padding-left: 30px; position: relative; }
+        .iso-news li::before { content: '⚓'; position: absolute; left: 0; color: #00aaff; }
 
-        .hero-text { max-width: 750px; margin: 0 auto 30px auto; font-size: 1.15rem; line-height: 1.7; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .password-box {
+            margin-top: 20px; padding: 10px; background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px; border: 1px solid rgba(0, 170, 255, 0.3);
+            font-size: 0.9rem; text-align: center; color: #00ccff;
+        }
 
-        /* TASTO DOWNLOAD CELESTE */
         .download-btn {
-            display: inline-block;
-            background-color: #00aaff; /* Celeste CalamaroOS */
-            color: white; padding: 18px 50px;
-            font-size: 1.3rem; font-weight: bold;
-            text-decoration: none; border-radius: 50px;
-            transition: 0.3s; box-shadow: 0 5px 20px rgba(0, 170, 255, 0.4);
-            border: 2px solid transparent;
+            display: inline-block; background-color: #00aaff;
+            color: white; padding: 20px 60px; margin: 30px 0;
+            font-size: 1.4rem; font-weight: bold; text-decoration: none;
+            border-radius: 50px; transition: 0.3s; box-shadow: 0 5px 20px rgba(0, 170, 255, 0.4);
         }
-        .download-btn:hover { background-color: #0088cc; transform: scale(1.05); border-color: white; }
+        .download-btn:hover { background-color: #00ccff; transform: scale(1.05); }
 
-        /* CARD CARATTERISTICHE */
-        .features { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 40px 5%; }
-        .card {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            padding: 25px; border-radius: 15px;
-            width: 320px; border: 1px solid rgba(0, 170, 255, 0.2);
-            transition: 0.3s;
-        }
-        .card:hover { border-color: #00aaff; transform: translateY(-5px); }
-        .card h3 { color: #00aaff; margin-top: 0; }
+        footer { text-align: center; padding: 40px; background: rgba(0,0,0,0.8); font-size: 0.8rem; color: #888; }
+        
+        [lang] { display: none; }
+        [lang="it"] { display: block; } 
 
-        footer { text-align: center; padding: 40px; background: rgba(0,0,0,0.7); margin-top: 40px; border-top: 1px solid rgba(0, 170, 255, 0.1); }
-        .credits { font-size: 0.85rem; color: #bbb; line-height: 1.6; }
-        .credits a { color: #00aaff; text-decoration: none; font-weight: bold; }
-
-        /* TASTO MUSICA FLOTTANTE */
         #musicToggle {
             position: fixed; bottom: 20px; right: 20px;
-            background: rgba(255, 0, 0, 0.3);
-            border: 2px solid #ff4444; color: white;
-            padding: 10px 20px; border-radius: 30px;
-            cursor: pointer; z-index: 1000; font-weight: bold;
-            backdrop-filter: blur(5px);
+            background: rgba(255, 0, 0, 0.4); border: 2px solid #ff4444;
+            color: white; padding: 12px 25px; border-radius: 30px;
+            cursor: pointer; z-index: 1000; font-weight: bold; backdrop-filter: blur(5px);
         }
-
-        #audioStatus { font-size: 0.7rem; display: block; margin-top: 5px; color: #ffcccc; }
-        
-        /* Gestione Lingue */
-        .lang-en { display: none; }
     </style>
 </head>
 <body>
 
-    <button id="langSwitcher">EN / IT</button>
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="setLang('it')">IT</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('zh')">中文</button>
+        <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+        <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+        <button class="lang-btn" onclick="setLang('eo')">EO</button>
+    </div>
 
     <header>
         <img src="logo.png" alt="CalamaroOS Logo" class="main-logo">
-        <p class="hero-text">
-            <span class="lang-it"><strong>CalamaroOS</strong> porta la potenza di Gentoo a tutti. Il nostro obiettivo è permetterti di imparare a dominare la migliore distribuzione Linux, partendo da un'installazione semplificata con Calamares, restando fedeli al cuore Gentoo.</span>
-            <span class="lang-en"><strong>CalamaroOS</strong> brings the power of Gentoo to everyone. Our goal is to let you learn to master the best Linux distribution, starting from a simplified installation with Calamares, while staying true to the Gentoo core.</span>
-        </p>
-        <a href="https://sourceforge.net/projects/calamaroos/postdownload" class="download-btn">
-            <span class="lang-it">SCARICA ISO UNIVERSALE</span>
-            <span class="lang-en">DOWNLOAD UNIVERSAL ISO</span>
+        
+        <div class="iso-news">
+            <div lang="it">
+                <h2>📢 Nuova Release CalamaroOS 2026.03.19</h2>
+                <p class="changelog-desc">L'evoluzione universale di Gentoo è arrivata. Una ISO potente e multilingua.</p>
+                <ul>
+                    <li><strong>Universal Font Support:</strong> Aggiunto <em>media-fonts/noto-cjk</em> per visualizzare correttamente Cinese, Giapponese e Coreano senza "tofu".</li>
+                    <li><strong>Flatpak & Discover:</strong> Software center pronto per installazioni rapide.</li>
+                    <li><strong>Multi-FileSystem:</strong> Supporto nativo per BTRFS, XFS e F2FS.</li>
+                    <li><strong>Rolling Core:</strong> Sistema Gentoo aggiornato e ottimizzato.</li>
+                </ul>
+                <div class="password-box">🔑 Password terminale: <strong>calamaroos</strong> (tutto minuscolo)</div>
+            </div>
+
+            <div lang="en">
+                <h2>📢 New CalamaroOS 2026.03.19 Release</h2>
+                <p class="changelog-desc">Universal Gentoo evolution is here. A powerful, multilingual ISO.</p>
+                <ul>
+                    <li><strong>Universal Font Support:</strong> Added <em>media-fonts/noto-cjk</em> for perfect rendering of Chinese, Japanese, and Korean.</li>
+                    <li><strong>Flatpak & Discover:</strong> Software center integration for one-click apps.</li>
+                    <li><strong>Multi-FileSystem:</strong> Full support for BTRFS, XFS, and F2FS.</li>
+                    <li><strong>Rolling Core:</strong> Gentoo system fully updated and optimized.</li>
+                </ul>
+                <div class="password-box">🔑 Terminal password: <strong>calamaroos</strong></div>
+            </div>
+
+            <div lang="zh">
+                <h2>📢 CalamaroOS 2026.03.19 新版本发布</h2>
+                <p class="changelog-desc">Gentoo 的通用进化。强大且支持多语言的 ISO。</p>
+                <ul>
+                    <li><strong>通用字体支持:</strong> 添加了 <em>media-fonts/noto-cjk</em>，完美显示中文、日文和韩文，告别“豆腐块”。</li>
+                    <li><strong>Flatpak 和 Discover:</strong> 软件中心集成，实现一键安装。</li>
+                    <li><strong>多文件系统:</strong> 全面支持 BTRFS、XFS 和 F2FS。</li>
+                    <li><strong>滚动核心:</strong> Gentoo 系统已完全更新并优化。</li>
+                </ul>
+                <div class="password-box">🔑 终端密码: <strong>calamaroos</strong></div>
+            </div>
+
+            <div lang="ja">
+                <h2>📢 CalamaroOS 2026.03.19 新リリース</h2>
+                <p class="changelog-desc">Gentoo の普遍的な進化。パワフルで多言語対応の ISO。</p>
+                <ul>
+                    <li><strong>ユニバーサルフォント対応:</strong> <em>media-fonts/noto-cjk</em> を追加し、中国語、日本語、韓国語の文字化けを解消。</li>
+                    <li><strong>Flatpak & Discover:</strong> ワンクリックで迅速にインストール可能なソフトウェアセンター。</li>
+                    <li><strong>マルチファイルシステム:</strong> BTRFS、XFS、F2FS をフルサポート。</li>
+                    <li><strong>ローリングコア:</strong> 最適化および更新された Gentoo システム。</li>
+                </ul>
+                <div class="password-box">🔑 ターミナルパスワード: <strong>calamaroos</strong></div>
+            </div>
+
+            <div lang="ar">
+                <div style="direction: rtl; text-align: right;">
+                    <h2>📢 إصدار CalamaroOS 2026.03.19 الجديد</h2>
+                    <p class="changelog-desc">تطور Gentoo العالمي. ملف ISO قوي ويدعم لغات متعددة.</p>
+                    <ul>
+                        <li><strong>دعم الخطوط العالمي:</strong> تم إضافة <em>media-fonts/noto-cjk</em> لعرض اللغات الآسيوية بشكل مثالي.</li>
+                        <li><strong>Flatpak و Discover:</strong> تكامل مركز البرمجيات لتثبيت البرامج بضغطة واحدة.</li>
+                        <li><strong>أنظمة ملفات متعددة:</strong> دعم كامل لـ BTRFS و XFS و F2FS.</li>
+                        <li><strong>النواة المتجددة:</strong> نظام Gentoo محدث ومحسن بالكامل.</li>
+                    </ul>
+                    <div class="password-box">🔑 كلمة مرور الطرفية: <strong>calamaroos</strong></div>
+                </div>
+            </div>
+
+            <div lang="eo">
+                <h2>📢 Nova Eldono de CalamaroOS 2026.03.19</h2>
+                <p class="changelog-desc">La universala evoluo de Gentoo. Potenca, plurlingva ISO.</p>
+                <ul>
+                    <li><strong>Universala Tipara Subteno:</strong> Aldonita <em>media-fonts/noto-cjk</em> por perfekta montrado de la ĉina, japana kaj korea.</li>
+                    <li><strong>Flatpak kaj Discover:</strong> Softvara centro integriĝo por unu-klakaj instaloj.</li>
+                    <li><strong>Plur-Dosiersistemo:</strong> Plena subteno por BTRFS, XFS, kaj F2FS.</li>
+                    <li><strong>Rulanta Kernon:</strong> Gentoo-sistemo plene ĝisdatigita kaj optimizita.</li>
+                </ul>
+                <div class="password-box">🔑 Terminala pasvorto: <strong>calamaroos</strong></div>
+            </div>
+        </div>
+
+        <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" class="download-btn">
+            <span lang="it">SCARICA ISO (MARZO 2026)</span>
+            <span lang="en">DOWNLOAD ISO (MARCH 2026)</span>
+            <span lang="zh">下载 ISO (2026年3月)</span>
+            <span lang="ja">ISO をダウンロード (2026年3月)</span>
+            <span lang="ar">تنزيل ملف ISO (مارس 2026)</span>
+            <span lang="eo">ELŜUTI ISO-n (MARTO 2026)</span>
         </a>
     </header>
 
-    <section class="features">
-        <div class="card">
-            <h3>🚀 Gentoo Stage 3</h3>
-            <p>
-                <span class="lang-it">Utilizziamo i <strong>pacchetti binari ufficiali</strong>. Se non presenti, il sistema compila dai sorgenti automaticamente sul tuo hardware.</span>
-                <span class="lang-en">We use <strong>official binary packages</strong>. If not present, the system automatically compiles from source on your hardware.</span>
-            </p>
-        </div>
-        <div class="card">
-            <h3>⚙️ Systemd & KDE</h3>
-            <p>
-                <span class="lang-it">Profilo <strong>desktop-systemd</strong> ottimizzato. Un ambiente moderno, fluido e pronto all'uso senza configurazioni manuali estenuanti.</span>
-                <span class="lang-en">Optimized <strong>desktop-systemd</strong> profile. A modern, fluid, and ready-to-use environment without exhausting manual configurations.</span>
-            </p>
-        </div>
-        <div class="card">
-            <h3>🌍 ISO Universale</h3>
-            <p>
-                <span class="lang-it">Un'unica immagine pronta per ogni hardware a 64-bit. Installa Gentoo in pochi minuti grazie all'interfaccia grafica di <strong>Calamares</strong>.</span>
-                <span class="lang-en">A single image ready for any 64-bit hardware. Install Gentoo in minutes thanks to the <strong>Calamares</strong> graphical interface.</span>
-            </p>
-        </div>
-    </section>
-
     <footer>
-        <div class="credits">
-            <p>CalamaroOS 2026 | Basato su Gentoo Linux</p>
-            <p>
-                <span class="lang-it">🎵 Un ringraziamento speciale a <strong>Alexander Nakarada</strong> per la musica di sottofondo.</span>
-                <span class="lang-en">🎵 Special thanks to <strong>Alexander Nakarada</strong> for the background music.</span>
-            </p>
-            <p>
-                <span class="lang-it">Sostieni l'artista:</span>
-                <span class="lang-en">Support the artist:</span>
-                <a href="https://breakingcopyright.com/artist/alexander-nakarada" target="_blank">Alexander Nakarada su BreakingCopyright</a>
-            </p>
-        </div>
+        <p>CalamaroOS 2026 | Powered by Gentoo Linux</p>
+        <p>Music: "The World's Most Epic Sea Shanty" by Alexander Nakarada</p>
     </footer>
 
-    <button id="musicToggle">
-        <span id="btnText">
-            <span class="lang-it">🔇 CLICCA QUI PER ATTIVARE L'AUDIO</span>
-            <span class="lang-en">🔇 CLICK HERE TO ACTIVATE AUDIO</span>
-        </span>
-        <span id="audioStatus">
-            <span class="lang-it">Clicca per attivare</span>
-            <span class="lang-en">Click to activate</span>
-        </span>
+    <button id="musicToggle" onclick="toggleMusic()">
+        <span id="musicText">🔇 AUDIO: OFF</span>
     </button>
 
-    <audio id="bgMusic" loop preload="auto">
+    <audio id="bgMusic" loop>
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         const audio = document.getElementById('bgMusic');
-        const btn = document.getElementById('musicToggle');
-        const btnText = document.getElementById('btnText');
-        const statusText = document.getElementById('audioStatus');
-        const langSwitcher = document.getElementById('langSwitcher');
-
-        // --- Logica Lingue ---
-        langSwitcher.addEventListener('click', function() {
-            let itaTexts = document.querySelectorAll('.lang-it');
-            let engTexts = document.querySelectorAll('.lang-en');
-
-            if (itaTexts[0].style.display !== 'none') {
-                // Passa a Inglese
-                itaTexts.forEach(el => el.style.display = 'none');
-                engTexts.forEach(el => el.style.display = 'inline'); // inline per testi dentro paragrafi
-                // Gestione speciale per i blocchi di testo nel bottone che sono span
-                document.querySelectorAll('#btnText .lang-en, #audioStatus .lang-en').forEach(el => el.style.display = 'inline');
-                document.querySelectorAll('#btnText .lang-it, #audioStatus .lang-it').forEach(el => el.style.display = 'none');
-            } else {
-                // Passa a Italiano
-                itaTexts.forEach(el => el.style.display = 'inline');
-                engTexts.forEach(el => el.style.display = 'none');
-                document.querySelectorAll('#btnText .lang-en, #audioStatus .lang-en').forEach(el => el.style.display = 'none');
-                document.querySelectorAll('#btnText .lang-it, #audioStatus .lang-it').forEach(el => el.style.display = 'inline');
-            }
-        });
-        
-        // Forza visualizzazione iniziale corretta per le lingue
-        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
-
-        // --- Logica Audio ---
-        audio.pause();
-
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
+        function setLang(l) {
+            document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
+            document.querySelectorAll(`[lang="${l}"]`).forEach(el => el.style.display = 'block');
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        function toggleMusic() {
+            const btn = document.getElementById('musicToggle');
+            const txt = document.getElementById('musicText');
             if (audio.paused) {
                 audio.play();
-                // Testo ON (Multilingua)
-                btnText.innerHTML = '<span class="lang-it">🔊 AUDIO: ON</span><span class="lang-en">🔊 AUDIO: ON</span>';
-                statusText.style.display = "none";
+                txt.innerText = "🔊 AUDIO: ON";
                 btn.style.background = "rgba(0, 170, 255, 0.5)";
                 btn.style.borderColor = "#00aaff";
             } else {
                 audio.pause();
-                // Testo OFF (Multilingua)
-                btnText.innerHTML = '<span class="lang-it">🔇 CLICCA QUI PER ATTIVARE L\'AUDIO</span><span class="lang-en">🔇 CLICK HERE TO ACTIVATE AUDIO</span>';
-                statusText.style.display = "block";
-                statusText.innerHTML = '<span class="lang-it">Clicca per attivare</span><span class="lang-en">Click to activate</span>';
-                btn.style.background = "rgba(255, 0, 0, 0.3)";
+                txt.innerText = "🔇 AUDIO: OFF";
+                btn.style.background = "rgba(255, 0, 0, 0.4)";
                 btn.style.borderColor = "#ff4444";
             }
-            // Mantiene la lingua corrente dopo il click
-            langSwitcher.click(); langSwitcher.click(); 
-        });
+        }
     </script>
 </body>
 </html>
