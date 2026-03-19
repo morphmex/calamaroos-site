@@ -1,215 +1,158 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalamaroOS | Gentoo Stage 3 & Systemd</title>
+    <title>CalamaroOS | Official Site</title>
     <style>
+        :root { --main-blue: #00aaff; --dark-bg: rgba(0, 0, 0, 0.9); }
         * { box-sizing: border-box; }
         body, html {
             margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, 'Noto Sans CJK SC', 'Noto Sans CJK JP', sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             color: white; min-height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
-                        url('logo.png') no-repeat center center fixed;
+            background: url('logo.png') no-repeat center center fixed;
             background-size: cover;
-            overflow-x: hidden;
         }
 
-        .lang-bar {
-            position: fixed; top: 10px; right: 10px;
-            display: flex; gap: 5px; flex-wrap: wrap;
-            justify-content: flex-end; z-index: 1001;
-            max-width: 300px;
-        }
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255,255,255,0.3); color: white;
-            padding: 5px 10px; border-radius: 15px;
-            cursor: pointer; font-size: 0.8rem; font-weight: bold;
-            backdrop-filter: blur(5px); transition: 0.3s;
-        }
-        .lang-btn:hover, .lang-btn.active { background: #00aaff; border-color: white; }
-
-        header { text-align: center; padding: 80px 20px 20px 20px; }
-        .main-logo { max-width: 350px; width: 100%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 170, 255, 0.3); margin-bottom: 25px; }
+        /* --- LAYOUT PRINCIPALE (La tua vecchia struttura) --- */
+        .main-wrapper { display: flex; min-height: 100vh; background: rgba(0,0,0,0.7); }
         
-        .iso-news {
-            max-width: 850px; margin: 20px auto;
-            padding: 30px; background: rgba(0, 170, 255, 0.05);
-            border: 1px solid rgba(0, 170, 255, 0.3); border-radius: 20px;
-            backdrop-filter: blur(10px); text-align: left;
+        /* Barra Laterale */
+        .sidebar {
+            width: 250px; background: rgba(0,0,0,0.85);
+            border-right: 1px solid var(--main-blue);
+            padding: 20px; display: flex; flex-direction: column; gap: 15px;
         }
-        .iso-news h2 { color: #00aaff; margin-top: 0; text-align: center; border-bottom: 1px solid rgba(0,170,255,0.2); padding-bottom: 10px; }
+        .sidebar h3 { color: var(--main-blue); font-size: 1.2rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
         
-        .changelog-desc { margin: 15px 0; font-style: italic; color: #ddd; line-height: 1.6; }
-        .iso-news ul { list-style: none; padding: 0; }
-        .iso-news li { margin-bottom: 10px; padding-left: 30px; position: relative; }
-        .iso-news li::before { content: '⚓'; position: absolute; left: 0; color: #00aaff; }
+        /* Tasto Speciale Nuova Uscita */
+        .btn-news {
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            color: white; border: none; padding: 15px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; text-align: center;
+            animation: pulse 2s infinite; transition: 0.3s;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .btn-news:hover { filter: brightness(1.2); }
 
+        .content { flex: 1; padding: 50px; text-align: center; }
+
+        /* --- MODAL (La finestra delle Novità) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; /* Nascosto di base */
+            justify-content: center; align-items: center; z-index: 2000;
+            backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: #1a1a1a; width: 90%; max-width: 800px;
+            border-radius: 20px; border: 2px solid var(--main-blue);
+            position: relative; padding: 40px; max-height: 90vh; overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute; top: 15px; right: 20px;
+            font-size: 30px; cursor: pointer; color: var(--main-blue);
+        }
+
+        /* Selettore Lingue dentro il Modal */
+        .modal-lang-bar { display: flex; gap: 8px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+        .m-lang-btn {
+            background: #333; border: 1px solid var(--main-blue); color: white;
+            padding: 5px 12px; border-radius: 10px; cursor: pointer;
+        }
+        .m-lang-btn.active { background: var(--main-blue); }
+
+        .lang-section { display: none; text-align: left; }
+        .lang-section.active { display: block; }
+        
         .password-box {
-            margin-top: 20px; padding: 10px; background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px; border: 1px solid rgba(0, 170, 255, 0.3);
-            font-size: 0.9rem; text-align: center; color: #00ccff;
+            background: rgba(0, 170, 255, 0.1); border: 1px dashed var(--main-blue);
+            padding: 10px; border-radius: 10px; margin-top: 20px; text-align: center;
         }
 
-        .download-btn {
-            display: inline-block; background-color: #00aaff;
-            color: white; padding: 20px 60px; margin: 30px 0;
-            font-size: 1.4rem; font-weight: bold; text-decoration: none;
-            border-radius: 50px; transition: 0.3s; box-shadow: 0 5px 20px rgba(0, 170, 255, 0.4);
-        }
-        .download-btn:hover { background-color: #00ccff; transform: scale(1.05); }
-
-        footer { text-align: center; padding: 40px; background: rgba(0,0,0,0.8); font-size: 0.8rem; color: #888; }
-        
-        [lang] { display: none; }
-        [lang="it"] { display: block; } 
-
-        #musicToggle {
-            position: fixed; bottom: 20px; right: 20px;
-            background: rgba(255, 0, 0, 0.4); border: 2px solid #ff4444;
-            color: white; padding: 12px 25px; border-radius: 30px;
-            cursor: pointer; z-index: 1000; font-weight: bold; backdrop-filter: blur(5px);
-        }
+        #musicToggle { position: fixed; bottom: 20px; right: 20px; z-index: 3000; }
     </style>
 </head>
 <body>
 
-    <div class="lang-bar">
-        <button class="lang-btn active" onclick="setLang('it')">IT</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('zh')">中文</button>
-        <button class="lang-btn" onclick="setLang('ja')">日本語</button>
-        <button class="lang-btn" onclick="setLang('ar')">العربية</button>
-        <button class="lang-btn" onclick="setLang('eo')">EO</button>
+    <div class="main-wrapper">
+        <nav class="sidebar">
+            <h3>CalamaroOS</h3>
+            <button class="btn-news" onclick="openModal()">🔥 NUOVA USCITA 2026</button>
+            <a href="#" style="color:white; text-decoration:none;">Home</a>
+            <a href="#" style="color:white; text-decoration:none;">Documentazione</a>
+            <a href="#" style="color:white; text-decoration:none;">Contatti</a>
+        </nav>
+
+        <main class="content">
+            <h1>Benvenuti su CalamaroOS</h1>
+            <p>Il cuore di Gentoo, l'anima del mare.</p>
+            <img src="logo.png" style="max-width: 200px; opacity: 0.5;">
+        </main>
     </div>
 
-    <header>
-        <img src="logo.png" alt="CalamaroOS Logo" class="main-logo">
-        
-        <div class="iso-news">
-            <div lang="it">
-                <h2>📢 Nuova Release CalamaroOS 2026.03.19</h2>
-                <p class="changelog-desc">L'evoluzione universale di Gentoo è arrivata. Una ISO potente e multilingua.</p>
-                <ul>
-                    <li><strong>Universal Font Support:</strong> Aggiunto <em>media-fonts/noto-cjk</em> per visualizzare correttamente Cinese, Giapponese e Coreano senza "tofu".</li>
-                    <li><strong>Flatpak & Discover:</strong> Software center pronto per installazioni rapide.</li>
-                    <li><strong>Multi-FileSystem:</strong> Supporto nativo per BTRFS, XFS e F2FS.</li>
-                    <li><strong>Rolling Core:</strong> Sistema Gentoo aggiornato e ottimizzato.</li>
-                </ul>
-                <div class="password-box">🔑 Password terminale: <strong>calamaroos</strong> (tutto minuscolo)</div>
+    <div id="newsModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-lang-bar">
+                <button class="m-lang-btn active" onclick="switchM('it')">IT</button>
+                <button class="m-lang-btn" onclick="switchM('en')">EN</button>
+                <button class="m-lang-btn" onclick="switchM('zh')">中文</button>
+                <button class="m-lang-btn" onclick="switchM('ja')">日本語</button>
+                <button class="m-lang-btn" onclick="switchM('ar')">العربية</button>
+                <button class="m-lang-btn" onclick="switchM('eo')">EO</button>
             </div>
 
-            <div lang="en">
-                <h2>📢 New CalamaroOS 2026.03.19 Release</h2>
-                <p class="changelog-desc">Universal Gentoo evolution is here. A powerful, multilingual ISO.</p>
+            <div id="m-it" class="lang-section active">
+                <h2 style="color:var(--main-blue)">⚓ Release 2026.03.19</h2>
                 <ul>
-                    <li><strong>Universal Font Support:</strong> Added <em>media-fonts/noto-cjk</em> for perfect rendering of Chinese, Japanese, and Korean.</li>
-                    <li><strong>Flatpak & Discover:</strong> Software center integration for one-click apps.</li>
-                    <li><strong>Multi-FileSystem:</strong> Full support for BTRFS, XFS, and F2FS.</li>
-                    <li><strong>Rolling Core:</strong> Gentoo system fully updated and optimized.</li>
+                    <li><strong>Noto CJK:</strong> Supporto totale lingue orientali (niente più quadratini).</li>
+                    <li><strong>Flatpak + Discover:</strong> Installazione app grafica immediata.</li>
+                    <li><strong>Nuovi FileSystem:</strong> BTRFS, XFS, F2FS supportati.</li>
                 </ul>
-                <div class="password-box">🔑 Terminal password: <strong>calamaroos</strong></div>
+                <div class="password-box">Password terminale: <strong>calamaroos</strong></div>
             </div>
 
-            <div lang="zh">
-                <h2>📢 CalamaroOS 2026.03.19 新版本发布</h2>
-                <p class="changelog-desc">Gentoo 的通用进化。强大且支持多语言的 ISO。</p>
+            <div id="m-en" class="lang-section">
+                <h2 style="color:var(--main-blue)">⚓ Release 2026.03.19</h2>
                 <ul>
-                    <li><strong>通用字体支持:</strong> 添加了 <em>media-fonts/noto-cjk</em>，完美显示中文、日文和韩文，告别“豆腐块”。</li>
-                    <li><strong>Flatpak 和 Discover:</strong> 软件中心集成，实现一键安装。</li>
-                    <li><strong>多文件系统:</strong> 全面支持 BTRFS、XFS 和 F2FS。</li>
-                    <li><strong>滚动核心:</strong> Gentoo 系统已完全更新并优化。</li>
+                    <li><strong>Noto CJK:</strong> Full support for Asian languages (no more square boxes).</li>
+                    <li><strong>Flatpak + Discover:</strong> Instant graphical app installation.</li>
+                    <li><strong>New FileSystems:</strong> BTRFS, XFS, F2FS supported.</li>
                 </ul>
-                <div class="password-box">🔑 终端密码: <strong>calamaroos</strong></div>
+                <div class="password-box">Terminal Password: <strong>calamaroos</strong></div>
             </div>
 
-            <div lang="ja">
-                <h2>📢 CalamaroOS 2026.03.19 新リリース</h2>
-                <p class="changelog-desc">Gentoo の普遍的な進化。パワフルで多言語対応の ISO。</p>
-                <ul>
-                    <li><strong>ユニバーサルフォント対応:</strong> <em>media-fonts/noto-cjk</em> を追加し、中国語、日本語、韓国語の文字化けを解消。</li>
-                    <li><strong>Flatpak & Discover:</strong> ワンクリックで迅速にインストール可能なソフトウェアセンター。</li>
-                    <li><strong>マルチファイルシステム:</strong> BTRFS、XFS、F2FS をフルサポート。</li>
-                    <li><strong>ローリングコア:</strong> 最適化および更新された Gentoo システム。</li>
-                </ul>
-                <div class="password-box">🔑 ターミナルパスワード: <strong>calamaroos</strong></div>
-            </div>
-
-            <div lang="ar">
-                <div style="direction: rtl; text-align: right;">
-                    <h2>📢 إصدار CalamaroOS 2026.03.19 الجديد</h2>
-                    <p class="changelog-desc">تطور Gentoo العالمي. ملف ISO قوي ويدعم لغات متعددة.</p>
-                    <ul>
-                        <li><strong>دعم الخطوط العالمي:</strong> تم إضافة <em>media-fonts/noto-cjk</em> لعرض اللغات الآسيوية بشكل مثالي.</li>
-                        <li><strong>Flatpak و Discover:</strong> تكامل مركز البرمجيات لتثبيت البرامج بضغطة واحدة.</li>
-                        <li><strong>أنظمة ملفات متعددة:</strong> دعم كامل لـ BTRFS و XFS و F2FS.</li>
-                        <li><strong>النواة المتجددة:</strong> نظام Gentoo محدث ومحسن بالكامل.</li>
-                    </ul>
-                    <div class="password-box">🔑 كلمة مرور الطرفية: <strong>calamaroos</strong></div>
-                </div>
-            </div>
-
-            <div lang="eo">
-                <h2>📢 Nova Eldono de CalamaroOS 2026.03.19</h2>
-                <p class="changelog-desc">La universala evoluo de Gentoo. Potenca, plurlingva ISO.</p>
-                <ul>
-                    <li><strong>Universala Tipara Subteno:</strong> Aldonita <em>media-fonts/noto-cjk</em> por perfekta montrado de la ĉina, japana kaj korea.</li>
-                    <li><strong>Flatpak kaj Discover:</strong> Softvara centro integriĝo por unu-klakaj instaloj.</li>
-                    <li><strong>Plur-Dosiersistemo:</strong> Plena subteno por BTRFS, XFS, kaj F2FS.</li>
-                    <li><strong>Rulanta Kernon:</strong> Gentoo-sistemo plene ĝisdatigita kaj optimizita.</li>
-                </ul>
-                <div class="password-box">🔑 Terminala pasvorto: <strong>calamaroos</strong></div>
+            <div style="text-align:center; margin-top:30px;">
+                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" 
+                   style="background:var(--main-blue); color:white; padding:15px 30px; text-decoration:none; border-radius:50px; font-weight:bold;">
+                   SCARICA ISO (ZIP)
+                </a>
             </div>
         </div>
-
-        <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" class="download-btn">
-            <span lang="it">SCARICA ISO (MARZO 2026)</span>
-            <span lang="en">DOWNLOAD ISO (MARCH 2026)</span>
-            <span lang="zh">下载 ISO (2026年3月)</span>
-            <span lang="ja">ISO をダウンロード (2026年3月)</span>
-            <span lang="ar">تنزيل ملف ISO (مارس 2026)</span>
-            <span lang="eo">ELŜUTI ISO-n (MARTO 2026)</span>
-        </a>
-    </header>
-
-    <footer>
-        <p>CalamaroOS 2026 | Powered by Gentoo Linux</p>
-        <p>Music: "The World's Most Epic Sea Shanty" by Alexander Nakarada</p>
-    </footer>
-
-    <button id="musicToggle" onclick="toggleMusic()">
-        <span id="musicText">🔇 AUDIO: OFF</span>
-    </button>
-
-    <audio id="bgMusic" loop>
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
+    </div>
 
     <script>
-        const audio = document.getElementById('bgMusic');
-        function setLang(l) {
-            document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
-            document.querySelectorAll(`[lang="${l}"]`).forEach(el => el.style.display = 'block');
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        function openModal() { document.getElementById('newsModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('newsModal').style.display = 'none'; }
+
+        function switchM(l) {
+            document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('m-' + l).classList.add('active');
+            
+            document.querySelectorAll('.m-lang-btn').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Gestione RTL per Arabo
+            document.getElementById('newsModal').style.direction = (l === 'ar') ? 'rtl' : 'ltr';
         }
-        function toggleMusic() {
-            const btn = document.getElementById('musicToggle');
-            const txt = document.getElementById('musicText');
-            if (audio.paused) {
-                audio.play();
-                txt.innerText = "🔊 AUDIO: ON";
-                btn.style.background = "rgba(0, 170, 255, 0.5)";
-                btn.style.borderColor = "#00aaff";
-            } else {
-                audio.pause();
-                txt.innerText = "🔇 AUDIO: OFF";
-                btn.style.background = "rgba(255, 0, 0, 0.4)";
-                btn.style.borderColor = "#ff4444";
-            }
+
+        // Chiudi se clicchi fuori dal modal
+        window.onclick = function(event) {
+            let modal = document.getElementById('newsModal');
+            if (event.target == modal) closeModal();
         }
     </script>
 </body>
