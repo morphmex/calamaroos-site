@@ -1,55 +1,299 @@
-    <!-- RELEASE KDE PLASMA - UNA SOLA RIGA -->
-    <div class="release-card plasma-card">
-        <h2>
-            <span class="lang-it">CALAMAROOS 2026.03.19 - KDE PLASMA</span>
-            <span class="lang-en">CALAMAROOS 2026.03.19 - KDE PLASMA</span>
-        </h2>
-        <div class="subtitle">
-            <span class="lang-it">Annuncio Ufficiale Release – Disponibile ORA!</span>
-            <span class="lang-en">Official Release Announcement – Available NOW!</span>
-        </div>
-        <p class="intro">
-            <span class="lang-it">La nuova versione di <strong>CalamaroOS</strong> con KDE Plasma è qui!</span>
-            <span class="lang-en">The new version of <strong>CalamaroOS</strong> with KDE Plasma is here!</span>
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalamaroOS | Gentoo Stage 3 & Systemd</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            color: white; min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+                        url('logo.png') no-repeat center center fixed;
+            background-size: cover;
+            overflow-x: hidden;
+        }
+        #langSwitcher {
+            position: fixed; top: 20px; right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid white; color: white;
+            padding: 8px 15px; border-radius: 20px;
+            cursor: pointer; z-index: 1001; font-weight: bold;
+            backdrop-filter: blur(5px); transition: 0.3s;
+        }
+        #langSwitcher:hover { background: white; color: black; }
+        header { text-align: center; padding: 50px 20px 30px; }
+        .main-logo { max-width: 360px; width: 100%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 170, 255, 0.3); margin-bottom: 20px; }
+        .hero-text { max-width: 720px; margin: 0 auto 25px auto; font-size: 1.1rem; line-height: 1.65; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .download-btn {
+            display: inline-block;
+            background-color: #00aaff;
+            color: white; padding: 16px 48px;
+            font-size: 1.25rem; font-weight: bold;
+            text-decoration: none; border-radius: 50px;
+            transition: 0.3s; box-shadow: 0 5px 20px rgba(0, 170, 255, 0.4);
+            border: 2px solid transparent;
+        }
+        .download-btn:hover { background-color: #0088cc; transform: scale(1.04); border-color: white; }
+        .features { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 30px 5%; }
+        .card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 24px; border-radius: 15px;
+            width: 320px; border: 1px solid rgba(0, 170, 255, 0.2);
+            transition: 0.3s;
+        }
+        .card:hover { border-color: #00aaff; transform: translateY(-5px); }
+        .card h3 { color: #00aaff; margin-top: 0; font-size: 1.35rem; }
+        footer { text-align: center; padding: 40px 20px; background: rgba(0,0,0,0.7); margin-top: 50px; border-top: 1px solid rgba(0, 170, 255, 0.1); }
+        .credits { font-size: 0.9rem; color: #bbb; line-height: 1.6; }
+        .credits a { color: #00aaff; text-decoration: none; font-weight: bold; }
+        #musicToggle {
+            position: fixed; bottom: 20px; right: 20px;
+            background: rgba(255, 0, 0, 0.3);
+            border: 2px solid #ff4444; color: white;
+            padding: 10px 20px; border-radius: 30px;
+            cursor: pointer; z-index: 1000; font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+        #audioStatus { font-size: 0.75rem; display: block; margin-top: 4px; color: #ffcccc; }
+
+        .lang-en { display: none; }
+
+        /* ANNUNCIO RELEASE - MIGLIORATO */
+        .release-card {
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(16px);
+            border: 2px solid #00aaff88;
+            border-radius: 18px;
+            padding: 30px 28px;
+            margin: 0 auto 50px auto;
+            max-width: 780px;           /* ← più stretto */
+            box-shadow: 0 12px 45px rgba(0, 170, 255, 0.22);
+            text-align: center;
+        }
+        .release-card h2 {
+            color: #00ddff;
+            font-size: 2rem;
+            margin: 0 0 12px 0;
+            text-shadow: 0 2px 10px rgba(0, 170, 255, 0.5);
+        }
+        .release-card .subtitle {
+            font-size: 1.18rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        .release-card p.intro {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0 0 22px 0;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .release-list {
+            text-align: left;
+            max-width: 640px;
+            margin: 0 auto 25px auto;
+            padding-left: 0;
+            font-size: 1.03rem;
+            line-height: 1.65;
+        }
+        .release-list li {
+            margin-bottom: 14px;
+            list-style: none;
+            position: relative;
+            padding-left: 28px;
+        }
+        .release-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00aaff;
+            font-weight: bold;
+        }
+        .release-download { margin: 28px 0 20px; }
+        .release-notes {
+            font-size: 0.98rem;
+            color: #ddd;
+            background: rgba(0,0,0,0.35);
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <button id="langSwitcher">EN / IT</button>
+
+    <header>
+        <img src="logo.png" alt="CalamaroOS Logo" class="main-logo">
+        <p class="hero-text">
+            <span class="lang-it"><strong>CalamaroOS</strong> porta la potenza di Gentoo a tutti. Il nostro obiettivo è permetterti di imparare a dominare la migliore distribuzione Linux, partendo da un'installazione semplificata con Calamares, restando fedeli al cuore Gentoo.</span>
+            <span class="lang-en"><strong>CalamaroOS</strong> brings the power of Gentoo to everyone. Our goal is to let you learn to master the best Linux distribution, starting from a simplified installation with Calamares, while staying true to the Gentoo core.</span>
         </p>
+        <!-- bottone ISO universale rimosso da qui -->
+    </header>
 
-        <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" 
-           class="download-btn btn-plasma">
-            <span class="lang-it">SCARICA KDE PLASMA</span>
-            <span class="lang-en">DOWNLOAD KDE PLASMA</span>
-        </a>
-        
-        <div class="size-info">
-            <span class="lang-it">(circa 4.5 GB)</span>
-            <span class="lang-en">(approx. 4.5 GB)</span>
-        </div>
-    </div>
+    <!-- ANNUNCIO RELEASE -->
+    <section class="release-announce">
+        <div class="release-card">
+            <h2>
+                <span class="lang-it">CALAMAROOS 2026.03.19 - SUPPORTO UNIVERSALE</span>
+                <span class="lang-en">CALAMAROOS 2026.03.19 - UNIVERSAL SUPPORT</span>
+            </h2>
+            <div class="subtitle">
+                <span class="lang-it">Annuncio Ufficiale Release – Disponibile ORA!</span>
+                <span class="lang-en">Official Release Announcement – Available NOW!</span>
+            </div>
 
-    <!-- RELEASE XFCE - USCITA OGGI (rimane perfetta) -->
-    <div class="release-card xfce-card">
-        <h2>
-            <span class="lang-it">🚀 CALAMAROOS XFCE - USCITA OGGI! 🚀</span>
-            <span class="lang-en">🚀 CALAMAROOS XFCE - RELEASED TODAY! 🚀</span>
-        </h2>
-        <div class="subtitle">
-            <span class="lang-it">30 Marzo 2026 — Nuova ISO XFCE leggera e veloce</span>
-            <span class="lang-en">March 30, 2026 — New lightweight and fast XFCE ISO</span>
-        </div>
-        <p class="intro">
-            <span class="lang-it">CalamaroOS con ambiente desktop <strong>XFCE</strong> è finalmente disponibile!<br>
-            Ideale per chi cerca leggerezza, velocità e un’interfaccia pulita.</span>
-            <span class="lang-en">CalamaroOS with <strong>XFCE</strong> desktop is finally available!<br>
-            Perfect for those looking for lightness, speed and a clean interface.</span>
-        </p>
+            <p class="intro">
+                <span class="lang-it">La nuova versione di <strong>CalamaroOS</strong> è qui! Supporto font globale, Flatpak con Discover e file system avanzati per SSD/NVMe.</span>
+                <span class="lang-en">The new version of <strong>CalamaroOS</strong> is here! Global font support, Flatpak with Discover, and advanced file systems for SSD/NVMe.</span>
+            </p>
 
-        <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" 
-           class="download-btn btn-xfce">
-            <span class="lang-it">SCARICA XFCE ORA</span>
-            <span class="lang-en">DOWNLOAD XFCE NOW</span>
-        </a>
-        
-        <div class="size-info">
-            <span class="lang-it">(ISO XFCE – Leggera)</span>
-            <span class="lang-en">(XFCE ISO – Lightweight)</span>
+            <h3 style="color: #00aaff; margin: 25px 0 12px; font-size: 1.4rem;">
+                <span class="lang-it">🚀 Principali novità:</span>
+                <span class="lang-en">🚀 Key features:</span>
+            </h3>
+            <ul class="release-list">
+                <li>
+                    <span class="lang-it"><strong>1. Addio ai "quadratinì" (TOFU)</strong><br>Integrato media-fonts/noto-cjk: copertura completa per Cinese, Giapponese e Coreano.</span>
+                    <span class="lang-en"><strong>1. Goodbye to "TOFU" squares</strong><br>Integrated media-fonts/noto-cjk: full coverage for Chinese, Japanese, Korean.</span>
+                </li>
+                <li>
+                    <strong>2. Flatpak & Discover</strong><br>
+                    <span class="lang-it">Ecosistema Flatpak integrato con Discover per installazioni grafiche veloci.</span>
+                    <span class="lang-en">Flatpak ecosystem integrated with Discover for fast graphical installs.</span>
+                </li>
+                <li>
+                    <strong>3. File system avanzati</strong><br>
+                    <span class="lang-it">Scegli BTRFS, XFS o F2FS dall'installer per massime prestazioni SSD/NVMe.</span>
+                    <span class="lang-en">Choose BTRFS, XFS or F2FS from the installer for maximum SSD/NVMe performance.</span>
+                </li>
+            </ul>
+
+            <div class="release-download">
+                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260319.zip/download" class="download-btn" style="font-size: 1.35rem; padding: 16px 55px;">
+                    <span class="lang-it">SCARICA LA NUOVA RELEASE 2026.03.19</span>
+                    <span class="lang-en">DOWNLOAD NEW RELEASE 2026.03.19</span>
+                </a>
+                <p style="margin: 12px 0 0; font-size: 0.98rem; color: #ccc;">
+                    <span class="lang-it">(KDE Plasma Desktop – circa 4.5 GB)</span>
+                    <span class="lang-en">(KDE Plasma Desktop – approx. 4.5 GB)</span>
+                </p>
+            </div>
+
+            <div class="release-notes">
+                <strong>📌 Note:</strong><br>
+                <span class="lang-it">Password sudo/root: <code>calamaroos</code><br>Supporto lingue: font CJK + pacchetti traduzione KDE disponibili</span>
+                <span class="lang-en">Sudo/root password: <code>calamaroos</code><br>Languages: CJK font support + KDE translation packages available</span>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <h3>🚀 Gentoo Stage 3</h3>
+            <p>
+                <span class="lang-it">Utilizziamo i <strong>pacchetti binari ufficiali</strong>. Se non presenti, il sistema compila dai sorgenti automaticamente sul tuo hardware.</span>
+                <span class="lang-en">We use <strong>official binary packages</strong>. If not present, the system automatically compiles from source on your hardware.</span>
+            </p>
+        </div>
+        <div class="card">
+            <h3>⚙️ Systemd & KDE</h3>
+            <p>
+                <span class="lang-it">Profilo <strong>desktop-systemd</strong> ottimizzato. Un ambiente moderno, fluido e pronto all'uso senza configurazioni manuali estenuanti.</span>
+                <span class="lang-en">Optimized <strong>desktop-systemd</strong> profile. A modern, fluid, and ready-to-use environment without exhausting manual configurations.</span>
+            </p>
+        </div>
+        <div class="card">
+            <h3>🌍 ISO Universale</h3>
+            <p>
+                <span class="lang-it">Un'unica immagine pronta per ogni hardware a 64-bit. Installa Gentoo in pochi minuti grazie all'interfaccia grafica di <strong>Calamares</strong>.</span>
+                <span class="lang-en">A single image ready for any 64-bit hardware. Install Gentoo in minutes thanks to the <strong>Calamares</strong> graphical interface.</span>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="credits">
+            <p>CalamaroOS 2026 | Basato su Gentoo Linux</p>
+            <p>
+                <span class="lang-it">🎵 Un ringraziamento speciale a <strong>Alexander Nakarada</strong> per la musica di sottofondo.</span>
+                <span class="lang-en">🎵 Special thanks to <strong>Alexander Nakarada</strong> for the background music.</span>
+            </p>
+            <p>
+                <span class="lang-it">Sostieni l'artista:</span>
+                <span class="lang-en">Support the artist:</span>
+                <a href="https://breakingcopyright.com/artist/alexander-nakarada" target="_blank">Alexander Nakarada su BreakingCopyright</a>
+            </p>
+        </div>
+    </footer>
+
+    <button id="musicToggle">
+        <span id="btnText">
+            <span class="lang-it">🔇 CLICCA QUI PER ATTIVARE L'AUDIO</span>
+            <span class="lang-en">🔇 CLICK HERE TO ACTIVATE AUDIO</span>
+        </span>
+        <span id="audioStatus">
+            <span class="lang-it">Clicca per attivare</span>
+            <span class="lang-en">Click to activate</span>
+        </span>
+    </button>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicToggle');
+        const btnText = document.getElementById('btnText');
+        const statusText = document.getElementById('audioStatus');
+        const langSwitcher = document.getElementById('langSwitcher');
+
+        langSwitcher.addEventListener('click', function() {
+            let ita = document.querySelectorAll('.lang-it');
+            let eng = document.querySelectorAll('.lang-en');
+            if (ita[0].style.display !== 'none') {
+                ita.forEach(el => el.style.display = 'none');
+                eng.forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('#btnText .lang-en, #audioStatus .lang-en').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('#btnText .lang-it, #audioStatus .lang-it').forEach(el => el.style.display = 'none');
+            } else {
+                ita.forEach(el => el.style.display = 'inline');
+                eng.forEach(el => el.style.display = 'none');
+                document.querySelectorAll('#btnText .lang-en, #audioStatus .lang-en').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('#btnText .lang-it, #audioStatus .lang-it').forEach(el => el.style.display = 'inline');
+            }
+        });
+
+        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+
+        audio.pause();
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (audio.paused) {
+                audio.play();
+                btnText.innerHTML = '<span class="lang-it">🔊 AUDIO: ON</span><span class="lang-en">🔊 AUDIO: ON</span>';
+                statusText.style.display = "none";
+                btn.style.background = "rgba(0, 170, 255, 0.5)";
+                btn.style.borderColor = "#00aaff";
+            } else {
+                audio.pause();
+                btnText.innerHTML = '<span class="lang-it">🔇 CLICCA QUI PER ATTIVARE L\'AUDIO</span><span class="lang-en">🔇 CLICK HERE TO ACTIVATE AUDIO</span>';
+                statusText.style.display = "block";
+                statusText.innerHTML = '<span class="lang-it">Clicca per attivare</span><span class="lang-en">Click to activate</span>';
+                btn.style.background = "rgba(255, 0, 0, 0.3)";
+                btn.style.borderColor = "#ff4444";
+            }
+            langSwitcher.click(); langSwitcher.click();
+        });
+    </script>
+</body>
+</html>
