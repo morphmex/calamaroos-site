@@ -1,111 +1,8 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalamaroOS | Gentoo Stage 3 & Systemd</title>
-    <style>
-        * { box-sizing: border-box; }
-        body, html {
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            color: white; min-height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
-                        url('logo.png') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        #langSwitcher {
-            position: fixed; top: 20px; right: 20px;
-            background: rgba(255,255,255,0.1); border: 1px solid white; color: white;
-            padding: 8px 15px; border-radius: 20px; cursor: pointer; z-index: 1001;
-            font-weight: bold; backdrop-filter: blur(5px);
-        }
-
-        .release-card {
-            background: rgba(15, 23, 42, 0.88);
-            backdrop-filter: blur(16px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin: 40px auto;
-            max-width: 820px;
-            box-shadow: 0 15px 50px rgba(0, 170, 255, 0.25);
-            text-align: center;
-            border: 2px solid;
-        }
-
-        .plasma-card { border-color: #00aaff88; }
-        .xfce-card   { border-color: #00ffaa88; }
-
-        .release-card h2 {
-            font-size: 2.05rem;
-            margin: 8px 0 12px 0;
-            line-height: 1.15;
-            font-weight: bold;
-            text-shadow: 0 0 20px currentColor;
-        }
-
-        .plasma-card h2 { color: #00ddff; }
-        .xfce-card h2   { color: #00ffbb; }
-
-        .subtitle {
-            font-size: 1.18rem;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-
-        .intro {
-            font-size: 1.08rem;
-            line-height: 1.65;
-            max-width: 700px;
-            margin: 0 auto 28px auto;
-        }
-
-        .download-btn {
-            display: inline-block;
-            color: white;
-            padding: 18px 65px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.35s;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-        }
-
-        .btn-plasma {
-            background: linear-gradient(90deg, #00aaff, #0099ff);
-        }
-        .btn-plasma:hover {
-            background: linear-gradient(90deg, #0088dd, #0077cc);
-            transform: translateY(-4px);
-        }
-
-        .btn-xfce {
-            background: linear-gradient(90deg, #00cc77, #00dd88);
-            box-shadow: 0 8px 30px rgba(0, 204, 119, 0.45);
-        }
-        .btn-xfce:hover {
-            background: linear-gradient(90deg, #00aa66, #00bb77);
-            transform: translateY(-4px);
-        }
-
-        .size-info {
-            margin-top: 12px;
-            font-size: 0.97rem;
-            color: #bbb;
-        }
-    </style>
-</head>
-<body>
-
-    <button id="langSwitcher">EN / IT</button>
-
-    <!-- RELEASE KDE PLASMA - CON RIGA DOPPIA RIPETUTA -->
+    <!-- RELEASE KDE PLASMA - UNA SOLA RIGA -->
     <div class="release-card plasma-card">
         <h2>
-            <span class="lang-it">CALAMAROOS 2026.03.19 - KDE PLASMA<br>CALAMAROOS 2026.03.19 - KDE PLASMA</span>
-            <span class="lang-en">CALAMAROOS 2026.03.19 - KDE PLASMA<br>CALAMAROOS 2026.03.19 - KDE PLASMA</span>
+            <span class="lang-it">CALAMAROOS 2026.03.19 - KDE PLASMA</span>
+            <span class="lang-en">CALAMAROOS 2026.03.19 - KDE PLASMA</span>
         </h2>
         <div class="subtitle">
             <span class="lang-it">Annuncio Ufficiale Release – Disponibile ORA!</span>
@@ -128,7 +25,7 @@
         </div>
     </div>
 
-    <!-- RELEASE XFCE - USCITA OGGI -->
+    <!-- RELEASE XFCE - USCITA OGGI (rimane perfetta) -->
     <div class="release-card xfce-card">
         <h2>
             <span class="lang-it">🚀 CALAMAROOS XFCE - USCITA OGGI! 🚀</span>
@@ -156,8 +53,3 @@
             <span class="lang-en">(XFCE ISO – Lightweight)</span>
         </div>
     </div>
-
-    <!-- Qui puoi incollare di nuovo le tue sezioni features e footer originali -->
-
-</body>
-</html>
