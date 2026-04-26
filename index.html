@@ -160,12 +160,12 @@
 
         .releases-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 20px;
             max-width: 1240px;
             margin: 0 auto;
         }
-        @media (max-width: 1120px) {
+        @media (max-width: 1320px) {
             .releases-grid { grid-template-columns: repeat(2, 1fr); max-width: 740px; }
         }
         @media (max-width: 600px) {
@@ -219,6 +219,13 @@
         }
         .rcard-plasma:hover { box-shadow: 0 18px 48px rgba(0,170,255,0.32); }
 
+        .rcard-gnome {
+            background: rgba(36,6,10,0.88);
+            border: 1.5px solid rgba(220,50,70,0.55);
+            box-shadow: 0 8px 32px rgba(220,50,70,0.18);
+        }
+        .rcard-gnome:hover { box-shadow: 0 18px 48px rgba(220,50,70,0.32); }
+
         /* Badge */
         .rcard-badge {
             display: inline-flex; align-items: center; gap: 5px;
@@ -231,6 +238,7 @@
         .badge-mate   { background: rgba(230,126,34,0.18);  border: 1px solid rgba(230,126,34,0.5); color: #f0a050; }
         .badge-xfce   { background: rgba(46,204,113,0.18);  border: 1px solid rgba(46,204,113,0.5); color: #5de89a; }
         .badge-plasma { background: rgba(0,170,255,0.15);   border: 1px solid rgba(0,170,255,0.45); color: #55ccff; }
+        .badge-gnome  { background: rgba(220,50,70,0.18);    border: 1px solid rgba(220,50,70,0.5);  color: #f07080; }
 
         /* Header card */
         .rcard-header { display: flex; align-items: center; gap: 14px; }
@@ -247,6 +255,7 @@
         .name-mate   { color: #f0a050; }
         .name-xfce   { color: #5de89a; }
         .name-plasma { color: #55ccff; }
+        .name-gnome  { color: #f07080; }
 
         .rcard-date {
             font-size: 0.75rem; color: #778899;
@@ -284,6 +293,7 @@
         .feat-mate   li::before { color: #e67e22; }
         .feat-xfce   li::before { color: #27ae60; }
         .feat-plasma li::before { color: #00aaff; }
+        .feat-gnome  li::before { color: #dc3245; }
 
         /* Pulsante download */
         .dl-btn {
@@ -470,6 +480,52 @@
         </div>
 
         <div class="releases-grid">
+
+            <!-- ══ GNOME ══ -->
+            <div class="rcard rcard-gnome">
+                <span class="rcard-badge badge-gnome">✦ NEW · 2026.04.26</span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🔴</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-gnome">GNOME Desktop</h2>
+                        <p class="rcard-date">CalamaroOS 2026.04.26</p>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">
+                        Un desktop moderno, pulito e orientato alla produttività. GNOME è pensato per togliersi di mezzo e lasciare spazio al tuo lavoro: interfaccia essenziale, workflow fluido e un ecosistema di applicazioni curato. Come tutte le edizioni CalamaroOS, è costruito sulla solida base Gentoo Stage 3 + Systemd e si installa in pochi minuti grazie a Calamares — con un occhio di riguardo anche ai PC più datati.
+                    </span>
+                    <span class="lang-en">
+                        A modern, clean and productivity-oriented desktop. GNOME is designed to get out of the way and let you focus on your work: minimal interface, smooth workflow and a curated application ecosystem. Like all CalamaroOS editions, it is built on the solid Gentoo Stage 3 + Systemd base and installs in minutes thanks to Calamares — with an eye for older PCs too.
+                    </span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-gnome">
+                    <li>
+                        <span class="lang-it">GNOME — moderno, pulito, produttivo</span>
+                        <span class="lang-en">GNOME — modern, clean, productive</span>
+                    </li>
+                    <li>Gentoo Stage 3 + Systemd</li>
+                    <li>
+                        <span class="lang-it">Interfaccia essenziale e workflow fluido</span>
+                        <span class="lang-en">Minimal interface and smooth workflow</span>
+                    </li>
+                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
+                    <li>
+                        <span class="lang-it">Calamares installer · Adatto anche a PC datati</span>
+                        <span class="lang-en">Calamares installer · Suitable for older PCs too</span>
+                    </li>
+                </ul>
+                <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-gnome" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Scarica CalamaroOS GNOME</span>
+                    <span class="lang-en">Download CalamaroOS GNOME</span>
+                </a>
+                <p class="rcard-note">
+                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
+                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+                </p>
+            </div>
 
             <!-- ══ KDE PLASMA ══ -->
             <div class="rcard rcard-plasma">
