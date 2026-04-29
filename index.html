@@ -160,12 +160,12 @@
 
         .releases-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             max-width: 1240px;
             margin: 0 auto;
         }
-        @media (max-width: 1320px) {
+        @media (max-width: 1120px) {
             .releases-grid { grid-template-columns: repeat(2, 1fr); max-width: 740px; }
         }
         @media (max-width: 600px) {
@@ -470,6 +470,36 @@
         </div>
     </header>
 
+<!-- ══ NOTICE GNOME & CINNAMON ══ -->
+    <section style="max-width:900px;margin:40px auto 0;padding:0 4%;">
+        <div style="
+            background: rgba(30,15,5,0.85);
+            border: 1.5px solid rgba(230,160,30,0.5);
+            border-radius: 18px;
+            padding: 28px 30px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 8px 32px rgba(230,160,30,0.12);
+        ">
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+                <span style="font-size:1.8rem;flex-shrink:0;">⚠️</span>
+                <div>
+                    <h3 style="color:#f0b840;font-size:1.1rem;font-weight:800;margin:0 0 12px;letter-spacing:0.02em;">
+                        <span class="lang-it">GNOME &amp; Cinnamon — Uscita rimandata</span>
+                        <span class="lang-en">GNOME &amp; Cinnamon — Release postponed</span>
+                    </h3>
+                    <p style="font-size:0.95rem;color:#c8b890;line-height:1.7;margin:0;">
+                        <span class="lang-it">
+                            Le edizioni <strong style="color:#f0c060;">GNOME</strong> e <strong style="color:#f0c060;">Cinnamon</strong> di CalamaroOS sono attualmente in sospeso a causa di un problema riscontrato nella modalità di avvio <code style="background:rgba(0,0,0,0.3);padding:1px 7px;border-radius:5px;color:#ffd080;">nomodeset</code>. Stiamo lavorando per trovare una soluzione — in caso contrario, verrà valutata un'uscita provvisoria nella sola modalità default. Vi aggiorneremo il prima possibile.
+                        </span>
+                        <span class="lang-en">
+                            The <strong style="color:#f0c060;">GNOME</strong> and <strong style="color:#f0c060;">Cinnamon</strong> editions of CalamaroOS are currently on hold due to a boot issue encountered in <code style="background:rgba(0,0,0,0.3);padding:1px 7px;border-radius:5px;color:#ffd080;">nomodeset</code> mode. We are working to find a solution — if unsuccessful, a provisional release in default mode only will be considered. We will keep you updated as soon as possible.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── RELEASES ── -->
     <section class="releases-section">
         <div class="section-sep">
@@ -480,52 +510,6 @@
         </div>
 
         <div class="releases-grid">
-
-            <!-- ══ GNOME ══ -->
-            <div class="rcard rcard-gnome">
-                <span class="rcard-badge badge-gnome">✦ NEW · 2026.04.26</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🔴</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-gnome">GNOME Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.04.26</p>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">
-                        Un desktop moderno, pulito e orientato alla produttività. GNOME è pensato per togliersi di mezzo e lasciare spazio al tuo lavoro: interfaccia essenziale, workflow fluido e un ecosistema di applicazioni curato. Come tutte le edizioni CalamaroOS, è costruito sulla solida base Gentoo Stage 3 + Systemd e si installa in pochi minuti grazie a Calamares — con un occhio di riguardo anche ai PC più datati.
-                    </span>
-                    <span class="lang-en">
-                        A modern, clean and productivity-oriented desktop. GNOME is designed to get out of the way and let you focus on your work: minimal interface, smooth workflow and a curated application ecosystem. Like all CalamaroOS editions, it is built on the solid Gentoo Stage 3 + Systemd base and installs in minutes thanks to Calamares — with an eye for older PCs too.
-                    </span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-gnome">
-                    <li>
-                        <span class="lang-it">GNOME — moderno, pulito, produttivo</span>
-                        <span class="lang-en">GNOME — modern, clean, productive</span>
-                    </li>
-                    <li>Gentoo Stage 3 + Systemd</li>
-                    <li>
-                        <span class="lang-it">Interfaccia essenziale e workflow fluido</span>
-                        <span class="lang-en">Minimal interface and smooth workflow</span>
-                    </li>
-                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
-                    <li>
-                        <span class="lang-it">Calamares installer · Adatto anche a PC datati</span>
-                        <span class="lang-en">Calamares installer · Suitable for older PCs too</span>
-                    </li>
-                </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-gnome" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS GNOME</span>
-                    <span class="lang-en">Download CalamaroOS GNOME</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
-            </div>
 
             <!-- ══ KDE PLASMA ══ -->
             <div class="rcard rcard-plasma">
@@ -712,7 +696,8 @@
         </div>
     </section>
 
-    <!-- ── COMMON FEATURES ── -->
+
+        <!-- ── COMMON FEATURES ── -->
     <section class="common-section">
         <div class="section-sep">
             <span class="section-sep-label">
