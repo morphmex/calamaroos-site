@@ -56,6 +56,20 @@
         .nav-brand span { color: #00aaff; }
         .nav-right { display: flex; align-items: center; gap: 12px; }
 
+        .nav-link {
+            background: rgba(0,170,255,0.12);
+            border: 1px solid rgba(0,170,255,0.4);
+            color: #7fd4ff; padding: 7px 16px;
+            border-radius: 20px; text-decoration: none;
+            font-weight: 700; font-size: 0.82rem;
+            letter-spacing: 0.04em;
+            transition: 0.25s;
+            display: inline-block;
+        }
+        .nav-link:hover {
+            background: #00aaff; color: #fff;
+            transform: translateY(-1px);
+        }
         #langSwitcher {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.3);
@@ -427,6 +441,10 @@
     <nav>
         <div class="nav-brand">Calamaro<span>OS</span></div>
         <div class="nav-right">
+            <a href="nvidia.html" class="nav-link" id="nvidiaLink">
+                <span class="lang-it">📘 Guida NVIDIA</span>
+                <span class="lang-en">📘 NVIDIA Guide</span>
+            </a>
             <button id="langSwitcher">🌐 EN / IT</button>
         </div>
     </nav>
@@ -475,6 +493,39 @@
         </div>
 
         <div class="releases-grid">
+
+            <!-- ══ MATE ══ -->
+            <div class="rcard rcard-mate">
+                <span class="rcard-badge badge-mate">✦ Aggiornato · 2026.05.08</span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🌿</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-mate">MATE Desktop</h2>
+                        <p class="rcard-date">CalamaroOS 2026.05.08</p>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Nuova release dell'edizione MATE, sincronizzata con gli ultimi aggiornamenti Gentoo all'08/05/2026. L'ambiente classico per eccellenza, nato come fork di GNOME 2: intuitivo, leggero e produttivo. Questa ISO include il <strong>fix di OS Prober</strong>, che da ora in avanti verrà applicato a tutte le edizioni CalamaroOS — gli altri sistemi operativi presenti sul disco vengono rilevati e mostrati correttamente nel menu GRUB. Adottato anche il nuovo schema di partizione <strong>/boot</strong> permanente da 1 GB.</span>
+                    <span class="lang-en">New release of the MATE edition, synchronized with the latest Gentoo updates as of 2026/05/08. The classic environment par excellence, born as a GNOME 2 fork: intuitive, lightweight and productive. This ISO includes the <strong>OS Prober fix</strong>, which will be applied to all CalamaroOS editions going forward — other operating systems on the disk are correctly detected and shown in the GRUB menu. Also adopts the new permanent <strong>/boot</strong> partition scheme at 1 GB.</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-mate">
+                    <li><span class="lang-it">Sincronizzato con Gentoo all'08/05/2026</span><span class="lang-en">Synced with Gentoo to 2026/05/08</span></li>
+                    <li><span class="lang-it">OS Prober fixato — rileva altri OS nel GRUB</span><span class="lang-en">OS Prober fixed — detects other OSes in GRUB</span></li>
+                    <li><span class="lang-it">/boot permanente · 1 GB · fix initramfs e kernel-bin</span><span class="lang-en">/boot permanently mounted · 1 GB · initramfs &amp; kernel-bin fix</span></li>
+                    <li><span class="lang-it">Desktop GNOME 2 — classico e stabile</span><span class="lang-en">GNOME 2 desktop — classic and stable</span></li>
+                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS · Calamares</li>
+                </ul>
+                <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-mate" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Scarica CalamaroOS MATE</span>
+                    <span class="lang-en">Download CalamaroOS MATE</span>
+                </a>
+                <p class="rcard-note">
+                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
+                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+                </p>
+            </div>
 
             <!-- ══ XFCE ══ -->
             <div class="rcard rcard-xfce">
@@ -567,38 +618,6 @@
                     <span>⬇</span>
                     <span class="lang-it">Scarica CalamaroOS LXQt</span>
                     <span class="lang-en">Download CalamaroOS LXQt</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
-            </div>
-
-            <!-- ══ MATE ══ -->
-            <div class="rcard rcard-mate">
-                <span class="rcard-badge badge-mate">● 2026.04.02</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🌿</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-mate">MATE Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.04.02</p>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">L'ambiente classico per eccellenza, nato come fork di GNOME 2. Intuitivo fin dal primo avvio, leggero nelle risorse e collaudato nel tempo. MATE offre un workflow familiare e produttivo, perfetto per chi non vuole sorprese e cerca stabilità assoluta giorno dopo giorno.</span>
-                    <span class="lang-en">The classic environment par excellence, born as a GNOME 2 fork. Intuitive from the very first boot, light on resources and battle-tested over time. MATE offers a familiar and productive workflow, perfect for those who want no surprises and seek absolute stability day after day.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-mate">
-                    <li><span class="lang-it">Desktop GNOME 2 — classico e stabile</span><span class="lang-en">GNOME 2 desktop — classic and stable</span></li>
-                    <li>Gentoo Stage 3 + Systemd</li>
-                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
-                    <li>Calamares graphical installer</li>
-                </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Mate_Desktop-20260402.zip/download" class="dl-btn dl-mate" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS MATE</span>
-                    <span class="lang-en">Download CalamaroOS MATE</span>
                 </a>
                 <p class="rcard-note">
                     <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
