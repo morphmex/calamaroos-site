@@ -6,283 +6,129 @@
     <title>Guida NVIDIA | CalamaroOS</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         body, html {
             font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
-            color: #fff;
-            min-height: 100vh;
+            color: #fff; min-height: 100vh;
             background:
                 linear-gradient(160deg, rgba(0,0,0,0.78) 0%, rgba(5,10,25,0.92) 100%),
                 url('logo.png') no-repeat center center fixed;
-            background-size: cover;
-            overflow-x: hidden;
-            line-height: 1.6;
+            background-size: cover; overflow-x: hidden; line-height: 1.6;
         }
-
         body::before {
-            content: '';
-            position: fixed; inset: 0;
+            content: ''; position: fixed; inset: 0;
             background-image: radial-gradient(rgba(0,170,255,0.04) 1px, transparent 1px);
-            background-size: 32px 32px;
-            pointer-events: none;
-            z-index: 0;
+            background-size: 32px 32px; pointer-events: none; z-index: 0;
         }
-
         nav, main, footer { position: relative; z-index: 1; }
-
         .lang-en { display: none; }
 
-        /* ── NAV ── */
         nav {
             position: fixed; top: 0; left: 0; right: 0;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 32px;
-            background: rgba(0,0,0,0.55);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(0,170,255,0.12);
-            z-index: 1000;
+            padding: 14px 32px; background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(18px); border-bottom: 1px solid rgba(0,170,255,0.12); z-index: 1000;
         }
-        .nav-brand {
-            font-size: 1.15rem; font-weight: 800;
-            letter-spacing: 0.04em; color: #fff;
-            text-decoration: none;
-            text-shadow: 0 0 20px rgba(0,170,255,0.5);
-        }
+        .nav-brand { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.04em; color: #fff; text-decoration: none; text-shadow: 0 0 20px rgba(0,170,255,0.5); }
         .nav-brand span { color: #00aaff; }
         .nav-right { display: flex; align-items: center; gap: 12px; }
-
         .nav-link {
-            background: rgba(0,170,255,0.12);
-            border: 1px solid rgba(0,170,255,0.4);
-            color: #7fd4ff; padding: 7px 16px;
-            border-radius: 20px; text-decoration: none;
-            font-weight: 700; font-size: 0.82rem;
-            letter-spacing: 0.04em;
-            transition: 0.25s;
+            background: rgba(0,170,255,0.12); border: 1px solid rgba(0,170,255,0.4);
+            color: #7fd4ff; padding: 7px 16px; border-radius: 20px; text-decoration: none;
+            font-weight: 700; font-size: 0.82rem; letter-spacing: 0.04em; transition: 0.25s;
         }
-        .nav-link:hover {
-            background: #00aaff; color: #fff;
-            transform: translateY(-1px);
-        }
+        .nav-link:hover { background: #00aaff; color: #fff; transform: translateY(-1px); }
         #langSwitcher {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: #fff; padding: 7px 16px;
-            border-radius: 20px; cursor: pointer;
-            font-weight: 700; font-size: 0.82rem;
-            letter-spacing: 0.06em;
-            transition: 0.25s;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.3);
+            color: #fff; padding: 7px 16px; border-radius: 20px; cursor: pointer;
+            font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; transition: 0.25s;
         }
         #langSwitcher:hover { background: #fff; color: #000; }
 
-        /* ── HERO ── */
-        main {
-            max-width: 920px;
-            margin: 0 auto;
-            padding: 120px 24px 60px;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+        main { max-width: 920px; margin: 0 auto; padding: 120px 24px 60px; }
+        .page-header { text-align: center; margin-bottom: 50px; }
         .page-tag {
-            display: inline-block;
-            background: rgba(118,185,0,0.15);
-            border: 1px solid rgba(118,185,0,0.45);
-            color: #a8d860;
-            padding: 5px 16px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 18px;
+            display: inline-block; background: rgba(118,185,0,0.15);
+            border: 1px solid rgba(118,185,0,0.45); color: #a8d860;
+            padding: 5px 16px; border-radius: 20px; font-size: 0.78rem;
+            font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px;
         }
         .page-title {
-            font-size: clamp(2rem, 4.5vw, 2.8rem);
-            font-weight: 900;
-            line-height: 1.15;
+            font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 900; line-height: 1.15;
             background: linear-gradient(100deg, #fff 30%, #b3e670 70%, #76b900 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px;
         }
-        .page-sub {
-            font-size: 1.05rem;
-            color: #c8d8e8;
-            max-width: 640px;
-            margin: 0 auto;
-        }
+        .page-sub { font-size: 1.05rem; color: #c8d8e8; max-width: 640px; margin: 0 auto; }
 
-        /* ── INTRO BOX ── */
         .intro-box {
-            background: rgba(15,30,15,0.8);
-            border: 1.5px solid rgba(118,185,0,0.4);
-            border-radius: 16px;
-            padding: 24px 28px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 8px 32px rgba(118,185,0,0.12);
+            background: rgba(15,30,15,0.8); border: 1.5px solid rgba(118,185,0,0.4);
+            border-radius: 16px; padding: 24px 28px; margin-bottom: 40px;
+            backdrop-filter: blur(14px); box-shadow: 0 8px 32px rgba(118,185,0,0.12);
         }
-        .intro-box h3 {
-            color: #a8d860;
-            font-size: 1.05rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: 0.02em;
+        .intro-box h3 { color: #a8d860; font-size: 1.05rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 0.02em; }
+        .intro-box p { color: #c8d8b8; font-size: 0.95rem; line-height: 1.7; }
+        .intro-box code, .step-desc code, .warning-box code, .intro-box code {
+            background: rgba(0,0,0,0.4); padding: 1px 7px; border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace; font-size: 0.88em;
         }
-        .intro-box p {
-            color: #c8d8b8;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-        .intro-box code {
-            background: rgba(0,0,0,0.4);
-            color: #b3e670;
-            padding: 1px 7px;
-            border-radius: 5px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.88em;
-        }
+        .intro-box code { color: #b3e670; }
 
-        /* ── STEP CARDS ── */
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
+        .steps { display: flex; flex-direction: column; gap: 24px; }
         .step {
-            background: rgba(10,20,40,0.72);
-            border: 1px solid rgba(0,170,255,0.18);
-            border-radius: 16px;
-            padding: 26px 28px;
-            backdrop-filter: blur(14px);
+            background: rgba(10,20,40,0.72); border: 1px solid rgba(0,170,255,0.18);
+            border-radius: 16px; padding: 26px 28px; backdrop-filter: blur(14px);
             transition: border-color 0.25s, box-shadow 0.25s;
         }
-        .step:hover {
-            border-color: rgba(0,170,255,0.4);
-            box-shadow: 0 8px 32px rgba(0,170,255,0.15);
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
-        }
+        .step:hover { border-color: rgba(0,170,255,0.4); box-shadow: 0 8px 32px rgba(0,170,255,0.15); }
+        .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
         .step-number {
-            width: 38px; height: 38px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #76b900, #5a8c00);
-            color: #fff;
-            font-weight: 800; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 4px 14px rgba(118,185,0,0.35);
+            width: 38px; height: 38px; border-radius: 10px;
+            background: linear-gradient(135deg, #76b900, #5a8c00); color: #fff;
+            font-weight: 800; font-size: 1.1rem; display: flex; align-items: center;
+            justify-content: center; flex-shrink: 0; box-shadow: 0 4px 14px rgba(118,185,0,0.35);
         }
-        .step-title {
-            font-size: 1.18rem;
-            font-weight: 700;
-            color: #b3e670;
-            line-height: 1.3;
-        }
-
-        .step-desc {
-            color: #c8d0dc;
-            font-size: 0.96rem;
-            line-height: 1.7;
-            margin-bottom: 14px;
-        }
+        .step-title { font-size: 1.18rem; font-weight: 700; color: #b3e670; line-height: 1.3; }
+        .step-desc { color: #c8d0dc; font-size: 0.96rem; line-height: 1.7; margin-bottom: 14px; }
         .step-desc:last-child { margin-bottom: 0; }
-        .step-desc code {
-            background: rgba(0,0,0,0.4);
-            color: #ffd080;
-            padding: 1px 7px;
-            border-radius: 5px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.88em;
-        }
+        .step-desc code { color: #ffd080; }
         .step-desc strong { color: #fff; }
 
-        /* ── CODE BLOCKS ── */
         .code-block {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(0,170,255,0.2);
-            border-left: 3px solid #76b900;
-            border-radius: 8px;
-            padding: 14px 18px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.88rem;
-            color: #e0e8f0;
-            overflow-x: auto;
-            line-height: 1.65;
-            white-space: pre;
-            margin: 12px 0;
+            background: rgba(0,0,0,0.5); border: 1px solid rgba(0,170,255,0.2);
+            border-left: 3px solid #76b900; border-radius: 8px; padding: 14px 18px;
+            font-family: 'Consolas', 'Courier New', monospace; font-size: 0.88rem;
+            color: #e0e8f0; overflow-x: auto; line-height: 1.65; white-space: pre; margin: 12px 0;
         }
         .code-block .cmd-prompt { color: #76b900; user-select: none; }
         .code-block .cmd-comment { color: #778899; font-style: italic; }
         .code-block .cmd-key { color: #7fd4ff; }
         .code-block .cmd-string { color: #ffd080; }
 
-        /* ── WARNING BOX ── */
         .warning-box {
-            background: rgba(40,20,5,0.85);
-            border: 1.5px solid rgba(230,160,30,0.5);
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-top: 14px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
+            background: rgba(40,20,5,0.85); border: 1.5px solid rgba(230,160,30,0.5);
+            border-radius: 12px; padding: 16px 20px; margin-top: 14px;
+            display: flex; gap: 12px; align-items: flex-start;
         }
         .warning-box .warn-icon {
-            font-size: 1.3rem; flex-shrink: 0;
+            font-size: 0.78rem; font-weight: 800; flex-shrink: 0;
+            background: rgba(230,160,30,0.2); color: #ffd060;
+            padding: 3px 9px; border-radius: 6px; letter-spacing: 0.05em;
         }
-        .warning-box p {
-            color: #f0c890;
-            font-size: 0.92rem;
-            line-height: 1.65;
-            margin: 0;
-        }
+        .warning-box p { color: #f0c890; font-size: 0.92rem; line-height: 1.65; margin: 0; }
         .warning-box strong { color: #ffd060; }
-        .warning-box code {
-            background: rgba(0,0,0,0.4);
-            color: #ffd060;
-            padding: 1px 6px; border-radius: 4px;
-            font-family: 'Consolas', monospace;
-            font-size: 0.88em;
-        }
+        .warning-box code { color: #ffd060; }
 
-        /* ── FOOTER ── */
         footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 30px 20px;
+            text-align: center; margin-top: 60px; padding: 30px 20px;
             border-top: 1px solid rgba(0,170,255,0.1);
         }
-        footer p {
-            font-size: 0.85rem;
-            color: #556677;
-            line-height: 1.7;
-        }
-        footer a {
-            color: #4488bb;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(68,136,187,0.3);
-            transition: 0.2s;
-        }
-        footer a:hover {
-            color: #66aadd;
-            border-color: rgba(100,170,220,0.6);
-        }
+        footer p { font-size: 0.85rem; color: #556677; line-height: 1.7; }
+        footer a { color: #4488bb; text-decoration: none; border-bottom: 1px solid rgba(68,136,187,0.3); transition: 0.2s; }
+        footer a:hover { color: #66aadd; border-color: rgba(100,170,220,0.6); }
 
         @media (max-width: 600px) {
             nav { padding: 10px 16px; }
-            .nav-link { font-size: 0.72rem; padding: 6px 11px; }
-            #langSwitcher { font-size: 0.72rem; padding: 6px 11px; }
+            .nav-link, #langSwitcher { font-size: 0.72rem; padding: 6px 11px; }
             main { padding: 110px 16px 40px; }
             .step { padding: 20px 18px; }
             .step-header { gap: 10px; }
@@ -294,7 +140,6 @@
 </head>
 <body>
 
-    <!-- ── NAV ── -->
     <nav>
         <a href="index.html" class="nav-brand">Calamaro<span>OS</span></a>
         <div class="nav-right">
@@ -307,7 +152,6 @@
     </nav>
 
     <main>
-        <!-- ── HEADER ── -->
         <div class="page-header">
             <span class="page-tag">📘 Guide</span>
             <h1 class="page-title">
@@ -315,12 +159,11 @@
                 <span class="lang-en">NVIDIA Drivers Installation</span>
             </h1>
             <p class="page-sub">
-                <span class="lang-it">Guida passo-passo per installare i driver proprietari NVIDIA su CalamaroOS / Gentoo, con blacklist di Nouveau e configurazione di Xorg, dracut e GRUB.</span>
-                <span class="lang-en">Step-by-step guide to install proprietary NVIDIA drivers on CalamaroOS / Gentoo, with Nouveau blacklisting and Xorg, dracut and GRUB configuration.</span>
+                <span class="lang-it">Guida passo-passo per installare i driver proprietari NVIDIA su CalamaroOS / Gentoo, con rimozione dei vecchi driver, blacklist di Nouveau e configurazione di Xorg, dracut e GRUB.</span>
+                <span class="lang-en">Step-by-step guide to install proprietary NVIDIA drivers on CalamaroOS / Gentoo, with old driver removal, Nouveau blacklisting and Xorg, dracut and GRUB configuration.</span>
             </p>
         </div>
 
-        <!-- ── INTRO BOX ── -->
         <div class="intro-box">
             <h3>
                 <span class="lang-it">ℹ️ Prima di iniziare</span>
@@ -332,7 +175,6 @@
             </p>
         </div>
 
-        <!-- ── STEPS ── -->
         <div class="steps">
 
             <!-- STEP 1 -->
@@ -340,17 +182,23 @@
                 <div class="step-header">
                     <div class="step-number">1</div>
                     <div class="step-title">
-                        <span class="lang-it">Configurare make.conf</span>
-                        <span class="lang-en">Configure make.conf</span>
+                        <span class="lang-it">Configurazione di Portage &amp; Masking</span>
+                        <span class="lang-en">Portage Configuration &amp; Masking</span>
                     </div>
                 </div>
                 <p class="step-desc">
-                    <span class="lang-it">Apri il file <code>/etc/portage/make.conf</code> e aggiungi le righe per accettare le licenze e dichiarare la scheda video NVIDIA.</span>
-                    <span class="lang-en">Open <code>/etc/portage/make.conf</code> and add the lines to accept licenses and declare the NVIDIA video card.</span>
+                    <span class="lang-it">Modifica il file <code>make.conf</code> per accettare le licenze necessarie e impostare la tua scheda video (rimuovendo i vecchi target video).</span>
+                    <span class="lang-en">Edit your <code>make.conf</code> to accept the required licenses and target your specific video card (removing old video targets).</span>
                 </p>
                 <div class="code-block"><span class="cmd-prompt"># </span>nano /etc/portage/make.conf</div>
                 <div class="code-block"><span class="cmd-key">ACCEPT_LICENSE</span>=<span class="cmd-string">"*"</span>
 <span class="cmd-key">VIDEO_CARDS</span>=<span class="cmd-string">"nvidia"</span></div>
+                <p class="step-desc">
+                    <span class="lang-it">Dato che la serie di driver <strong>595</strong> ha problemi noti con la GTX 1070, blocca tutte le versioni dalla 595 in poi. Abilita poi il flag <code>dist-kernel</code> per far ricompilare i driver automaticamente ad ogni aggiornamento del kernel.</span>
+                    <span class="lang-en">Since the <strong>595</strong> driver series is known to cause issues with the GTX 1070, mask everything from version 595 onward. Then enable the <code>dist-kernel</code> flag so the drivers rebuild automatically on every kernel update.</span>
+                </p>
+                <div class="code-block"><span class="cmd-prompt"># </span>echo <span class="cmd-string">"&gt;=x11-drivers/nvidia-drivers-595"</span> &gt;&gt; /etc/portage/package.mask/nvidia-drivers
+<span class="cmd-prompt"># </span>echo <span class="cmd-string">"x11-drivers/nvidia-drivers dist-kernel"</span> &gt;&gt; /etc/portage/package.use/nvidia-drivers</div>
             </div>
 
             <!-- STEP 2 -->
@@ -358,21 +206,27 @@
                 <div class="step-header">
                     <div class="step-number">2</div>
                     <div class="step-title">
-                        <span class="lang-it">Maschera versioni problematiche e attiva dist-kernel</span>
-                        <span class="lang-en">Mask problematic versions and enable dist-kernel</span>
+                        <span class="lang-it">Rimozione mirata dei vecchi driver</span>
+                        <span class="lang-en">Targeted Removal of Old Drivers</span>
                     </div>
                 </div>
                 <p class="step-desc">
-                    <span class="lang-it">Alcune versioni dei driver possono non funzionare con specifiche schede video. Il flag <code>dist-kernel</code> fa sì che, ad ogni aggiornamento del kernel, i driver NVIDIA vengano reinstallati automaticamente.</span>
-                    <span class="lang-en">Some driver versions may not work with specific video cards. The <code>dist-kernel</code> flag ensures that NVIDIA drivers are automatically reinstalled at every kernel update.</span>
+                    <span class="lang-it">Per evitare che un <code>depclean</code> generico rimuova componenti fondamentali del sistema, disinstalla i vecchi driver grafici in modo chirurgico.</span>
+                    <span class="lang-en">To prevent a generic <code>depclean</code> from aggressively removing core system packages, surgically uninstall the old graphics drivers.</span>
                 </p>
-                <div class="code-block"><span class="cmd-prompt"># </span>echo <span class="cmd-string">"&gt;x11-drivers/nvidia-drivers-580.126.18"</span> &gt;&gt; /etc/portage/package.mask/nvidia-drivers
-<span class="cmd-prompt"># </span>echo <span class="cmd-string">"x11-drivers/nvidia-drivers dist-kernel"</span> &gt;&gt; /etc/portage/package.use/nvidia-drivers</div>
+                <div class="code-block"><span class="cmd-comment"># 1. Rimuove i vecchi driver grafici dal file world</span>
+<span class="cmd-prompt"># </span>emerge --deselect x11-drivers/xf86-video-amdgpu x11-drivers/xf86-video-ati x11-drivers/xf86-video-nouveau
+
+<span class="cmd-comment"># 2. Disinstalla esclusivamente i driver deselezionati</span>
+<span class="cmd-prompt"># </span>emerge --unmerge x11-drivers/xf86-video-amdgpu x11-drivers/xf86-video-ati x11-drivers/xf86-video-nouveau
+
+<span class="cmd-comment"># 3. Ricompila i pacchetti legati alle librerie preservate (es. fwupd)</span>
+<span class="cmd-prompt"># </span>emerge @preserved-rebuild</div>
                 <div class="warning-box">
-                    <span class="warn-icon">⚠️</span>
+                    <span class="warn-icon">!</span>
                     <p>
-                        <span class="lang-it"><strong>Esempio reale:</strong> sulla GTX 1070 è stato necessario mascherare la versione <code>595</code> perché incompatibile. Adatta il numero di versione alla tua scheda se riscontri problemi.</span>
-                        <span class="lang-en"><strong>Real example:</strong> on the GTX 1070 it was necessary to mask version <code>595</code> due to incompatibility. Adjust the version number for your card if you encounter issues.</span>
+                        <span class="lang-it"><strong>Importante:</strong> usa <code>--unmerge</code> sui pacchetti specifici e <strong>non</strong> un <code>depclean</code> generico, che potrebbe rimuovere componenti essenziali del sistema.</span>
+                        <span class="lang-en"><strong>Important:</strong> use <code>--unmerge</code> on the specific packages and <strong>not</strong> a generic <code>depclean</code>, which could remove essential system components.</span>
                     </p>
                 </div>
             </div>
@@ -382,15 +236,22 @@
                 <div class="step-header">
                     <div class="step-number">3</div>
                     <div class="step-title">
-                        <span class="lang-it">Installare i driver</span>
-                        <span class="lang-en">Install the drivers</span>
+                        <span class="lang-it">Installazione dei driver NVIDIA</span>
+                        <span class="lang-en">Installing NVIDIA Drivers</span>
                     </div>
                 </div>
                 <p class="step-desc">
-                    <span class="lang-it">Aggiorna il sistema con il flag world per scaricare e compilare i driver NVIDIA.</span>
-                    <span class="lang-en">Update the system with the world flag to download and compile the NVIDIA drivers.</span>
+                    <span class="lang-it">Aggiorna il world per installare i driver NVIDIA corretti.</span>
+                    <span class="lang-en">Update your world profile to install the correct NVIDIA drivers.</span>
                 </p>
                 <div class="code-block"><span class="cmd-prompt"># </span>emerge -DNuag @world</div>
+                <div class="warning-box" style="background:rgba(5,20,35,0.85);border-color:rgba(0,170,255,0.4);">
+                    <span class="warn-icon" style="background:rgba(0,170,255,0.2);color:#7fd4ff;">i</span>
+                    <p style="color:#a8c8e0;">
+                        <span class="lang-it"><strong style="color:#7fd4ff">Nota:</strong> se il kernel viene aggiornato durante questa fase, reinstalla i driver sul kernel attivo con <code style="color:#7fd4ff">emerge --oneshot x11-drivers/nvidia-drivers</code>.</span>
+                        <span class="lang-en"><strong style="color:#7fd4ff">Note:</strong> if the kernel gets updated during this process, rebuild the drivers for the active kernel with <code style="color:#7fd4ff">emerge --oneshot x11-drivers/nvidia-drivers</code>.</span>
+                    </p>
+                </div>
             </div>
 
             <!-- STEP 4 -->
@@ -398,15 +259,18 @@
                 <div class="step-header">
                     <div class="step-number">4</div>
                     <div class="step-title">
-                        <span class="lang-it">Configurare Xorg</span>
-                        <span class="lang-en">Configure Xorg</span>
+                        <span class="lang-it">Configurazione Xorg &amp; blacklist Nouveau</span>
+                        <span class="lang-en">Xorg Configuration &amp; Nouveau Blacklist</span>
                     </div>
                 </div>
                 <p class="step-desc">
-                    <span class="lang-it">Il comando <code>nvidia-xconfig</code> genera automaticamente la configurazione di Xorg per la scheda NVIDIA.</span>
-                    <span class="lang-en">The <code>nvidia-xconfig</code> command automatically generates the Xorg configuration for the NVIDIA card.</span>
+                    <span class="lang-it">Genera la configurazione di Xorg, poi metti completamente in blacklist il driver open-source <strong>nouveau</strong> creando il file modprobe.</span>
+                    <span class="lang-en">Generate the Xorg configuration, then fully blacklist the open-source <strong>nouveau</strong> driver by creating the modprobe file.</span>
                 </p>
                 <div class="code-block"><span class="cmd-prompt"># </span>nvidia-xconfig</div>
+                <div class="code-block"><span class="cmd-prompt"># </span>nano /etc/modprobe.d/blacklist-nouveau.conf</div>
+                <div class="code-block">blacklist nouveau
+options nouveau modeset=0</div>
             </div>
 
             <!-- STEP 5 -->
@@ -414,17 +278,18 @@
                 <div class="step-header">
                     <div class="step-number">5</div>
                     <div class="step-title">
-                        <span class="lang-it">Blacklist del driver Nouveau</span>
-                        <span class="lang-en">Blacklist the Nouveau driver</span>
+                        <span class="lang-it">Configurazione di Dracut (initramfs)</span>
+                        <span class="lang-en">Dracut Configuration (initramfs)</span>
                     </div>
                 </div>
                 <p class="step-desc">
-                    <span class="lang-it">Disabilita il driver open-source <strong>Nouveau</strong> per evitare conflitti con i driver proprietari NVIDIA.</span>
-                    <span class="lang-en">Disable the open-source <strong>Nouveau</strong> driver to avoid conflicts with the proprietary NVIDIA drivers.</span>
+                    <span class="lang-it">Escludi definitivamente Nouveau dall'initramfs e includi il file di blacklist creato in precedenza.</span>
+                    <span class="lang-en">Explicitly exclude Nouveau from your initramfs and include the blacklist file created earlier.</span>
                 </p>
-                <div class="code-block"><span class="cmd-prompt"># </span>nano /etc/modprobe.d/blacklist-nouveau.conf</div>
-                <div class="code-block">blacklist nouveau
-options nouveau modeset=0</div>
+                <div class="code-block"><span class="cmd-prompt"># </span>nano /etc/dracut.conf.d/nouveau.conf</div>
+                <div class="code-block">omit_dracutmodules+=<span class="cmd-string">" nouveau "</span>
+install_optional_items+=<span class="cmd-string">" /etc/modprobe.d/blacklist-nouveau.conf "</span>
+hostonly=<span class="cmd-string">"yes"</span></div>
             </div>
 
             <!-- STEP 6 -->
@@ -432,61 +297,28 @@ options nouveau modeset=0</div>
                 <div class="step-header">
                     <div class="step-number">6</div>
                     <div class="step-title">
-                        <span class="lang-it">Configurare dracut</span>
-                        <span class="lang-en">Configure dracut</span>
+                        <span class="lang-it">Parametri kernel &amp; generazione finale</span>
+                        <span class="lang-en">Kernel Parameters &amp; Final Generation</span>
                     </div>
                 </div>
                 <p class="step-desc">
-                    <span class="lang-it">Configura dracut per escludere completamente Nouveau dall'initramfs e includere la blacklist.</span>
-                    <span class="lang-en">Configure dracut to completely exclude Nouveau from the initramfs and include the blacklist.</span>
+                    <span class="lang-it">Apri la configurazione di GRUB e modifica la riga <code>GRUB_CMDLINE_LINUX_DEFAULT</code> per disattivare Nouveau e forzare il modesetting NVIDIA.</span>
+                    <span class="lang-en">Open the GRUB configuration and edit the <code>GRUB_CMDLINE_LINUX_DEFAULT</code> line to disable Nouveau and force NVIDIA modesetting.</span>
                 </p>
-                <div class="code-block"><span class="cmd-prompt"># </span>nano /etc/dracut.conf.d/nouveau.conf</div>
-                <div class="code-block"><span class="cmd-comment"># Force nouveau and drm in the initramfs for NVIDIA cards (Kepler and later)</span>
-<span class="cmd-comment">#force_drivers+=" nouveau drm drm_kms_helper "</span>
-<span class="cmd-comment"># Disable Nouveau completely in the initramfs</span>
-omit_dracutmodules+=<span class="cmd-string">" nouveau "</span>
-install_optional_items+=<span class="cmd-string">" /etc/modprobe.d/blacklist-nouveau.conf "</span>
-<span class="cmd-comment"># Optional but recommended</span>
-hostonly=<span class="cmd-string">"yes"</span></div>
-            </div>
-
-            <!-- STEP 7 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">7</div>
-                    <div class="step-title">
-                        <span class="lang-it">Parametri kernel in GRUB</span>
-                        <span class="lang-en">Kernel parameters in GRUB</span>
-                    </div>
-                </div>
-                <p class="step-desc">
-                    <span class="lang-it">Apri <code>/etc/default/grub</code> e modifica la riga <code>GRUB_CMDLINE_LINUX_DEFAULT</code> aggiungendo i parametri per disabilitare Nouveau e attivare il KMS NVIDIA.</span>
-                    <span class="lang-en">Open <code>/etc/default/grub</code> and modify the <code>GRUB_CMDLINE_LINUX_DEFAULT</code> line by adding the parameters to disable Nouveau and enable NVIDIA KMS.</span>
-                </p>
+                <div class="code-block"><span class="cmd-prompt"># </span>nano /etc/default/grub</div>
                 <div class="code-block"><span class="cmd-key">GRUB_CMDLINE_LINUX_DEFAULT</span>=<span class="cmd-string">"rw quiet splash nouveau.modeset=0 rd.driver.blacklist=nouveau nvidia-drm.modeset=1"</span></div>
-            </div>
-
-            <!-- STEP 8 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">8</div>
-                    <div class="step-title">
-                        <span class="lang-it">Rigenera initramfs e GRUB, riavvia</span>
-                        <span class="lang-en">Regenerate initramfs and GRUB, reboot</span>
-                    </div>
-                </div>
                 <p class="step-desc">
-                    <span class="lang-it">Rigenera l'initramfs con dracut, ricostruisci la configurazione di GRUB e riavvia il sistema.</span>
-                    <span class="lang-en">Regenerate the initramfs with dracut, rebuild the GRUB configuration and reboot the system.</span>
+                    <span class="lang-it">Rigenera l'initramfs, aggiorna GRUB e riavvia la macchina.</span>
+                    <span class="lang-en">Regenerate the initramfs, update GRUB and reboot the machine.</span>
                 </p>
                 <div class="code-block"><span class="cmd-prompt"># </span>dracut -f
 <span class="cmd-prompt"># </span>grub-mkconfig -o /boot/grub/grub.cfg
 <span class="cmd-prompt"># </span>reboot</div>
                 <div class="warning-box" style="background:rgba(5,30,15,0.85);border-color:rgba(118,185,0,0.5);">
-                    <span class="warn-icon">✅</span>
+                    <span class="warn-icon" style="background:rgba(118,185,0,0.2);color:#b3e670;">OK</span>
                     <p style="color:#b8e890;">
-                        <span class="lang-it"><strong style="color:#b3e670">Tutto pronto!</strong> Dopo il riavvio i driver NVIDIA proprietari saranno attivi. Verifica con <code>nvidia-smi</code>.</span>
-                        <span class="lang-en"><strong style="color:#b3e670">All set!</strong> After reboot the proprietary NVIDIA drivers will be active. Verify with <code>nvidia-smi</code>.</span>
+                        <span class="lang-it"><strong style="color:#b3e670">Tutto pronto!</strong> Dopo il riavvio i driver NVIDIA proprietari saranno attivi. Verifica con <code style="color:#b3e670">nvidia-smi</code>.</span>
+                        <span class="lang-en"><strong style="color:#b3e670">All set!</strong> After reboot the proprietary NVIDIA drivers will be active. Verify with <code style="color:#b3e670">nvidia-smi</code>.</span>
                     </p>
                 </div>
             </div>
@@ -494,7 +326,6 @@ hostonly=<span class="cmd-string">"yes"</span></div>
         </div>
     </main>
 
-    <!-- ── FOOTER ── -->
     <footer>
         <p>
             <span class="lang-it">Hai bisogno di aiuto? Apri una segnalazione su</span>
@@ -507,17 +338,12 @@ hostonly=<span class="cmd-string">"yes"</span></div>
     <script>
         const langSwitcher = document.getElementById('langSwitcher');
         let currentLang = 'it';
-
         function applyLanguage(lang) {
-            document.querySelectorAll('.lang-it').forEach(el =>
-                el.style.display = lang === 'it' ? 'inline' : 'none');
-            document.querySelectorAll('.lang-en').forEach(el =>
-                el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
             document.documentElement.lang = lang;
         }
-
         applyLanguage('it');
-
         langSwitcher.addEventListener('click', () => {
             currentLang = currentLang === 'it' ? 'en' : 'it';
             applyLanguage(currentLang);
