@@ -234,6 +234,13 @@
             box-shadow: 0 8px 32px rgba(220,50,70,0.18);
         }
         .rcard-gnome:hover { box-shadow: 0 18px 48px rgba(220,50,70,0.32); }
+        .rcard-cinnamon {
+            background: rgba(35,15,8,0.88);
+            border: 1.5px solid rgba(192,82,46,0.55);
+            box-shadow: 0 8px 32px rgba(192,82,46,0.18);
+        }
+        .rcard-cinnamon:hover { box-shadow: 0 18px 48px rgba(192,82,46,0.32); }
+
 
         /* Badge */
         .rcard-badge {
@@ -248,6 +255,7 @@
         .badge-xfce   { background: rgba(46,204,113,0.18);  border: 1px solid rgba(46,204,113,0.5); color: #5de89a; }
         .badge-plasma { background: rgba(0,170,255,0.15);   border: 1px solid rgba(0,170,255,0.45); color: #55ccff; }
         .badge-gnome  { background: rgba(220,50,70,0.18);    border: 1px solid rgba(220,50,70,0.5);  color: #f07080; }
+        .badge-cinnamon { background: rgba(192,82,46,0.18); border: 1px solid rgba(192,82,46,0.5); color: #e08866; }
 
         /* Header card */
         .rcard-header { display: flex; align-items: center; gap: 14px; }
@@ -265,6 +273,7 @@
         .name-xfce   { color: #5de89a; }
         .name-plasma { color: #55ccff; }
         .name-gnome  { color: #f07080; }
+        .name-cinnamon { color: #e08866; }
 
         .rcard-date {
             font-size: 0.75rem; color: #778899;
@@ -303,6 +312,7 @@
         .feat-xfce   li::before { color: #27ae60; }
         .feat-plasma li::before { color: #00aaff; }
         .feat-gnome  li::before { color: #dc3245; }
+        .feat-cinnamon li::before { color: #c0522e; }
 
         /* Pulsante download */
         .dl-btn {
@@ -494,9 +504,108 @@
 
         <div class="releases-grid">
 
+            <!-- ══ XFCE ══ -->
+            <div class="rcard rcard-xfce">
+                <span class="rcard-badge badge-xfce"><span class="lang-it">✦ Aggiornato · 2026.06.04</span><span class="lang-en">✦ Updated · 2026.06.04</span></span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🪟</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-xfce">XFCE Desktop</h2>
+                        <p class="rcard-date">CalamaroOS 2026.06.04</p>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Nuova release sincronizzata con gli ultimi aggiornamenti Gentoo al 04/06/2026. Include il <strong>fix di OS Prober</strong>, il supporto alla <strong>cifratura del disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default per ampliare i pacchetti disponibili. Edizione GTK3 leggera e veloce.</span>
+                    <span class="lang-en">New release synchronized with the latest Gentoo updates as of 2026/06/04. Includes the <strong>OS Prober fix</strong>, <strong>disk encryption</strong> support during installation and the <strong>GURU community repository</strong> enabled by default to widen available packages. Lightweight and fast GTK3 edition.</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-xfce">
+                    <li><span class="lang-it">Sincronizzato con Gentoo al 04/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/04</span></li>
+                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
+                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
+                    <li><span class="lang-it">Repository GURU della community</span><span class="lang-en">GURU community repository</span></li>
+                    <li><span class="lang-it">Desktop GTK3 · Flatpak · Calamares</span><span class="lang-en">GTK3 desktop · Flatpak · Calamares</span></li>
+                </ul>
+                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS-Xfce-20260604-1836.zip/download" class="dl-btn dl-xfce" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Scarica CalamaroOS XFCE</span>
+                    <span class="lang-en">Download CalamaroOS XFCE</span>
+                </a>
+                <p class="rcard-note">
+                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
+                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+                </p>
+            </div>
+
+            <!-- ══ KDE PLASMA ══ -->
+            <div class="rcard rcard-plasma">
+                <span class="rcard-badge badge-plasma"><span class="lang-it">✦ Aggiornato · 2026.06.04</span><span class="lang-en">✦ Updated · 2026.06.04</span></span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🖥️</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-plasma">KDE Plasma</h2>
+                        <p class="rcard-date">CalamaroOS 2026.06.04</p>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Nuova release sincronizzata con gli ultimi aggiornamenti Gentoo al 04/06/2026. Include il <strong>fix di OS Prober</strong>, il supporto alla <strong>cifratura del disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default. Desktop moderno, ricco di funzionalità, con Discover e font CJK.</span>
+                    <span class="lang-en">New release synchronized with the latest Gentoo updates as of 2026/06/04. Includes the <strong>OS Prober fix</strong>, <strong>disk encryption</strong> support during installation and the <strong>GURU community repository</strong> enabled by default. Modern, feature-rich desktop with Discover and CJK fonts.</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-plasma">
+                    <li><span class="lang-it">Sincronizzato con Gentoo al 04/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/04</span></li>
+                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
+                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
+                    <li><span class="lang-it">Repository GURU della community</span><span class="lang-en">GURU community repository</span></li>
+                    <li><span class="lang-it">KDE Plasma · Flatpak + Discover · Font CJK</span><span class="lang-en">KDE Plasma · Flatpak + Discover · CJK fonts</span></li>
+                </ul>
+                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS-Plasma-20260604-0331.zip/download" class="dl-btn dl-plasma" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Scarica CalamaroOS Plasma</span>
+                    <span class="lang-en">Download CalamaroOS Plasma</span>
+                </a>
+                <p class="rcard-note">
+                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
+                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+                </p>
+            </div>
+
+            <!-- ══ CINNAMON ══ -->
+            <div class="rcard rcard-cinnamon">
+                <span class="rcard-badge badge-cinnamon"><span class="lang-it">✦ NEW · 2026.06.04</span><span class="lang-en">✦ NEW · 2026.06.04</span></span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🍂</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-cinnamon">Cinnamon Desktop</h2>
+                        <p class="rcard-date">CalamaroOS 2026.06.04</p>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Prima release ufficiale dell'edizione <strong>Cinnamon</strong>! Desktop moderno e familiare, basato su GNOME 3 ma con un'esperienza classica e intuitiva. Sincronizzato con Gentoo al 04/06/2026, include <strong>OS Prober</strong>, <strong>cifratura del disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default.</span>
+                    <span class="lang-en">First official release of the <strong>Cinnamon</strong> edition! Modern and familiar desktop, based on GNOME 3 but with a classic, intuitive experience. Synchronized with Gentoo as of 2026/06/04, includes <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU community repository</strong> enabled by default.</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-cinnamon">
+                    <li><span class="lang-it">Prima ISO ufficiale di CalamaroOS Cinnamon</span><span class="lang-en">First official CalamaroOS Cinnamon ISO</span></li>
+                    <li><span class="lang-it">Sincronizzato con Gentoo al 04/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/04</span></li>
+                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
+                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
+                    <li><span class="lang-it">Repository GURU · Flatpak · Calamares</span><span class="lang-en">GURU repository · Flatpak · Calamares</span></li>
+                </ul>
+                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS-Cinnamon-20260604-0746.zip/download" class="dl-btn dl-cinnamon" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Scarica CalamaroOS Cinnamon</span>
+                    <span class="lang-en">Download CalamaroOS Cinnamon</span>
+                </a>
+                <p class="rcard-note">
+                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
+                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+                </p>
+            </div>
+
             <!-- ══ LXQt ══ -->
             <div class="rcard rcard-lxqt">
-                <span class="rcard-badge badge-lxqt"><span class="lang-it">✦ Aggiornato · 2026.05.10</span><span class="lang-en">✦ Updated · 2026.05.10</span></span>
+                <span class="rcard-badge badge-lxqt"><span class="lang-it">● 2026.05.10</span><span class="lang-en">● 2026.05.10</span></span>
                 <div class="rcard-header">
                     <div class="rcard-icon">⚡</div>
                     <div class="rcard-title-group">
@@ -505,16 +614,15 @@
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">Nuova release dell'edizione LXQt, sincronizzata con gli ultimi aggiornamenti Gentoo al 10/05/2026. L'edizione più leggera e reattiva della famiglia CalamaroOS: combina la leggerezza del framework Qt con un'interfaccia pulita e moderna, consumando al minimo CPU e RAM. Questa ISO include il <strong>fix di OS Prober</strong> e il nuovo schema di partizione <strong>/boot</strong> permanente da 1 GB. Ideale per hardware datato, macchine virtuali o per chi cerca un sistema ultra-rapido.</span>
-                    <span class="lang-en">New release of the LXQt edition, synchronized with the latest Gentoo updates as of 2026/05/10. The lightest and most responsive edition in the CalamaroOS family: combines the Qt framework's efficiency with a clean, modern interface, using minimal CPU and RAM. This ISO includes the <strong>OS Prober fix</strong> and the new permanent <strong>/boot</strong> partition scheme at 1 GB. Ideal for older hardware, virtual machines, or anyone seeking an ultra-fast system.</span>
+                    <span class="lang-it">L'edizione più leggera e reattiva della famiglia CalamaroOS, basata sul framework Qt. Ideale per hardware datato o macchine virtuali. <em>In aggiornamento: a breve sarà rilasciata la versione 2026.06 con cifratura disco e repository GURU.</em></span>
+                    <span class="lang-en">The lightest and most responsive edition in the CalamaroOS family, based on the Qt framework. Ideal for older hardware or virtual machines. <em>Being updated: a 2026.06 release with disk encryption and GURU repository is coming soon.</em></span>
                 </p>
                 <div class="rcard-divider"></div>
                 <ul class="rcard-features feat-lxqt">
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 10/05/2026</span><span class="lang-en">Synced with Gentoo to 2026/05/10</span></li>
-                    <li><span class="lang-it">OS Prober fixato — rileva altri OS nel GRUB</span><span class="lang-en">OS Prober fixed — detects other OSes in GRUB</span></li>
-                    <li><span class="lang-it">/boot permanente · 1 GB · fix initramfs e kernel-bin</span><span class="lang-en">/boot permanently mounted · 1 GB · initramfs &amp; kernel-bin fix</span></li>
-                    <li><span class="lang-it">Ambiente desktop Qt ultra-leggero</span><span class="lang-en">Ultra-lightweight Qt desktop environment</span></li>
-                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS · Calamares</li>
+                    <li><span class="lang-it">Ambiente desktop Qt ultra-leggero</span><span class="lang-en">Ultra-lightweight Qt desktop</span></li>
+                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
+                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
+                    <li>Calamares graphical installer</li>
                 </ul>
                 <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-lxqt" target="_blank">
                     <span>⬇</span>
@@ -529,7 +637,7 @@
 
             <!-- ══ MATE ══ -->
             <div class="rcard rcard-mate">
-                <span class="rcard-badge badge-mate"><span class="lang-it">✦ Aggiornato · 2026.05.08</span><span class="lang-en">✦ Updated · 2026.05.08</span></span>
+                <span class="rcard-badge badge-mate"><span class="lang-it">● 2026.05.08</span><span class="lang-en">● 2026.05.08</span></span>
                 <div class="rcard-header">
                     <div class="rcard-icon">🌿</div>
                     <div class="rcard-title-group">
@@ -538,16 +646,15 @@
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">Nuova release dell'edizione MATE, sincronizzata con gli ultimi aggiornamenti Gentoo all'08/05/2026. L'ambiente classico per eccellenza, nato come fork di GNOME 2: intuitivo, leggero e produttivo. Questa ISO include il <strong>fix di OS Prober</strong>, che da ora in avanti verrà applicato a tutte le edizioni CalamaroOS — gli altri sistemi operativi presenti sul disco vengono rilevati e mostrati correttamente nel menu GRUB. Adottato anche il nuovo schema di partizione <strong>/boot</strong> permanente da 1 GB.</span>
-                    <span class="lang-en">New release of the MATE edition, synchronized with the latest Gentoo updates as of 2026/05/08. The classic environment par excellence, born as a GNOME 2 fork: intuitive, lightweight and productive. This ISO includes the <strong>OS Prober fix</strong>, which will be applied to all CalamaroOS editions going forward — other operating systems on the disk are correctly detected and shown in the GRUB menu. Also adopts the new permanent <strong>/boot</strong> partition scheme at 1 GB.</span>
+                    <span class="lang-it">L'ambiente classico per eccellenza, nato come fork di GNOME 2. Intuitivo, leggero e collaudato nel tempo. <em>In aggiornamento: a breve sarà rilasciata la versione 2026.06 con cifratura disco e repository GURU.</em></span>
+                    <span class="lang-en">The classic environment par excellence, born as a GNOME 2 fork. Intuitive, lightweight and battle-tested. <em>Being updated: a 2026.06 release with disk encryption and GURU repository is coming soon.</em></span>
                 </p>
                 <div class="rcard-divider"></div>
                 <ul class="rcard-features feat-mate">
-                    <li><span class="lang-it">Sincronizzato con Gentoo all'08/05/2026</span><span class="lang-en">Synced with Gentoo to 2026/05/08</span></li>
-                    <li><span class="lang-it">OS Prober fixato — rileva altri OS nel GRUB</span><span class="lang-en">OS Prober fixed — detects other OSes in GRUB</span></li>
-                    <li><span class="lang-it">/boot permanente · 1 GB · fix initramfs e kernel-bin</span><span class="lang-en">/boot permanently mounted · 1 GB · initramfs &amp; kernel-bin fix</span></li>
                     <li><span class="lang-it">Desktop GNOME 2 — classico e stabile</span><span class="lang-en">GNOME 2 desktop — classic and stable</span></li>
-                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS · Calamares</li>
+                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
+                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
+                    <li>Calamares graphical installer</li>
                 </ul>
                 <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-mate" target="_blank">
                     <span>⬇</span>
@@ -560,78 +667,44 @@
                 </p>
             </div>
 
-            <!-- ══ XFCE ══ -->
-            <div class="rcard rcard-xfce">
-                <span class="rcard-badge badge-xfce"><span class="lang-it">✦ Aggiornato · 2026.05.05</span><span class="lang-en">✦ Updated · 2026.05.05</span></span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🪟</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-xfce">XFCE Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.05.05</p>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Nuova release dell'edizione XFCE, sincronizzata con gli ultimi aggiornamenti Gentoo al 05/05/2026. Il punto di equilibrio perfetto tra leggerezza e funzionalità: basato su GTK3, veloce nell'avvio e reattivo nell'uso quotidiano. Come per l'edizione Plasma, questa ISO adotta il nuovo schema di partizione <strong>/boot</strong> montata permanentemente e dimensionata a <strong>1 GB</strong>, per risolvere i problemi di spazio legati a <code>initramfs.img</code> ed evitare gli avvisi su <code>linux-firmware</code> e la mancata installazione di <code>gentoo-kernel-bin</code>.</span>
-                    <span class="lang-en">New release of the XFCE edition, synchronized with the latest Gentoo updates as of 2026/05/05. The perfect balance between lightness and functionality: GTK3-based, fast to boot and responsive in daily use. Like the Plasma edition, this ISO adopts the new <strong>/boot</strong> partition scheme — permanently mounted and sized at <strong>1 GB</strong> — to resolve space issues caused by <code>initramfs.img</code> and avoid warnings related to <code>linux-firmware</code> and <code>gentoo-kernel-bin</code> installation.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-xfce">
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 05/05/2026</span><span class="lang-en">Synced with Gentoo to 2026/05/05</span></li>
-                    <li><span class="lang-it">/boot permanente · 1 GB · fix initramfs e kernel-bin</span><span class="lang-en">/boot permanently mounted · 1 GB · initramfs &amp; kernel-bin fix</span></li>
-                    <li><span class="lang-it">Desktop GTK3 — veloce e personalizzabile</span><span class="lang-en">GTK3 desktop — fast and customizable</span></li>
-                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
-                    <li>Calamares graphical installer</li>
-                </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-xfce" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS XFCE</span>
-                    <span class="lang-en">Download CalamaroOS XFCE</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
-            </div>
-
-            <!-- ══ KDE PLASMA ══ -->
-            <div class="rcard rcard-plasma">
-                <span class="rcard-badge badge-plasma"><span class="lang-it">✦ Aggiornato · 2026.05.03</span><span class="lang-en">✦ Updated · 2026.05.03</span></span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🖥️</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-plasma">KDE Plasma</h2>
-                        <p class="rcard-date">CalamaroOS 2026.05.03</p>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Nuova release dell'edizione Plasma, sincronizzata con gli ultimi aggiornamenti Gentoo. Introduce una modifica importante alla gestione della partizione <strong>/boot</strong>: viene ora montata permanentemente con dimensione portata a <strong>1 GB</strong>, risolvendo i problemi di spazio causati da <code>initramfs.img</code> e gli avvisi su <code>linux-firmware</code> e <code>gentoo-kernel-bin</code>. Presenti anche OS Prober e localizzazione migliorata.</span>
-                    <span class="lang-en">New release of the Plasma edition, synchronized with the latest Gentoo updates. Introduces permanent <strong>/boot</strong> mounting at <strong>1 GB</strong>, fixing space issues from <code>initramfs.img</code> and warnings related to <code>linux-firmware</code> and <code>gentoo-kernel-bin</code>. Also includes OS Prober and improved localization.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-plasma">
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 03/05/2026</span><span class="lang-en">Synced with Gentoo to 2026/05/03</span></li>
-                    <li><span class="lang-it">/boot permanente · 1 GB · fix initramfs e kernel-bin</span><span class="lang-en">/boot permanently mounted · 1 GB · initramfs &amp; kernel-bin fix</span></li>
-                    <li><span class="lang-it">OS Prober — rileva altri OS nel GRUB</span><span class="lang-en">OS Prober — detects other OSes in GRUB</span></li>
-                    <li>Flatpak + Discover · EXT4 / BTRFS / XFS / F2FS</li>
-                    <li><span class="lang-it">Calamares installer · Font CJK · Localizzazione migliorata</span><span class="lang-en">Calamares installer · CJK fonts · Improved localization</span></li>
-                </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS_Plasma_Desktop-20260503.zip/download" class="dl-btn dl-plasma" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS Plasma</span>
-                    <span class="lang-en">Download CalamaroOS Plasma</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code> · Font CJK + traduzioni KDE incluse</span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code> · CJK fonts + KDE translations included</span>
-                </p>
-            </div>
 
         </div>
     </section>
 
 
 
-        <!-- ── COMMON FEATURES ── -->
+    
+    <!-- ══ WORK IN PROGRESS BANNER ══ -->
+    <section style="max-width:920px;margin:0 auto;padding:0 4%;">
+        <div style="
+            background: rgba(10,30,50,0.85);
+            border: 1.5px solid rgba(0,170,255,0.4);
+            border-radius: 18px;
+            padding: 26px 30px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 8px 32px rgba(0,170,255,0.12);
+        ">
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+                <span style="font-size:1.7rem;flex-shrink:0;">🛠️</span>
+                <div style="flex:1;">
+                    <h3 style="color:#7fd4ff;font-size:1.05rem;font-weight:800;margin:0 0 10px;letter-spacing:0.02em;">
+                        <span class="lang-it">Lavori in corso</span>
+                        <span class="lang-en">Work in progress</span>
+                    </h3>
+                    <p style="font-size:0.95rem;color:#a8c8e0;line-height:1.7;margin:0;">
+                        <span class="lang-it">
+                            Stiamo lavorando per migliorare la produzione delle ISO. A breve aggiorneremo <strong style="color:#c39be0">LXQt</strong> e <strong style="color:#f0a050">MATE</strong> alla nuova base 2026.06 con cifratura disco e repository GURU. Prossimamente arriverà anche una nuova edizione <strong>LXDE</strong>.
+                        </span>
+                        <span class="lang-en">
+                            We are working to improve the ISO production pipeline. Soon we will update <strong style="color:#c39be0">LXQt</strong> and <strong style="color:#f0a050">MATE</strong> to the new 2026.06 base with disk encryption and GURU repository. A new <strong>LXDE</strong> edition is also coming.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── COMMON FEATURES ── -->
     <section class="common-section">
         <div class="section-sep">
             <span class="section-sep-label">
@@ -697,7 +770,12 @@
                 <span class="lang-en">Based on</span>
                 <strong>Gentoo Linux</strong>
             </p>
-            <p>
+            <p style="margin-top:18px;padding:14px 18px;background:rgba(0,170,255,0.06);border:1px solid rgba(0,170,255,0.18);border-radius:10px;color:#a8c8e0;">
+                <span class="lang-it">🐛 <strong style="color:#7fd4ff">Segnalazione bug:</strong> scrivi a</span>
+                <span class="lang-en">🐛 <strong style="color:#7fd4ff">Bug reports:</strong> write to</span>
+                <a href="mailto:resorno@gmail.com" style="color:#7fd4ff;border-bottom:1px solid rgba(127,212,255,0.4);text-decoration:none;font-weight:600;">resorno@gmail.com</a>
+            </p>
+            <p style="margin-top:18px;">
                 <span class="lang-it">🎵 Musica di sottofondo:</span>
                 <span class="lang-en">🎵 Background music:</span>
                 <strong>Adventure Beyond</strong>
