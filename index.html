@@ -240,6 +240,12 @@
             box-shadow: 0 8px 32px rgba(192,82,46,0.18);
         }
         .rcard-cinnamon:hover { box-shadow: 0 18px 48px rgba(192,82,46,0.32); }
+        .rcard-lxde {
+            background: rgba(4,30,28,0.88);
+            border: 1.5px solid rgba(26,188,156,0.55);
+            box-shadow: 0 8px 32px rgba(26,188,156,0.18);
+        }
+        .rcard-lxde:hover { box-shadow: 0 18px 48px rgba(26,188,156,0.32); }
 
 
         /* Badge */
@@ -256,6 +262,7 @@
         .badge-plasma { background: rgba(0,170,255,0.15);   border: 1px solid rgba(0,170,255,0.45); color: #55ccff; }
         .badge-gnome  { background: rgba(220,50,70,0.18);    border: 1px solid rgba(220,50,70,0.5);  color: #f07080; }
         .badge-cinnamon { background: rgba(192,82,46,0.18); border: 1px solid rgba(192,82,46,0.5); color: #e08866; }
+        .badge-lxde     { background: rgba(26,188,156,0.18); border: 1px solid rgba(26,188,156,0.5); color: #4fd1b8; }
 
         /* Header card */
         .rcard-header { display: flex; align-items: center; gap: 14px; }
@@ -274,6 +281,7 @@
         .name-plasma { color: #55ccff; }
         .name-gnome  { color: #f07080; }
         .name-cinnamon { color: #e08866; }
+        .name-lxde     { color: #4fd1b8; }
 
         .rcard-date {
             font-size: 0.75rem; color: #778899;
@@ -313,6 +321,7 @@
         .feat-plasma li::before { color: #00aaff; }
         .feat-gnome  li::before { color: #dc3245; }
         .feat-cinnamon li::before { color: #c0522e; }
+        .feat-lxde     li::before { color: #16a085; }
 
         /* Pulsante download */
         .dl-btn {
@@ -504,6 +513,40 @@
 
         <div class="releases-grid">
 
+            <!-- ══ LXDE ══ -->
+            <div class="rcard rcard-lxde">
+                <span class="rcard-badge badge-lxde"><span class="lang-it">✦ NEW · 2026.06.20</span><span class="lang-en">✦ NEW · 2026.06.20</span></span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🪶</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-lxde">LXDE Desktop</h2>
+                        <p class="rcard-date">CalamaroOS 2026.06.20</p>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Prima release ufficiale dell'edizione <strong>LXDE</strong>! Desktop environment ultra-leggero basato su GTK, progettato per essere rapido all'avvio e parco nei consumi di CPU e RAM. Ideale per hardware datato, vecchi notebook o macchine virtuali. Sincronizzato con Gentoo al 20/06/2026, include <strong>OS Prober</strong>, <strong>cifratura disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default.</span>
+                    <span class="lang-en">First official release of the <strong>LXDE</strong> edition! Ultra-lightweight GTK-based desktop environment, designed to boot fast and keep CPU and RAM usage minimal. Ideal for older hardware, old laptops or virtual machines. Synchronized with Gentoo as of 2026/06/20, includes <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU community repository</strong> enabled by default.</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-lxde">
+                    <li><span class="lang-it">Prima ISO ufficiale di CalamaroOS LXDE</span><span class="lang-en">First official CalamaroOS LXDE ISO</span></li>
+                    <li><span class="lang-it">Sincronizzato con Gentoo al 20/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/20</span></li>
+                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
+                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
+                    <li><span class="lang-it">Desktop GTK ultra-leggero · EXT4 / BTRFS / XFS / F2FS</span><span class="lang-en">Ultra-lightweight GTK desktop · EXT4 / BTRFS / XFS / F2FS</span></li>
+                    <li><span class="lang-it">Repository GURU · Flatpak · Calamares</span><span class="lang-en">GURU repository · Flatpak · Calamares</span></li>
+                </ul>
+                <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-lxde" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Scarica CalamaroOS LXDE</span>
+                    <span class="lang-en">Download CalamaroOS LXDE</span>
+                </a>
+                <p class="rcard-note">
+                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
+                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+                </p>
+            </div>
+
             <!-- ══ XFCE ══ -->
             <div class="rcard rcard-xfce">
                 <span class="rcard-badge badge-xfce"><span class="lang-it">✦ Aggiornato · 2026.06.04</span><span class="lang-en">✦ Updated · 2026.06.04</span></span>
@@ -693,10 +736,10 @@
                     </h3>
                     <p style="font-size:0.95rem;color:#a8c8e0;line-height:1.7;margin:0;">
                         <span class="lang-it">
-                            Stiamo lavorando per migliorare la produzione delle ISO. A breve aggiorneremo <strong style="color:#c39be0">LXQt</strong> e <strong style="color:#f0a050">MATE</strong> alla nuova base 2026.06 con cifratura disco e repository GURU. Prossimamente arriverà anche una nuova edizione <strong>LXDE</strong>.
+                            Stiamo lavorando per migliorare la produzione delle ISO. A breve aggiorneremo <strong style="color:#c39be0">LXQt</strong> e <strong style="color:#f0a050">MATE</strong> alla nuova base 2026.06 con cifratura disco e repository GURU, in linea con le edizioni già rilasciate.
                         </span>
                         <span class="lang-en">
-                            We are working to improve the ISO production pipeline. Soon we will update <strong style="color:#c39be0">LXQt</strong> and <strong style="color:#f0a050">MATE</strong> to the new 2026.06 base with disk encryption and GURU repository. A new <strong>LXDE</strong> edition is also coming.
+                            We are working to improve the ISO production pipeline. Soon we will update <strong style="color:#c39be0">LXQt</strong> and <strong style="color:#f0a050">MATE</strong> to the new 2026.06 base with disk encryption and GURU repository, aligned with the already-released editions.
                         </span>
                     </p>
                 </div>
