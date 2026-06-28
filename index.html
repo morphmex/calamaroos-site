@@ -229,11 +229,11 @@
         .rcard-plasma:hover { box-shadow: 0 18px 48px rgba(0,170,255,0.32); }
 
         .rcard-gnome {
-            background: rgba(36,6,10,0.88);
-            border: 1.5px solid rgba(220,50,70,0.55);
-            box-shadow: 0 8px 32px rgba(220,50,70,0.18);
+            background: rgba(38,12,8,0.88);
+            border: 1.5px solid rgba(231,76,60,0.55);
+            box-shadow: 0 8px 32px rgba(231,76,60,0.18);
         }
-        .rcard-gnome:hover { box-shadow: 0 18px 48px rgba(220,50,70,0.32); }
+        .rcard-gnome:hover { box-shadow: 0 18px 48px rgba(231,76,60,0.32); }
         .rcard-cinnamon {
             background: rgba(35,10,22,0.88);
             border: 1.5px solid rgba(212,49,108,0.55);
@@ -260,7 +260,7 @@
         .badge-mate   { background: rgba(230,126,34,0.18);  border: 1px solid rgba(230,126,34,0.5); color: #f0a050; }
         .badge-xfce   { background: rgba(46,204,113,0.18);  border: 1px solid rgba(46,204,113,0.5); color: #5de89a; }
         .badge-plasma { background: rgba(0,170,255,0.15);   border: 1px solid rgba(0,170,255,0.45); color: #55ccff; }
-        .badge-gnome  { background: rgba(220,50,70,0.18);    border: 1px solid rgba(220,50,70,0.5);  color: #f07080; }
+        .badge-gnome  { background: rgba(231,76,60,0.18); border: 1px solid rgba(231,76,60,0.5); color: #ff8a75; }
         .badge-cinnamon { background: rgba(212,49,108,0.18); border: 1px solid rgba(212,49,108,0.5); color: #f06090; }
         .badge-lxde     { background: rgba(26,188,156,0.18); border: 1px solid rgba(26,188,156,0.5); color: #4fd1b8; }
 
@@ -279,7 +279,7 @@
         .name-mate   { color: #f0a050; }
         .name-xfce   { color: #5de89a; }
         .name-plasma { color: #55ccff; }
-        .name-gnome  { color: #f07080; }
+        .name-gnome  { color: #ff8a75; }
         .name-cinnamon { color: #f06090; }
         .name-lxde     { color: #4fd1b8; }
 
@@ -319,7 +319,7 @@
         .feat-mate   li::before { color: #e67e22; }
         .feat-xfce   li::before { color: #27ae60; }
         .feat-plasma li::before { color: #00aaff; }
-        .feat-gnome  li::before { color: #dc3245; }
+        .feat-gnome  li::before { color: #e74c3c; }
         .feat-cinnamon li::before { color: #d4316c; }
         .feat-lxde     li::before { color: #16a085; }
 
@@ -341,6 +341,7 @@
         .dl-mate   { background: linear-gradient(135deg, #e67e22, #ca6f1e); color: #fff; box-shadow: 0 4px 18px rgba(230,126,34,0.4); }
         .dl-cinnamon { background: linear-gradient(135deg, #d4316c, #9c1c4f); color: #fff; box-shadow: 0 4px 18px rgba(212,49,108,0.45); }
         .dl-lxde   { background: linear-gradient(135deg, #16a085, #0d6b56); color: #fff; box-shadow: 0 4px 18px rgba(22,160,133,0.45); }
+        .dl-gnome  { background: linear-gradient(135deg, #e74c3c, #a93226); color: #fff; box-shadow: 0 4px 18px rgba(231,76,60,0.45); }
         .dl-xfce   { background: linear-gradient(135deg, #27ae60, #1e8449); color: #fff; box-shadow: 0 4px 18px rgba(39,174,96,0.4);  }
         .dl-plasma { background: linear-gradient(135deg, #0099ee, #006bb5); color: #fff; box-shadow: 0 4px 18px rgba(0,153,238,0.4);  }
 
@@ -547,6 +548,40 @@
                     <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
                 </p>
             </div>
+            <!-- ══ GNOME ══ -->
+            <div class="rcard rcard-gnome">
+                <span class="rcard-badge badge-gnome"><span class="lang-it">✦ NEW · 2026.06.22</span><span class="lang-en">✦ NEW · 2026.06.22</span></span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">👣</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-gnome">GNOME Desktop</h2>
+                        <p class="rcard-date">CalamaroOS 2026.06.22</p>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Prima release ufficiale dell'edizione <strong>GNOME</strong>! Il desktop environment moderno per eccellenza: un'interfaccia elegante, pulita e coerente, progettata per un flusso di lavoro fluido e senza distrazioni. Ideale per chi cerca un'esperienza raffinata e al passo coi tempi. Sincronizzato con Gentoo al 22/06/2026, include <strong>OS Prober</strong>, <strong>cifratura disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default.</span>
+                    <span class="lang-en">First official release of the <strong>GNOME</strong> edition! The modern desktop environment par excellence: an elegant, clean and consistent interface designed for a smooth, distraction-free workflow. Perfect for those seeking a refined, up-to-date experience. Synchronized with Gentoo as of 2026/06/22, includes <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU community repository</strong> enabled by default.</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-gnome">
+                    <li><span class="lang-it">Prima ISO ufficiale di CalamaroOS GNOME</span><span class="lang-en">First official CalamaroOS GNOME ISO</span></li>
+                    <li><span class="lang-it">Sincronizzato con Gentoo al 22/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/22</span></li>
+                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
+                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
+                    <li><span class="lang-it">Desktop GNOME moderno · EXT4 / BTRFS / XFS / F2FS</span><span class="lang-en">Modern GNOME desktop · EXT4 / BTRFS / XFS / F2FS</span></li>
+                    <li><span class="lang-it">Repository GURU · Flatpak · Calamares</span><span class="lang-en">GURU repository · Flatpak · Calamares</span></li>
+                </ul>
+                <a href="https://sourceforge.net/projects/calamaroos/files/calamaro-gnome-20260622.zip/download" class="dl-btn dl-gnome" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Scarica CalamaroOS GNOME</span>
+                    <span class="lang-en">Download CalamaroOS GNOME</span>
+                </a>
+                <p class="rcard-note">
+                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
+                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+                </p>
+            </div>
+
             <!-- ══ LXDE ══ -->
             <div class="rcard rcard-lxde">
                 <span class="rcard-badge badge-lxde"><span class="lang-it">✦ NEW · 2026.06.20</span><span class="lang-en">✦ NEW · 2026.06.20</span></span>
