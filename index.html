@@ -712,6 +712,90 @@
             .rcard { opacity: 1; }
         }
 
+
+        /* ═══════════════════════════════════════════
+           CINEMATIC SHOWCASE BAND
+        ═══════════════════════════════════════════ */
+        .showcase {
+            position: relative;
+            max-width: 1180px;
+            margin: 60px auto 10px;
+            padding: 0 4%;
+        }
+        .showcase-frame {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1.5px solid rgba(0,170,255,0.25);
+            box-shadow: 0 20px 70px rgba(0,10,30,0.6),
+                        0 0 0 1px rgba(255,255,255,0.04) inset;
+            aspect-ratio: 1384 / 728;
+        }
+        .showcase-frame img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 8s ease;
+        }
+        .showcase:hover .showcase-frame img { transform: scale(1.05); }
+        .showcase-overlay {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(to top, rgba(2,6,20,0.92) 0%, rgba(2,6,20,0.3) 40%, transparent 65%),
+                linear-gradient(to right, rgba(2,6,20,0.5) 0%, transparent 40%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: clamp(20px, 4vw, 44px);
+        }
+        .showcase-caption { max-width: 620px; }
+        .showcase-kicker {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.72rem; font-weight: 800;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: #7fd4ff; margin-bottom: 12px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+        }
+        .showcase-title {
+            font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+            font-weight: 900; line-height: 1.2;
+            color: #fff; margin-bottom: 12px;
+            text-shadow: 0 3px 20px rgba(0,0,0,0.9);
+        }
+        .showcase-title em {
+            font-style: normal;
+            background: linear-gradient(100deg, #7fd4ff, #00aaff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .showcase-text {
+            font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+            color: #d0dce8; line-height: 1.7;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+        }
+        .showcase-locality {
+            display: inline-flex; align-items: center; gap: 9px;
+            margin-top: 18px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,170,255,0.35);
+            border-radius: 30px;
+            padding: 9px 20px;
+            font-size: 0.9rem; font-weight: 700;
+            color: #a8d8ff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .showcase-locality .beacon {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #ffd060;
+            box-shadow: 0 0 0 0 rgba(255,208,96,0.7);
+            animation: beacon 2.2s infinite;
+        }
+        @keyframes beacon {
+            0%   { box-shadow: 0 0 0 0 rgba(255,208,96,0.6); }
+            70%  { box-shadow: 0 0 0 10px rgba(255,208,96,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,208,96,0); }
+        }
+
     </style>
 </head>
 <body>
@@ -1140,6 +1224,35 @@
         </div>
     </section>
 
+
+    <!-- ══ CINEMATIC SHOWCASE ══ -->
+    <section class="showcase">
+        <div class="showcase-frame">
+            <img src="CalamaroOS.jpg" alt="CalamaroOS - veliero sotto la costellazione del calamaro al largo di Livorno">
+            <div class="showcase-overlay">
+                <div class="showcase-caption">
+                    <span class="showcase-kicker">
+                        <span class="lang-it">🌌 La rotta di CalamaroOS</span>
+                        <span class="lang-en">🌌 The course of CalamaroOS</span>
+                    </span>
+                    <h2 class="showcase-title">
+                        <span class="lang-it">Naviga la potenza di Gentoo, guidato dalle <em>stelle</em></span>
+                        <span class="lang-en">Sail the power of Gentoo, guided by the <em>stars</em></span>
+                    </h2>
+                    <p class="showcase-text">
+                        <span class="lang-it">Come un veliero che salpa sotto la costellazione del calamaro, CalamaroOS ti porta in mare aperto con la sicurezza di un faro sempre acceso. Un progetto indipendente, curato nei dettagli.</span>
+                        <span class="lang-en">Like a tall ship setting sail under the squid constellation, CalamaroOS takes you to the open sea with the reassurance of an ever-lit lighthouse. An independent project, crafted with care.</span>
+                    </p>
+                    <span class="showcase-locality">
+                        <span class="beacon"></span>
+                        <span class="lang-it">🗼 Sviluppato a Livorno, Italia</span>
+                        <span class="lang-en">🗼 Developed in Livorno, Italy</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── COMMON FEATURES ── -->
     <section class="common-section">
         <div class="section-sep">
@@ -1200,6 +1313,10 @@
     <!-- ── FOOTER ── -->
     <footer>
         <p class="footer-logo">Calamaro<span>OS</span> · 2026</p>
+        <p style="font-size:0.85rem;color:#667788;margin-bottom:14px;">
+            <span class="lang-it">🗼 Sviluppato con passione a <strong style="color:#7799aa">Livorno, Italia</strong></span>
+            <span class="lang-en">🗼 Crafted with passion in <strong style="color:#7799aa">Livorno, Italy</strong></span>
+        </p>
         <div class="credits">
             <p>
                 <span class="lang-it">Basato su</span>
