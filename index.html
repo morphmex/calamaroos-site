@@ -708,7 +708,8 @@
 
         /* Respect reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .aurora, .hero-title, .rcard, .logo-wrap { animation: none; }
+            .aurora, .hero-title, .rcard, .logo-wrap,
+            .showcase-frame img, .showcase-water, .showcase-shimmer { animation: none; }
             .rcard { opacity: 1; }
         }
 
@@ -719,7 +720,7 @@
         .showcase {
             position: relative;
             max-width: 1180px;
-            margin: 60px auto 10px;
+            margin: 10px auto 30px;
             padding: 0 4%;
         }
         .showcase-frame {
@@ -732,12 +733,63 @@
             aspect-ratio: 1384 / 728;
         }
         .showcase-frame img {
-            width: 100%; height: 100%;
+            width: 102%; height: 102%;
+            position: absolute; top: -1%; left: -1%;
             object-fit: cover;
             display: block;
-            transition: transform 8s ease;
+            transform-origin: center 65%;
+            animation: sailRock 9s ease-in-out infinite;
         }
-        .showcase:hover .showcase-frame img { transform: scale(1.05); }
+        /* Il veliero ondeggia dolcemente come sulle onde */
+        @keyframes sailRock {
+            0%   { transform: translateY(0)    rotate(-0.5deg); }
+            25%  { transform: translateY(-4px) rotate(0.2deg); }
+            50%  { transform: translateY(-6px) rotate(0.5deg); }
+            75%  { transform: translateY(-3px) rotate(0.1deg); }
+            100% { transform: translateY(0)    rotate(-0.5deg); }
+        }
+
+        /* Increspature del mare — strato animato sulla parte bassa */
+        .showcase-water {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 42%;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(
+                    100deg,
+                    transparent 0px,
+                    rgba(120,180,230,0.05) 2px,
+                    transparent 5px,
+                    transparent 14px
+                );
+            background-size: 220px 100%;
+            mix-blend-mode: screen;
+            opacity: 0.7;
+            animation: waterDrift 7s linear infinite;
+        }
+        @keyframes waterDrift {
+            0%   { background-position: 0 0; }
+            100% { background-position: 220px 0; }
+        }
+        /* Riflesso lunare che ondeggia sull'acqua */
+        .showcase-shimmer {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 46%;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 80% at 78% 30%, rgba(180,210,255,0.10), transparent 70%),
+                radial-gradient(ellipse 40% 60% at 30% 60%, rgba(255,220,150,0.06), transparent 70%);
+            mix-blend-mode: screen;
+            animation: shimmerWave 6s ease-in-out infinite alternate;
+        }
+        @keyframes shimmerWave {
+            0%   { opacity: 0.5; transform: translateX(0)   scaleY(1); }
+            50%  { opacity: 0.85; transform: translateX(-8px) scaleY(1.04); }
+            100% { opacity: 0.6; transform: translateX(6px)  scaleY(0.98); }
+        }
+        .showcase-img { border-radius: 24px; }
         .showcase-overlay {
             position: absolute; inset: 0;
             background:
@@ -796,6 +848,131 @@
             100% { box-shadow: 0 0 0 0 rgba(255,208,96,0); }
         }
 
+
+        /* ═══════════════════════════════════════════
+           CINEMATIC GALLERY CAROUSEL
+        ═══════════════════════════════════════════ */
+        .gallery {
+            max-width: 1180px;
+            margin: 10px auto 20px;
+            padding: 0 4%;
+        }
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .gallery-header .kicker {
+            display: inline-block;
+            font-size: 0.72rem; font-weight: 800;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: #ffb060; opacity: 0.9; margin-bottom: 8px;
+        }
+        .gallery-header h2 {
+            font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+            font-weight: 900;
+            background: linear-gradient(100deg, #fff 20%, #ffcf9e 60%, #ff9d5c 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .carousel {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1.5px solid rgba(255,160,80,0.22);
+            box-shadow: 0 20px 70px rgba(0,10,30,0.6),
+                        0 0 0 1px rgba(255,255,255,0.04) inset;
+            aspect-ratio: 16 / 8.5;
+            background: #05080f;
+        }
+        .carousel-track {
+            position: absolute; inset: 0;
+        }
+        .carousel-slide {
+            position: absolute; inset: 0;
+            opacity: 0;
+            transition: opacity 1.4s ease;
+            pointer-events: none;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .carousel-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            animation: slowZoom 8s ease-out forwards;
+        }
+        @keyframes slowZoom {
+            from { transform: scale(1.0); }
+            to   { transform: scale(1.08); }
+        }
+        .carousel-slide-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(2,6,20,0.9) 0%, rgba(2,6,20,0.25) 38%, transparent 60%);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: clamp(20px, 3.5vw, 40px);
+        }
+        .carousel-cap-tag {
+            display: inline-block;
+            font-size: 0.7rem; font-weight: 800;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: #ffcf9e; margin-bottom: 8px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+        }
+        .carousel-cap-title {
+            font-size: clamp(1.2rem, 2.8vw, 1.9rem);
+            font-weight: 900; line-height: 1.2; color: #fff;
+            max-width: 640px; margin-bottom: 8px;
+            text-shadow: 0 3px 20px rgba(0,0,0,0.95);
+        }
+        .carousel-cap-text {
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            color: #d8e0ea; line-height: 1.6;
+            max-width: 560px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.95);
+        }
+        /* Arrows */
+        .carousel-arrow {
+            position: absolute; top: 50%;
+            transform: translateY(-50%);
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff; font-size: 1.3rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 5;
+            transition: 0.25s; user-select: none;
+        }
+        .carousel-arrow:hover { background: rgba(255,160,80,0.35); border-color: rgba(255,160,80,0.6); transform: translateY(-50%) scale(1.08); }
+        .carousel-arrow.prev { left: 16px; }
+        .carousel-arrow.next { right: 16px; }
+        /* Dots */
+        .carousel-dots {
+            position: absolute; bottom: 16px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; gap: 9px; z-index: 5;
+        }
+        .carousel-dot {
+            width: 9px; height: 9px; border-radius: 50%;
+            background: rgba(255,255,255,0.35);
+            cursor: pointer; transition: 0.25s;
+            border: none; padding: 0;
+        }
+        .carousel-dot.active {
+            background: #ffb060;
+            width: 26px; border-radius: 5px;
+            box-shadow: 0 0 12px rgba(255,176,96,0.6);
+        }
+        @media (max-width: 600px) {
+            .carousel { aspect-ratio: 16 / 11; }
+            .carousel-arrow { width: 38px; height: 38px; font-size: 1.1rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .carousel-slide img { animation: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -842,6 +1019,153 @@
             <span class="pill">64-bit</span>
         </div>
     </header>
+
+    <!-- ══ CINEMATIC SHOWCASE ══ -->
+    <section class="showcase">
+        <div class="showcase-frame">
+            <img src="CalamaroOS.jpg" alt="CalamaroOS - veliero sotto la costellazione del calamaro al largo di Livorno" class="showcase-img">
+                <div class="showcase-water"></div>
+                <div class="showcase-shimmer"></div>
+            <div class="showcase-overlay">
+                <div class="showcase-caption">
+                    <span class="showcase-kicker">
+                        <span class="lang-it">🌌 La rotta di CalamaroOS</span>
+                        <span class="lang-en">🌌 The course of CalamaroOS</span>
+                    </span>
+                    <h2 class="showcase-title">
+                        <span class="lang-it">Naviga la potenza di Gentoo, guidato dalle <em>stelle</em></span>
+                        <span class="lang-en">Sail the power of Gentoo, guided by the <em>stars</em></span>
+                    </h2>
+                    <p class="showcase-text">
+                        <span class="lang-it">Come un veliero che salpa sotto la costellazione del calamaro, CalamaroOS ti porta in mare aperto con la sicurezza di un faro sempre acceso. Un progetto indipendente, curato nei dettagli.</span>
+                        <span class="lang-en">Like a tall ship setting sail under the squid constellation, CalamaroOS takes you to the open sea with the reassurance of an ever-lit lighthouse. An independent project, crafted with care.</span>
+                    </p>
+                    <span class="showcase-locality">
+                        <span class="beacon"></span>
+                        <span class="lang-it">🗼 Sviluppato a Livorno, Italia</span>
+                        <span class="lang-en">🗼 Developed in Livorno, Italy</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CINEMATIC GALLERY ══ -->
+    <section class="gallery">
+        <div class="gallery-header">
+            <span class="kicker">
+                <span class="lang-it">🐙 Il mondo di CalamaroOS</span>
+                <span class="lang-en">🐙 The world of CalamaroOS</span>
+            </span>
+            <h2>
+                <span class="lang-it">Storie dal mare di Livorno</span>
+                <span class="lang-en">Tales from the Livorno sea</span>
+            </h2>
+        </div>
+
+        <div class="carousel" id="carousel">
+            <div class="carousel-track">
+
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <img src="calamaroosservatori.jpg" alt="Bambini incontrano un calamaro iridescente dalla barca Osservatore II">
+                    <div class="carousel-slide-overlay">
+                        <span class="carousel-cap-tag">
+                            <span class="lang-it">La meraviglia</span><span class="lang-en">The wonder</span>
+                        </span>
+                        <h3 class="carousel-cap-title">
+                            <span class="lang-it">L'incontro con il calamaro</span>
+                            <span class="lang-en">Meeting the squid</span>
+                        </h3>
+                        <p class="carousel-cap-text">
+                            <span class="lang-it">La curiosità che spinge a scoprire — lo stesso spirito con cui esplori Gentoo attraverso CalamaroOS.</span>
+                            <span class="lang-en">The curiosity that drives discovery — the same spirit with which you explore Gentoo through CalamaroOS.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <img src="calamaroos6.png" alt="Trattoria CalamaroOS nei fossi di Livorno">
+                    <div class="carousel-slide-overlay">
+                        <span class="carousel-cap-tag">
+                            <span class="lang-it">Le radici</span><span class="lang-en">The roots</span>
+                        </span>
+                        <h3 class="carousel-cap-title">
+                            <span class="lang-it">Nei fossi di Livorno</span>
+                            <span class="lang-en">In the canals of Livorno</span>
+                        </h3>
+                        <p class="carousel-cap-text">
+                            <span class="lang-it">Un progetto nato in una città di mare, tra vicoli, barche e tradizione. Autentico, come la sua gente.</span>
+                            <span class="lang-en">A project born in a seaside town, among alleys, boats and tradition. Authentic, like its people.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <img src="CALAMAROOS10.png" alt="Bambini pirati al timone del veliero CalamaroOS Gentoo Derived">
+                    <div class="carousel-slide-overlay">
+                        <span class="carousel-cap-tag">
+                            <span class="lang-it">L'avventura</span><span class="lang-en">The adventure</span>
+                        </span>
+                        <h3 class="carousel-cap-title">
+                            <span class="lang-it">All'arrembaggio, verso Gentoo</span>
+                            <span class="lang-en">Setting sail toward Gentoo</span>
+                        </h3>
+                        <p class="carousel-cap-text">
+                            <span class="lang-it">"Gentoo Derived" sulla vela: la potenza di Gentoo diventa un viaggio alla portata di tutti.</span>
+                            <span class="lang-en">"Gentoo Derived" on the sail: the power of Gentoo becomes a journey within everyone's reach.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <img src="calamaroos11.png" alt="Pescatori sulla barca Calamaro al tramonto con faro">
+                    <div class="carousel-slide-overlay">
+                        <span class="carousel-cap-tag">
+                            <span class="lang-it">La tradizione</span><span class="lang-en">The craft</span>
+                        </span>
+                        <h3 class="carousel-cap-title">
+                            <span class="lang-it">Il mestiere e la cura</span>
+                            <span class="lang-en">Craft and care</span>
+                        </h3>
+                        <p class="carousel-cap-text">
+                            <span class="lang-it">Come pescatori che conoscono il proprio mare, curiamo ogni dettaglio delle nostre ISO, una dopo l'altra.</span>
+                            <span class="lang-en">Like fishermen who know their sea, we craft every detail of our ISOs, one after another.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <img src="CalamaroOS.jpg" alt="Veliero CalamaroOS sotto la costellazione del calamaro">
+                    <div class="carousel-slide-overlay">
+                        <span class="carousel-cap-tag">
+                            <span class="lang-it">La rotta</span><span class="lang-en">The course</span>
+                        </span>
+                        <h3 class="carousel-cap-title">
+                            <span class="lang-it">Guidati dalle stelle</span>
+                            <span class="lang-en">Guided by the stars</span>
+                        </h3>
+                        <p class="carousel-cap-text">
+                            <span class="lang-it">Sotto la costellazione del calamaro, la rotta è tracciata: mare aperto, senza barriere.</span>
+                            <span class="lang-en">Under the squid constellation, the course is set: open sea, without barriers.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="carousel-arrow prev" onclick="calamaroCarousel(-1)" aria-label="Precedente">‹</button>
+            <button class="carousel-arrow next" onclick="calamaroCarousel(1)" aria-label="Successivo">›</button>
+
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+
 
 
     <!-- ══ MEGA DOWNLOAD SECTION ══ -->
@@ -1225,33 +1549,6 @@
     </section>
 
 
-    <!-- ══ CINEMATIC SHOWCASE ══ -->
-    <section class="showcase">
-        <div class="showcase-frame">
-            <img src="CalamaroOS.jpg" alt="CalamaroOS - veliero sotto la costellazione del calamaro al largo di Livorno">
-            <div class="showcase-overlay">
-                <div class="showcase-caption">
-                    <span class="showcase-kicker">
-                        <span class="lang-it">🌌 La rotta di CalamaroOS</span>
-                        <span class="lang-en">🌌 The course of CalamaroOS</span>
-                    </span>
-                    <h2 class="showcase-title">
-                        <span class="lang-it">Naviga la potenza di Gentoo, guidato dalle <em>stelle</em></span>
-                        <span class="lang-en">Sail the power of Gentoo, guided by the <em>stars</em></span>
-                    </h2>
-                    <p class="showcase-text">
-                        <span class="lang-it">Come un veliero che salpa sotto la costellazione del calamaro, CalamaroOS ti porta in mare aperto con la sicurezza di un faro sempre acceso. Un progetto indipendente, curato nei dettagli.</span>
-                        <span class="lang-en">Like a tall ship setting sail under the squid constellation, CalamaroOS takes you to the open sea with the reassurance of an ever-lit lighthouse. An independent project, crafted with care.</span>
-                    </p>
-                    <span class="showcase-locality">
-                        <span class="beacon"></span>
-                        <span class="lang-it">🗼 Sviluppato a Livorno, Italia</span>
-                        <span class="lang-en">🗼 Developed in Livorno, Italy</span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ── COMMON FEATURES ── -->
     <section class="common-section">
@@ -1406,6 +1703,58 @@
             }
             applyLanguage(currentLang);
         });
+    </script>
+
+
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dotsWrap = document.getElementById('carouselDots');
+            let current = 0;
+            let timer = null;
+
+            if (!slides.length || !dotsWrap) return;
+
+            // Build dots
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+                dot.addEventListener('click', () => goTo(i));
+                dotsWrap.appendChild(dot);
+            });
+            const dots = dotsWrap.querySelectorAll('.carousel-dot');
+
+            function render() {
+                slides.forEach((s, i) => {
+                    s.classList.toggle('active', i === current);
+                    // restart zoom animation
+                    if (i === current) {
+                        const img = s.querySelector('img');
+                        if (img) { img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; }
+                    }
+                });
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+            function goTo(i) {
+                current = (i + slides.length) % slides.length;
+                render();
+                restart();
+            }
+            window.calamaroCarousel = function(dir) { goTo(current + dir); };
+            function restart() {
+                clearInterval(timer);
+                timer = setInterval(() => goTo(current + 1), 5500);
+            }
+            restart();
+
+            // Pause on hover
+            const carousel = document.getElementById('carousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', () => clearInterval(timer));
+                carousel.addEventListener('mouseleave', restart);
+            }
+        })();
     </script>
 
 </body>
