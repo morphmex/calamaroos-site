@@ -973,6 +973,154 @@
             .carousel-slide img { animation: none; }
         }
 
+
+        /* ═══════════════════════════════════════════
+           INIT SYSTEM CHOICE (Systemd / OpenRC)
+        ═══════════════════════════════════════════ */
+        .init-section {
+            max-width: 1080px;
+            margin: 20px auto 10px;
+            padding: 0 4%;
+        }
+        .init-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .init-title h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 900; margin-bottom: 10px;
+            background: linear-gradient(100deg, #fff 30%, #7fd4ff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .init-title p {
+            color: #a8c8e0; font-size: 1rem;
+            max-width: 640px; margin: 0 auto;
+        }
+        .init-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            max-width: 880px; margin: 0 auto;
+        }
+        @media (max-width: 720px) {
+            .init-grid { grid-template-columns: 1fr; max-width: 460px; }
+        }
+        .init-card {
+            position: relative;
+            display: flex; flex-direction: column;
+            padding: 32px 30px;
+            border-radius: 22px;
+            backdrop-filter: blur(16px);
+            transition: transform 0.28s cubic-bezier(.22,.68,0,1.2),
+                        box-shadow 0.28s ease;
+            overflow: hidden;
+        }
+        .init-card::before {
+            content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+        }
+        .init-card:hover { transform: translateY(-6px); }
+        .init-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform 0.7s ease; pointer-events: none;
+        }
+        .init-card:hover::after { transform: translateX(120%); }
+
+        .init-card.init-systemd {
+            background: rgba(4,18,42,0.9);
+            border: 1.5px solid rgba(0,170,255,0.55);
+            box-shadow: 0 10px 40px rgba(0,170,255,0.2);
+        }
+        .init-card.init-systemd:hover { box-shadow: 0 20px 60px rgba(0,170,255,0.35); }
+        .init-card.init-openrc {
+            background: rgba(18,10,38,0.9);
+            border: 1.5px solid rgba(155,89,182,0.55);
+            box-shadow: 0 10px 40px rgba(155,89,182,0.2);
+        }
+        .init-card.init-openrc:hover { box-shadow: 0 20px 60px rgba(155,89,182,0.35); }
+
+        .init-icon {
+            font-size: 2.6rem; line-height: 1; margin-bottom: 12px;
+            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
+        }
+        .init-card:hover .init-icon { transform: scale(1.15) rotate(-6deg); }
+
+        .init-name {
+            font-size: 1.7rem; font-weight: 900;
+            letter-spacing: -0.01em; margin-bottom: 6px;
+        }
+        .init-systemd .init-name {
+            background: linear-gradient(100deg,#fff 30%,#7fd4ff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .init-openrc .init-name {
+            background: linear-gradient(100deg,#fff 30%,#c8a8f0 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .init-tagline {
+            font-size: 0.82rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .init-systemd .init-tagline { color: #6bb8e8; }
+        .init-openrc  .init-tagline { color: #b59ee0; }
+
+        .init-desc {
+            color: #c8d0dc; font-size: 0.93rem;
+            line-height: 1.6; margin-bottom: 18px; flex: 1;
+        }
+        .init-availability {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 0.88rem;
+            color: #c0cddc; line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .init-availability strong { color: #fff; }
+        .init-systemd .init-availability { border-left: 3px solid rgba(0,170,255,0.5); }
+        .init-openrc  .init-availability { border-left: 3px solid rgba(155,89,182,0.5); }
+
+        .init-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-weight: 800; font-size: 0.95rem;
+            text-decoration: none; border-radius: 14px;
+            padding: 14px 20px;
+            letter-spacing: 0.03em;
+            transition: all 0.22s ease;
+        }
+        .init-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .init-systemd .init-btn {
+            background: linear-gradient(135deg,#0099ee,#006bb5);
+            color: #fff; box-shadow: 0 4px 18px rgba(0,153,238,0.4);
+        }
+        .init-openrc .init-btn {
+            background: linear-gradient(135deg,#8e44ad,#6c3483);
+            color: #fff; box-shadow: 0 4px 18px rgba(142,68,173,0.4);
+        }
+
+        /* Password info banner (shared) */
+        .pw-info { max-width: 880px; margin: 24px auto 0; padding: 0; }
+        .pw-info-inner {
+            background: rgba(15,25,45,0.7);
+            border: 1px solid rgba(0,170,255,0.2);
+            border-radius: 14px;
+            padding: 16px 22px;
+            display: flex; align-items: center; gap: 14px;
+            backdrop-filter: blur(12px);
+            font-size: 0.9rem; color: #a8c8e0;
+        }
+        .pw-info-inner strong { color: #7fd4ff; }
+        .pw-info-inner code {
+            background: rgba(0,0,0,0.4); color: #ffd080;
+            padding: 2px 9px; border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em; font-weight: 600;
+        }
+
     </style>
 </head>
 <body>
@@ -1168,80 +1316,6 @@
 
 
 
-    <!-- ══ MEGA DOWNLOAD SECTION ══ -->
-    <section class="download-hub">
-        <div class="download-hub-header">
-            <span class="kicker">
-                <span class="lang-it">Scarica CalamaroOS</span>
-                <span class="lang-en">Download CalamaroOS</span>
-            </span>
-            <h2>
-                <span class="lang-it">Scegli il tuo sistema init</span>
-                <span class="lang-en">Choose your init system</span>
-            </h2>
-            <p>
-                <span class="lang-it">Tutte le edizioni sono disponibili con systemd. L'edizione Plasma è disponibile anche in versione OpenRC.</span>
-                <span class="lang-en">All editions are available with systemd. The Plasma edition is also available in OpenRC flavor.</span>
-            </p>
-        </div>
-
-        <div class="download-choices">
-
-            <!-- SYSTEMD TILE -->
-            <a href="https://sourceforge.net/projects/calamaroos/files/systemd/" class="download-tile tile-systemd" target="_blank">
-                <div class="tile-icon">⚙️</div>
-                <h3 class="tile-name">Systemd</h3>
-                <p class="tile-desc">
-                    <span class="lang-it">Il sistema init moderno adottato dalla maggior parte delle distribuzioni. Servizi paralleli, avvio veloce, gestione integrata di log, timer e sessioni utente. Consigliato per la maggior parte degli utenti.</span>
-                    <span class="lang-en">The modern init system adopted by most distributions. Parallel services, fast boot, integrated management of logs, timers and user sessions. Recommended for most users.</span>
-                </p>
-                <div class="tile-meta">
-                    <span class="tile-count">
-                        <span class="lang-it">7 edizioni disponibili</span>
-                        <span class="lang-en">7 editions available</span>
-                    </span>
-                    <span class="tile-cta">
-                        <span class="lang-it">Apri</span>
-                        <span class="lang-en">Open</span>
-                    </span>
-                </div>
-            </a>
-
-            <!-- OPENRC TILE -->
-            <a href="https://sourceforge.net/projects/calamaroos/files/openrc/" class="download-tile tile-openrc" target="_blank">
-                <div class="tile-icon">🔧</div>
-                <h3 class="tile-name">OpenRC</h3>
-                <p class="tile-desc">
-                    <span class="lang-it">L'alternativa storica e leggera a systemd nel mondo Gentoo. Approccio più tradizionale e minimale, script shell trasparenti, controllo diretto dei servizi. Attualmente disponibile per Plasma; altri ambienti in lavorazione.</span>
-                    <span class="lang-en">The historic, lightweight alternative to systemd in the Gentoo world. Traditional, minimal approach with transparent shell scripts and direct service control. Currently available for Plasma; more environments in progress.</span>
-                </p>
-                <div class="tile-meta">
-                    <span class="tile-count">
-                        <span class="lang-it">1 edizione · altre in arrivo</span>
-                        <span class="lang-en">1 edition · more coming</span>
-                    </span>
-                    <span class="tile-cta">
-                        <span class="lang-it">Apri</span>
-                        <span class="lang-en">Open</span>
-                    </span>
-                </div>
-            </a>
-
-        </div>
-
-        <!-- Password info -->
-        <div class="pw-info">
-            <div class="pw-info-inner">
-                <span style="font-size:1.4rem;">🔑</span>
-                <div>
-                    <span class="lang-it"><strong>Password sudo/root</strong> di default per tutte le ISO: <code>calamaroos</code></span>
-                    <span class="lang-en"><strong>Default sudo/root password</strong> for all ISOs: <code>calamaroos</code></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <!-- ══ SCEGLI IL TUO INIT SYSTEM ══ -->
     <section class="init-section">
         <div class="init-title">
@@ -1300,6 +1374,16 @@
                     <span class="lang-it">Vai ai download OpenRC</span>
                     <span class="lang-en">Go to OpenRC downloads</span>
                 </a>
+            </div>
+        </div>
+
+        <div class="pw-info">
+            <div class="pw-info-inner">
+                <span style="font-size:1.4rem;">🔑</span>
+                <div>
+                    <span class="lang-it"><strong>Password sudo/root</strong> di default per tutte le ISO: <code>calamaroos</code></span>
+                    <span class="lang-en"><strong>Default sudo/root password</strong> for all ISOs: <code>calamaroos</code></span>
+                </div>
             </div>
         </div>
     </section>
