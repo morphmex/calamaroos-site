@@ -170,6 +170,157 @@
         /* ═══════════════════════════════════════════
            RELEASES GRID
         ═══════════════════════════════════════════ */
+
+        /* ═════════════════════════════════════════
+           MEGA DOWNLOAD SECTION (Systemd / OpenRC)
+        ═════════════════════════════════════════ */
+        .download-hub {
+            max-width: 1080px;
+            margin: 20px auto 20px;
+            padding: 0 4%;
+        }
+        .download-hub-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .download-hub-header .kicker {
+            display: inline-block;
+            font-size: 0.72rem; font-weight: 800;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: #00aaff; opacity: 0.85; margin-bottom: 10px;
+        }
+        .download-hub-header h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 900; margin-bottom: 8px;
+            background: linear-gradient(100deg, #fff 30%, #7fd4ff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .download-hub-header p {
+            color: #a8c8e0; font-size: 1rem;
+            max-width: 620px; margin: 0 auto;
+        }
+        .download-choices {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            max-width: 860px; margin: 0 auto;
+        }
+        @media (max-width: 700px) {
+            .download-choices { grid-template-columns: 1fr; max-width: 460px; }
+        }
+        .download-tile {
+            position: relative;
+            display: flex; flex-direction: column;
+            padding: 32px 30px;
+            border-radius: 22px;
+            text-decoration: none;
+            backdrop-filter: blur(16px);
+            transition: transform 0.28s cubic-bezier(.22,.68,0,1.2),
+                        box-shadow 0.28s ease;
+            overflow: hidden;
+        }
+        .download-tile::before {
+            content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+        }
+        .download-tile:hover { transform: translateY(-6px); }
+
+        .tile-systemd {
+            background: rgba(4,18,42,0.9);
+            border: 1.5px solid rgba(0,170,255,0.55);
+            box-shadow: 0 10px 40px rgba(0,170,255,0.2);
+        }
+        .tile-systemd:hover { box-shadow: 0 20px 60px rgba(0,170,255,0.35); }
+
+        .tile-openrc {
+            background: rgba(18,10,38,0.9);
+            border: 1.5px solid rgba(155,89,182,0.55);
+            box-shadow: 0 10px 40px rgba(155,89,182,0.2);
+        }
+        .tile-openrc:hover { box-shadow: 0 20px 60px rgba(155,89,182,0.35); }
+
+        .tile-icon { font-size: 2.6rem; margin-bottom: 12px; line-height: 1; }
+        .tile-name {
+            font-size: 1.7rem; font-weight: 900;
+            letter-spacing: -0.01em; margin-bottom: 8px;
+        }
+        .tile-systemd .tile-name {
+            background: linear-gradient(100deg,#fff 30%,#7fd4ff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .tile-openrc .tile-name {
+            background: linear-gradient(100deg,#fff 30%,#c8a8f0 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .tile-desc { color: #c8d0dc; font-size: 0.94rem; line-height: 1.6; margin-bottom: 20px; flex: 1; }
+        .tile-meta {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .tile-count {
+            font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .tile-systemd .tile-count { color: #7fd4ff; }
+        .tile-openrc  .tile-count { color: #c8a8f0; }
+        .tile-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.85rem; font-weight: 800;
+            padding: 8px 16px; border-radius: 12px;
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .tile-systemd .tile-cta {
+            background: linear-gradient(135deg,#0099ee,#006bb5);
+            color: #fff; box-shadow: 0 4px 14px rgba(0,153,238,0.4);
+        }
+        .tile-openrc  .tile-cta {
+            background: linear-gradient(135deg,#8e44ad,#6c3483);
+            color: #fff; box-shadow: 0 4px 14px rgba(142,68,173,0.4);
+        }
+        .tile-cta::after { content: '→'; font-size: 1.05rem; }
+
+        /* Init-system pill inside each DE card */
+        .init-pill {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.72rem; font-weight: 700;
+            padding: 3px 10px; border-radius: 20px;
+            letter-spacing: 0.05em;
+        }
+        .init-systemd {
+            background: rgba(0,170,255,0.1);
+            border: 1px solid rgba(0,170,255,0.35);
+            color: #7fd4ff;
+        }
+        .init-both {
+            background: linear-gradient(135deg, rgba(0,170,255,0.1), rgba(155,89,182,0.15));
+            border: 1px solid rgba(155,89,182,0.4);
+            color: #b8b5e0;
+        }
+
+        /* Password info banner */
+        .pw-info {
+            max-width: 1080px; margin: 24px auto 0; padding: 0 4%;
+        }
+        .pw-info-inner {
+            background: rgba(15,25,45,0.7);
+            border: 1px solid rgba(0,170,255,0.2);
+            border-radius: 14px;
+            padding: 16px 22px;
+            display: flex; align-items: center; gap: 14px;
+            backdrop-filter: blur(12px);
+            font-size: 0.9rem;
+            color: #a8c8e0;
+        }
+        .pw-info-inner strong { color: #7fd4ff; }
+        .pw-info-inner code {
+            background: rgba(0,0,0,0.4); color: #ffd080;
+            padding: 2px 9px; border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em; font-weight: 600;
+        }
+
+
         .releases-section { padding: 0 4% 20px; }
 
         .releases-grid {
@@ -229,30 +380,23 @@
         .rcard-plasma:hover { box-shadow: 0 18px 48px rgba(0,170,255,0.32); }
 
         .rcard-gnome {
-            background: rgba(36,6,10,0.88);
-            border: 1.5px solid rgba(220,50,70,0.55);
-            box-shadow: 0 8px 32px rgba(220,50,70,0.18);
+            background: rgba(38,12,8,0.88);
+            border: 1.5px solid rgba(231,76,60,0.55);
+            box-shadow: 0 8px 32px rgba(231,76,60,0.18);
         }
-        .rcard-gnome:hover { box-shadow: 0 18px 48px rgba(220,50,70,0.32); }
+        .rcard-gnome:hover { box-shadow: 0 18px 48px rgba(231,76,60,0.32); }
         .rcard-cinnamon {
-            background: rgba(35,15,8,0.88);
-            border: 1.5px solid rgba(192,82,46,0.55);
-            box-shadow: 0 8px 32px rgba(192,82,46,0.18);
+            background: rgba(35,10,22,0.88);
+            border: 1.5px solid rgba(212,49,108,0.55);
+            box-shadow: 0 8px 32px rgba(212,49,108,0.18);
         }
-        .rcard-cinnamon:hover { box-shadow: 0 18px 48px rgba(192,82,46,0.32); }
+        .rcard-cinnamon:hover { box-shadow: 0 18px 48px rgba(212,49,108,0.32); }
         .rcard-lxde {
             background: rgba(4,30,28,0.88);
             border: 1.5px solid rgba(26,188,156,0.55);
             box-shadow: 0 8px 32px rgba(26,188,156,0.18);
         }
         .rcard-lxde:hover { box-shadow: 0 18px 48px rgba(26,188,156,0.32); }
-
-        .rcard-openrc {
-            background: rgba(14,17,42,0.88);
-            border: 1.5px solid rgba(92,107,192,0.55);
-            box-shadow: 0 8px 32px rgba(92,107,192,0.18);
-        }
-        .rcard-openrc:hover { box-shadow: 0 18px 48px rgba(92,107,192,0.32); }
 
 
         /* Badge */
@@ -267,10 +411,9 @@
         .badge-mate   { background: rgba(230,126,34,0.18);  border: 1px solid rgba(230,126,34,0.5); color: #f0a050; }
         .badge-xfce   { background: rgba(46,204,113,0.18);  border: 1px solid rgba(46,204,113,0.5); color: #5de89a; }
         .badge-plasma { background: rgba(0,170,255,0.15);   border: 1px solid rgba(0,170,255,0.45); color: #55ccff; }
-        .badge-gnome  { background: rgba(220,50,70,0.18);    border: 1px solid rgba(220,50,70,0.5);  color: #f07080; }
-        .badge-cinnamon { background: rgba(192,82,46,0.18); border: 1px solid rgba(192,82,46,0.5); color: #e08866; }
+        .badge-gnome  { background: rgba(231,76,60,0.18); border: 1px solid rgba(231,76,60,0.5); color: #ff8a75; }
+        .badge-cinnamon { background: rgba(212,49,108,0.18); border: 1px solid rgba(212,49,108,0.5); color: #f06090; }
         .badge-lxde     { background: rgba(26,188,156,0.18); border: 1px solid rgba(26,188,156,0.5); color: #4fd1b8; }
-        .badge-openrc   { background: rgba(92,107,192,0.18); border: 1px solid rgba(92,107,192,0.5); color: #a3adf0; }
 
         /* Header card */
         .rcard-header { display: flex; align-items: center; gap: 14px; }
@@ -287,10 +430,9 @@
         .name-mate   { color: #f0a050; }
         .name-xfce   { color: #5de89a; }
         .name-plasma { color: #55ccff; }
-        .name-gnome  { color: #f07080; }
-        .name-cinnamon { color: #e08866; }
+        .name-gnome  { color: #ff8a75; }
+        .name-cinnamon { color: #f06090; }
         .name-lxde     { color: #4fd1b8; }
-        .name-openrc   { color: #a3adf0; }
 
         .rcard-date {
             font-size: 0.75rem; color: #778899;
@@ -328,10 +470,9 @@
         .feat-mate   li::before { color: #e67e22; }
         .feat-xfce   li::before { color: #27ae60; }
         .feat-plasma li::before { color: #00aaff; }
-        .feat-gnome  li::before { color: #dc3245; }
-        .feat-cinnamon li::before { color: #c0522e; }
+        .feat-gnome  li::before { color: #e74c3c; }
+        .feat-cinnamon li::before { color: #d4316c; }
         .feat-lxde     li::before { color: #16a085; }
-        .feat-openrc   li::before { color: #7986cb; }
 
         /* Pulsante download */
         .dl-btn {
@@ -349,12 +490,11 @@
 
         .dl-lxqt   { background: linear-gradient(135deg, #8e44ad, #6c3483); color: #fff; box-shadow: 0 4px 18px rgba(142,68,173,0.4); }
         .dl-mate   { background: linear-gradient(135deg, #e67e22, #ca6f1e); color: #fff; box-shadow: 0 4px 18px rgba(230,126,34,0.4); }
+        .dl-cinnamon { background: linear-gradient(135deg, #d4316c, #9c1c4f); color: #fff; box-shadow: 0 4px 18px rgba(212,49,108,0.45); }
+        .dl-lxde   { background: linear-gradient(135deg, #16a085, #0d6b56); color: #fff; box-shadow: 0 4px 18px rgba(22,160,133,0.45); }
+        .dl-gnome  { background: linear-gradient(135deg, #e74c3c, #a93226); color: #fff; box-shadow: 0 4px 18px rgba(231,76,60,0.45); }
         .dl-xfce   { background: linear-gradient(135deg, #27ae60, #1e8449); color: #fff; box-shadow: 0 4px 18px rgba(39,174,96,0.4);  }
         .dl-plasma { background: linear-gradient(135deg, #0099ee, #006bb5); color: #fff; box-shadow: 0 4px 18px rgba(0,153,238,0.4);  }
-        .dl-gnome    { background: linear-gradient(135deg, #dc3245, #a52030); color: #fff; box-shadow: 0 4px 18px rgba(220,50,70,0.4);  }
-        .dl-cinnamon { background: linear-gradient(135deg, #c0522e, #97401f); color: #fff; box-shadow: 0 4px 18px rgba(192,82,46,0.4);  }
-        .dl-lxde     { background: linear-gradient(135deg, #16a085, #0f7a65); color: #fff; box-shadow: 0 4px 18px rgba(26,188,156,0.4);  }
-        .dl-openrc   { background: linear-gradient(135deg, #5c6bc0, #3949ab); color: #fff; box-shadow: 0 4px 18px rgba(92,107,192,0.4);  }
 
         .dl-soon {
             background: rgba(255,255,255,0.05);
@@ -466,9 +606,116 @@
             margin-top: 3px; color: #aa5555;
             font-weight: 400;
         }
+
+        /* ═══════════════════════════════════════════
+           ✦ AESTHETIC ENHANCEMENTS ✦
+        ═══════════════════════════════════════════ */
+
+        /* Aurora glow that breathes behind the hero */
+        .aurora {
+            position: fixed;
+            top: -20%; left: 50%;
+            transform: translateX(-50%);
+            width: 900px; height: 700px;
+            background:
+                radial-gradient(ellipse 40% 50% at 30% 40%, rgba(0,170,255,0.16), transparent 70%),
+                radial-gradient(ellipse 40% 40% at 70% 30%, rgba(155,89,182,0.14), transparent 70%),
+                radial-gradient(ellipse 50% 40% at 50% 70%, rgba(46,204,113,0.10), transparent 70%);
+            filter: blur(40px);
+            pointer-events: none;
+            z-index: 0;
+            animation: auroraDrift 16s ease-in-out infinite alternate;
+        }
+        @keyframes auroraDrift {
+            0%   { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 0.85; }
+            50%  { transform: translateX(-48%) scale(1.08) rotate(4deg); opacity: 1; }
+            100% { transform: translateX(-52%) scale(1.02) rotate(-3deg); opacity: 0.9; }
+        }
+
+        /* Shimmer sweep across the hero title */
+        .hero-title {
+            position: relative;
+            background: linear-gradient(100deg, #ffffff 20%, #7fd4ff 50%, #00aaff 70%, #ffffff 90%);
+            background-size: 200% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: shimmer 6s linear infinite;
+        }
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        /* Init pill highlighted (Systemd · OpenRC) */
+        .pill-init {
+            background: linear-gradient(135deg, rgba(0,170,255,0.15), rgba(155,89,182,0.18)) !important;
+            border: 1px solid rgba(155,89,182,0.5) !important;
+            color: #d0c4f0 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 0 18px rgba(155,89,182,0.25);
+        }
+
+        /* Pills subtle hover lift */
+        .pill { transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+        .pill:hover {
+            transform: translateY(-2px);
+            background: rgba(0,170,255,0.18);
+            box-shadow: 0 4px 14px rgba(0,170,255,0.25);
+        }
+
+        /* Cards fade-and-rise on load, staggered */
+        .rcard {
+            opacity: 0;
+            animation: cardRise 0.6s cubic-bezier(.22,.68,0,1.2) forwards;
+        }
+        @keyframes cardRise {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .releases-grid .rcard:nth-child(1) { animation-delay: 0.05s; }
+        .releases-grid .rcard:nth-child(2) { animation-delay: 0.12s; }
+        .releases-grid .rcard:nth-child(3) { animation-delay: 0.19s; }
+        .releases-grid .rcard:nth-child(4) { animation-delay: 0.26s; }
+        .releases-grid .rcard:nth-child(5) { animation-delay: 0.33s; }
+        .releases-grid .rcard:nth-child(6) { animation-delay: 0.40s; }
+        .releases-grid .rcard:nth-child(7) { animation-delay: 0.47s; }
+
+        /* Download tiles: animated sheen on hover */
+        .download-tile .tile-icon {
+            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
+        }
+        .download-tile:hover .tile-icon {
+            transform: scale(1.15) rotate(-6deg);
+        }
+        .download-tile::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform 0.7s ease;
+            pointer-events: none;
+        }
+        .download-tile:hover::after { transform: translateX(120%); }
+
+        /* Logo gentle float */
+        .logo-wrap { animation: logoFloat 5s ease-in-out infinite; }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-8px); }
+        }
+
+        /* Section separators glow a touch on hover of section */
+        .rcard-icon { transition: transform 0.3s ease; }
+        .rcard:hover .rcard-icon { transform: scale(1.12) rotate(-4deg); }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .aurora, .hero-title, .rcard, .logo-wrap { animation: none; }
+            .rcard { opacity: 1; }
+        }
+
     </style>
 </head>
 <body>
+    <div class="aurora"></div>
 
     <!-- ── NAV ── -->
     <nav>
@@ -494,301 +741,317 @@
         <h1 class="hero-title">CalamaroOS</h1>
         <p class="hero-sub">
             <span class="lang-it">
-                Una distribuzione universale costruita su <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>,
-                con l'installer grafico <strong style="color:#7fd4ff">Calamares</strong> per rendere Gentoo accessibile a chiunque.
-                Pacchetti binari ufficiali, compilazione dai sorgenti quando necessario, Flatpak integrato
-                e diversi ambienti desktop tra cui scegliere. La potenza di Gentoo, senza barriere.
+                Una distribuzione universale costruita su <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, con <strong style="color:#c8a8f0">OpenRC in sviluppo</strong>, e l'installer grafico <strong style="color:#7fd4ff">Calamares</strong> per rendere Gentoo accessibile a chiunque. Pacchetti binari ufficiali, compilazione dai sorgenti quando necessario, Flatpak integrato e <strong style="color:#7fd4ff">repository GURU</strong> della community abilitato di default. <strong style="color:#7fd4ff">7 ambienti desktop</strong> tra cui scegliere: la potenza di Gentoo, senza barriere. E se questo non basta, una volta installato personalizzi tutto secondo le tue esigenze.
             </span>
             <span class="lang-en">
-                A universal distribution built on <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>,
-                with the <strong style="color:#7fd4ff">Calamares</strong> graphical installer to make Gentoo accessible to everyone.
-                Official binary packages, source compilation when needed, Flatpak integrated
-                and several desktop environments to choose from. The power of Gentoo, without barriers.
+                A universal distribution built on <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, with <strong style="color:#c8a8f0">OpenRC in development</strong>, and the <strong style="color:#7fd4ff">Calamares</strong> graphical installer to make Gentoo accessible to everyone. Official binary packages, source compilation when needed, Flatpak integrated and the <strong style="color:#7fd4ff">GURU community repository</strong> enabled by default. <strong style="color:#7fd4ff">7 desktop environments</strong> to choose from: the power of Gentoo, without barriers. And if that's not enough, once installed you can customize everything to your needs.
             </span>
         </p>
         <div class="hero-pills">
             <span class="pill">Gentoo Stage 3</span>
-            <span class="pill">Systemd · OpenRC</span>
+            <span class="pill pill-init">Systemd · OpenRC</span>
             <span class="pill">Calamares Installer</span>
             <span class="pill">Flatpak</span>
+            <span class="pill">GURU Repository</span>
             <span class="pill">EXT4 · BTRFS · XFS · F2FS</span>
+            <span class="pill">7 Desktop Environments</span>
             <span class="pill">64-bit</span>
         </div>
     </header>
 
-    <!-- ── RELEASES ── -->
+
+    <!-- ══ MEGA DOWNLOAD SECTION ══ -->
+    <section class="download-hub">
+        <div class="download-hub-header">
+            <span class="kicker">
+                <span class="lang-it">Scarica CalamaroOS</span>
+                <span class="lang-en">Download CalamaroOS</span>
+            </span>
+            <h2>
+                <span class="lang-it">Scegli il tuo sistema init</span>
+                <span class="lang-en">Choose your init system</span>
+            </h2>
+            <p>
+                <span class="lang-it">Tutte le edizioni sono disponibili con systemd. L'edizione Plasma è disponibile anche in versione OpenRC.</span>
+                <span class="lang-en">All editions are available with systemd. The Plasma edition is also available in OpenRC flavor.</span>
+            </p>
+        </div>
+
+        <div class="download-choices">
+
+            <!-- SYSTEMD TILE -->
+            <a href="https://sourceforge.net/projects/calamaroos/files/systemd/" class="download-tile tile-systemd" target="_blank">
+                <div class="tile-icon">⚙️</div>
+                <h3 class="tile-name">Systemd</h3>
+                <p class="tile-desc">
+                    <span class="lang-it">Il sistema init moderno adottato dalla maggior parte delle distribuzioni. Servizi paralleli, avvio veloce, gestione integrata di log, timer e sessioni utente. Consigliato per la maggior parte degli utenti.</span>
+                    <span class="lang-en">The modern init system adopted by most distributions. Parallel services, fast boot, integrated management of logs, timers and user sessions. Recommended for most users.</span>
+                </p>
+                <div class="tile-meta">
+                    <span class="tile-count">
+                        <span class="lang-it">7 edizioni disponibili</span>
+                        <span class="lang-en">7 editions available</span>
+                    </span>
+                    <span class="tile-cta">
+                        <span class="lang-it">Apri</span>
+                        <span class="lang-en">Open</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- OPENRC TILE -->
+            <a href="https://sourceforge.net/projects/calamaroos/files/openrc/" class="download-tile tile-openrc" target="_blank">
+                <div class="tile-icon">🔧</div>
+                <h3 class="tile-name">OpenRC</h3>
+                <p class="tile-desc">
+                    <span class="lang-it">L'alternativa storica e leggera a systemd nel mondo Gentoo. Approccio più tradizionale e minimale, script shell trasparenti, controllo diretto dei servizi. Attualmente disponibile per Plasma; altri ambienti in lavorazione.</span>
+                    <span class="lang-en">The historic, lightweight alternative to systemd in the Gentoo world. Traditional, minimal approach with transparent shell scripts and direct service control. Currently available for Plasma; more environments in progress.</span>
+                </p>
+                <div class="tile-meta">
+                    <span class="tile-count">
+                        <span class="lang-it">1 edizione · altre in arrivo</span>
+                        <span class="lang-en">1 edition · more coming</span>
+                    </span>
+                    <span class="tile-cta">
+                        <span class="lang-it">Apri</span>
+                        <span class="lang-en">Open</span>
+                    </span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Password info -->
+        <div class="pw-info">
+            <div class="pw-info-inner">
+                <span style="font-size:1.4rem;">🔑</span>
+                <div>
+                    <span class="lang-it"><strong>Password sudo/root</strong> di default per tutte le ISO: <code>calamaroos</code></span>
+                    <span class="lang-en"><strong>Default sudo/root password</strong> for all ISOs: <code>calamaroos</code></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ SCEGLI IL TUO INIT SYSTEM ══ -->
+    <section class="init-section">
+        <div class="init-title">
+            <h2>
+                <span class="lang-it">Scegli la tua edizione</span>
+                <span class="lang-en">Choose your edition</span>
+            </h2>
+            <p>
+                <span class="lang-it">CalamaroOS è disponibile in due varianti in base al sistema di init. Scarica direttamente dalla cartella SourceForge della variante che preferisci.</span>
+                <span class="lang-en">CalamaroOS is available in two variants based on the init system. Download directly from the SourceForge folder of your preferred variant.</span>
+            </p>
+        </div>
+
+        <div class="init-grid">
+            <!-- SYSTEMD -->
+            <div class="init-card init-systemd">
+                <div class="init-icon">⚙️</div>
+                <h3 class="init-name">Systemd</h3>
+                <p class="init-tagline">
+                    <span class="lang-it">Moderno · Completo · Universale</span>
+                    <span class="lang-en">Modern · Complete · Universal</span>
+                </p>
+                <p class="init-desc">
+                    <span class="lang-it">Il sistema di init moderno e più diffuso. Gestione avanzata dei servizi, avvio parallelo veloce, timer, journal integrato. La scelta standard per chi vuole un sistema pronto all'uso.</span>
+                    <span class="lang-en">The most widely-used modern init system. Advanced service management, fast parallel startup, timers, integrated journal. The standard choice for a ready-to-use system.</span>
+                </p>
+                <div class="init-availability">
+                    <span class="lang-it"><strong>Tutte le 7 edizioni disponibili:</strong><br>Cinnamon · GNOME · LXDE · LXQt · XFCE · KDE Plasma · MATE</span>
+                    <span class="lang-en"><strong>All 7 editions available:</strong><br>Cinnamon · GNOME · LXDE · LXQt · XFCE · KDE Plasma · MATE</span>
+                </div>
+                <a href="https://sourceforge.net/projects/calamaroos/files/systemd/" class="init-btn" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Vai ai download Systemd</span>
+                    <span class="lang-en">Go to Systemd downloads</span>
+                </a>
+            </div>
+
+            <!-- OPENRC -->
+            <div class="init-card init-openrc">
+                <div class="init-icon">🔧</div>
+                <h3 class="init-name">OpenRC</h3>
+                <p class="init-tagline">
+                    <span class="lang-it">Leggero · Tradizionale · Minimalista</span>
+                    <span class="lang-en">Lightweight · Traditional · Minimal</span>
+                </p>
+                <p class="init-desc">
+                    <span class="lang-it">L'init system storico e leggero di Gentoo. Basato su script shell, semplice, trasparente e con consumo di risorse minimo. Perfetto per chi preferisce un approccio classico e senza fronzoli.</span>
+                    <span class="lang-en">Gentoo's historic, lightweight init system. Shell script-based, simple, transparent and minimal in resource usage. Perfect for those who prefer a classic, no-frills approach.</span>
+                </p>
+                <div class="init-availability">
+                    <span class="lang-it"><strong>Attualmente disponibile:</strong><br>KDE Plasma<br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
+                    <span class="lang-en"><strong>Currently available:</strong><br>KDE Plasma<br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
+                </div>
+                <a href="https://sourceforge.net/projects/calamaroos/files/openrc/" class="init-btn" target="_blank">
+                    <span>⬇</span>
+                    <span class="lang-it">Vai ai download OpenRC</span>
+                    <span class="lang-en">Go to OpenRC downloads</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── EDIZIONI DISPONIBILI ── -->
     <section class="releases-section">
         <div class="section-sep">
             <span class="section-sep-label">
-                <span class="lang-it">Edizioni disponibili</span>
-                <span class="lang-en">Available editions</span>
+                <span class="lang-it">Ambienti Desktop</span>
+                <span class="lang-en">Desktop Environments</span>
             </span>
         </div>
 
         <div class="releases-grid">
 
-            <!-- ══ KDE PLASMA · OpenRC ══ -->
-            <div class="rcard rcard-openrc">
-                <span class="rcard-badge badge-openrc"><span class="lang-it">✦ NEW · 2026.07.05</span><span class="lang-en">✦ NEW · 2026.07.05</span></span>
+            <!-- ══ CINNAMON ══ -->
+            <div class="rcard rcard-cinnamon">
+                <span class="init-pill init-systemd">⚙️ Systemd</span>
                 <div class="rcard-header">
-                    <div class="rcard-icon">⚙️</div>
+                    <div class="rcard-icon">🍂</div>
                     <div class="rcard-title-group">
-                        <h2 class="rcard-name name-openrc">KDE Plasma OpenRC</h2>
-                        <p class="rcard-date">CalamaroOS 2026.07.05 · init OpenRC</p>
+                        <h2 class="rcard-name name-cinnamon">Cinnamon</h2>
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">La grande novità di CalamaroOS: la prima edizione con sistema di init <strong>OpenRC</strong> al posto di systemd! Mantiene <strong>identiche funzionalità e base di sistema</strong> dell'edizione Plasma systemd — cambia solo l'init. Pensata per chi preferisce un avvio leggero e trasparente in puro stile Gentoo. Sincronizzata con Gentoo al 05/07/2026, con <strong>OS Prober</strong>, <strong>cifratura del disco</strong> in installazione e <strong>repository GURU</strong> abilitato di default.</span>
-                    <span class="lang-en">The big news for CalamaroOS: the first edition with the <strong>OpenRC</strong> init system instead of systemd! It keeps <strong>identical features and system base</strong> as the Plasma systemd edition — only the init changes. Designed for those who prefer a lightweight, transparent boot in pure Gentoo style. Synchronized with Gentoo as of 2026/07/05, with <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU repository</strong> enabled by default.</span>
+                    <span class="lang-it">Desktop moderno e familiare basato su GNOME 3, con un'esperienza classica e intuitiva. Interfaccia elegante, applicazioni ben integrate e un'ottima curva di apprendimento per chi arriva da altri sistemi operativi.</span>
+                    <span class="lang-en">Modern and familiar desktop based on GNOME 3, with a classic and intuitive experience. Elegant interface, well-integrated applications and a smooth learning curve for those coming from other operating systems.</span>
                 </p>
                 <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-openrc">
-                    <li><span class="lang-it">Novità: init <strong>OpenRC</strong> al posto di systemd</span><span class="lang-en">New: <strong>OpenRC</strong> init instead of systemd</span></li>
-                    <li><span class="lang-it">Stesse funzionalità dell'edizione Plasma systemd</span><span class="lang-en">Same features as the Plasma systemd edition</span></li>
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 05/07/2026</span><span class="lang-en">Synced with Gentoo to 2026/07/05</span></li>
-                    <li><span class="lang-it">Cifratura disco · OS Prober · /boot permanente · 1 GB</span><span class="lang-en">Disk encryption · OS Prober · /boot permanent · 1 GB</span></li>
-                    <li><span class="lang-it">Repository GURU · Flatpak · Calamares · EXT4 / BTRFS / XFS / F2FS</span><span class="lang-en">GURU repository · Flatpak · Calamares · EXT4 / BTRFS / XFS / F2FS</span></li>
+                <ul class="rcard-features feat-cinnamon">
+                    <li><span class="lang-it">Interfaccia classica su base moderna</span><span class="lang-en">Classic interface on modern base</span></li>
+                    <li><span class="lang-it">Applicazioni integrate curate (Nemo, ecc.)</span><span class="lang-en">Curated integrated apps (Nemo, etc.)</span></li>
+                    <li><span class="lang-it">Ottimo per utenti che arrivano da Windows</span><span class="lang-en">Great for users coming from Windows</span></li>
                 </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/openrc/CalamaroOS-Plasma-openrc-20260705.zip/download" class="dl-btn dl-openrc" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS Plasma OpenRC</span>
-                    <span class="lang-en">Download CalamaroOS Plasma OpenRC</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
-            </div>
-
-            <!-- ══ KDE PLASMA · systemd ══ -->
-            <div class="rcard rcard-plasma">
-                <span class="rcard-badge badge-plasma"><span class="lang-it">✦ Aggiornato · 2026.07.05</span><span class="lang-en">✦ Updated · 2026.07.05</span></span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🖥️</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-plasma">KDE Plasma</h2>
-                        <p class="rcard-date">CalamaroOS 2026.07.05 · init systemd</p>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Release aggiornata al 05/07/2026, allineata agli ultimi aggiornamenti Gentoo. Resta l'edizione di riferimento con init <strong>systemd</strong>, desktop moderno e ricco di funzionalità con Discover e font CJK. Include <strong>OS Prober</strong>, <strong>cifratura del disco</strong> in installazione e <strong>repository GURU</strong> di default. Ora disponibile anche nella nuova variante <strong>OpenRC</strong>.</span>
-                    <span class="lang-en">Release updated to 2026/07/05, aligned with the latest Gentoo updates. It remains the reference edition with <strong>systemd</strong> init, a modern feature-rich desktop with Discover and CJK fonts. Includes <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU repository</strong> by default. Now also available in the new <strong>OpenRC</strong> variant.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-plasma">
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 05/07/2026</span><span class="lang-en">Synced with Gentoo to 2026/07/05</span></li>
-                    <li><span class="lang-it">Init systemd · anche in variante OpenRC</span><span class="lang-en">systemd init · also available as OpenRC</span></li>
-                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
-                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
-                    <li><span class="lang-it">Repository GURU · Flatpak + Discover · Font CJK</span><span class="lang-en">GURU repository · Flatpak + Discover · CJK fonts</span></li>
-                </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/systemd/CalamaroOS-Plasma-systemd-20260705.zip/download" class="dl-btn dl-plasma" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS Plasma</span>
-                    <span class="lang-en">Download CalamaroOS Plasma</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code> · Font CJK + traduzioni KDE incluse</span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code> · CJK fonts + KDE translations included</span>
-                </p>
             </div>
 
             <!-- ══ GNOME ══ -->
             <div class="rcard rcard-gnome">
-                <span class="rcard-badge badge-gnome"><span class="lang-it">✦ NEW · 2026.06.22</span><span class="lang-en">✦ NEW · 2026.06.22</span></span>
+                <span class="init-pill init-systemd">⚙️ Systemd</span>
                 <div class="rcard-header">
                     <div class="rcard-icon">👣</div>
                     <div class="rcard-title-group">
-                        <h2 class="rcard-name name-gnome">GNOME Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.06.22</p>
+                        <h2 class="rcard-name name-gnome">GNOME</h2>
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">Prima release ufficiale dell'edizione <strong>GNOME</strong>! L'ambiente desktop moderno per eccellenza: interfaccia elegante, pulita e coerente, pensata per un flusso di lavoro fluido e senza distrazioni. Perfetta per chi cerca un'esperienza raffinata e attuale. Sincronizzata con Gentoo al 22/06/2026, include <strong>OS Prober</strong>, <strong>cifratura del disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default.</span>
-                    <span class="lang-en">First official release of the <strong>GNOME</strong> edition! The modern desktop environment par excellence: an elegant, clean and consistent interface designed for a smooth, distraction-free workflow. Perfect for those seeking a refined, up-to-date experience. Synchronized with Gentoo as of 2026/06/22, includes <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU community repository</strong> enabled by default.</span>
+                    <span class="lang-it">Il desktop environment moderno per eccellenza: interfaccia elegante, pulita e coerente, progettata per un flusso di lavoro fluido e senza distrazioni. Ideale per chi cerca un'esperienza raffinata e al passo coi tempi.</span>
+                    <span class="lang-en">The modern desktop environment par excellence: elegant, clean and consistent interface designed for a smooth, distraction-free workflow. Ideal for those seeking a refined, up-to-date experience.</span>
                 </p>
                 <div class="rcard-divider"></div>
                 <ul class="rcard-features feat-gnome">
-                    <li><span class="lang-it">Prima ISO ufficiale di CalamaroOS GNOME</span><span class="lang-en">First official CalamaroOS GNOME ISO</span></li>
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 22/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/22</span></li>
-                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
-                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
-                    <li><span class="lang-it">Desktop GNOME moderno · EXT4 / BTRFS / XFS / F2FS</span><span class="lang-en">Modern GNOME desktop · EXT4 / BTRFS / XFS / F2FS</span></li>
-                    <li><span class="lang-it">Repository GURU · Flatpak · Calamares</span><span class="lang-en">GURU repository · Flatpak · Calamares</span></li>
+                    <li><span class="lang-it">Design essenziale e minimalista</span><span class="lang-en">Essential and minimalist design</span></li>
+                    <li><span class="lang-it">Wayland nativo, animazioni fluide</span><span class="lang-en">Native Wayland, smooth animations</span></li>
+                    <li><span class="lang-it">Focus totale sulla produttività</span><span class="lang-en">Total focus on productivity</span></li>
                 </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/calamaro-gnome-20260622.zip/download" class="dl-btn dl-gnome" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS GNOME</span>
-                    <span class="lang-en">Download CalamaroOS GNOME</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
             </div>
 
             <!-- ══ LXDE ══ -->
             <div class="rcard rcard-lxde">
-                <span class="rcard-badge badge-lxde"><span class="lang-it">✦ NEW · 2026.06.20</span><span class="lang-en">✦ NEW · 2026.06.20</span></span>
+                <span class="init-pill init-systemd">⚙️ Systemd</span>
                 <div class="rcard-header">
                     <div class="rcard-icon">🪶</div>
                     <div class="rcard-title-group">
-                        <h2 class="rcard-name name-lxde">LXDE Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.06.20</p>
+                        <h2 class="rcard-name name-lxde">LXDE</h2>
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">Prima release ufficiale dell'edizione <strong>LXDE</strong>! Desktop environment ultra-leggero basato su GTK, progettato per essere rapido all'avvio e parco nei consumi di CPU e RAM. Ideale per hardware datato, vecchi notebook o macchine virtuali. Sincronizzato con Gentoo al 20/06/2026, include <strong>OS Prober</strong>, <strong>cifratura disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default.</span>
-                    <span class="lang-en">First official release of the <strong>LXDE</strong> edition! Ultra-lightweight GTK-based desktop environment, designed to boot fast and keep CPU and RAM usage minimal. Ideal for older hardware, old laptops or virtual machines. Synchronized with Gentoo as of 2026/06/20, includes <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU community repository</strong> enabled by default.</span>
+                    <span class="lang-it">Desktop environment ultra-leggero basato su GTK. Progettato per essere veloce all'avvio e parco nei consumi di CPU e RAM. La scelta ideale per hardware datato, vecchi notebook o macchine virtuali.</span>
+                    <span class="lang-en">Ultra-lightweight GTK-based desktop environment. Designed to boot fast and keep CPU and RAM usage minimal. The ideal choice for older hardware, old laptops or virtual machines.</span>
                 </p>
                 <div class="rcard-divider"></div>
                 <ul class="rcard-features feat-lxde">
-                    <li><span class="lang-it">Prima ISO ufficiale di CalamaroOS LXDE</span><span class="lang-en">First official CalamaroOS LXDE ISO</span></li>
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 20/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/20</span></li>
-                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
-                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
-                    <li><span class="lang-it">Desktop GTK ultra-leggero · EXT4 / BTRFS / XFS / F2FS</span><span class="lang-en">Ultra-lightweight GTK desktop · EXT4 / BTRFS / XFS / F2FS</span></li>
-                    <li><span class="lang-it">Repository GURU · Flatpak · Calamares</span><span class="lang-en">GURU repository · Flatpak · Calamares</span></li>
+                    <li><span class="lang-it">Ultra-leggero · consumi minimi</span><span class="lang-en">Ultra-lightweight · minimal usage</span></li>
+                    <li><span class="lang-it">Perfetto per hardware datato</span><span class="lang-en">Perfect for older hardware</span></li>
+                    <li><span class="lang-it">Reattivo anche su VM</span><span class="lang-en">Responsive even on VMs</span></li>
                 </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS-Lxde-20260620.zip/download" class="dl-btn dl-lxde" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS LXDE</span>
-                    <span class="lang-en">Download CalamaroOS LXDE</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
-            </div>
-
-            <!-- ══ XFCE ══ -->
-            <div class="rcard rcard-xfce">
-                <span class="rcard-badge badge-xfce"><span class="lang-it">✦ Aggiornato · 2026.06.04</span><span class="lang-en">✦ Updated · 2026.06.04</span></span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🪟</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-xfce">XFCE Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.06.04</p>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Nuova release sincronizzata con gli ultimi aggiornamenti Gentoo al 04/06/2026. Include il <strong>fix di OS Prober</strong>, il supporto alla <strong>cifratura del disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default per ampliare i pacchetti disponibili. Edizione GTK3 leggera e veloce.</span>
-                    <span class="lang-en">New release synchronized with the latest Gentoo updates as of 2026/06/04. Includes the <strong>OS Prober fix</strong>, <strong>disk encryption</strong> support during installation and the <strong>GURU community repository</strong> enabled by default to widen available packages. Lightweight and fast GTK3 edition.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-xfce">
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 04/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/04</span></li>
-                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
-                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
-                    <li><span class="lang-it">Repository GURU della community</span><span class="lang-en">GURU community repository</span></li>
-                    <li><span class="lang-it">Desktop GTK3 · Flatpak · Calamares</span><span class="lang-en">GTK3 desktop · Flatpak · Calamares</span></li>
-                </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS-Xfce-20260604-1836.zip/download" class="dl-btn dl-xfce" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS XFCE</span>
-                    <span class="lang-en">Download CalamaroOS XFCE</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
-            </div>
-
-            <!-- ══ CINNAMON ══ -->
-            <div class="rcard rcard-cinnamon">
-                <span class="rcard-badge badge-cinnamon"><span class="lang-it">✦ NEW · 2026.06.04</span><span class="lang-en">✦ NEW · 2026.06.04</span></span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🍂</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-cinnamon">Cinnamon Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.06.04</p>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Prima release ufficiale dell'edizione <strong>Cinnamon</strong>! Desktop moderno e familiare, basato su GNOME 3 ma con un'esperienza classica e intuitiva. Sincronizzato con Gentoo al 04/06/2026, include <strong>OS Prober</strong>, <strong>cifratura del disco</strong> in installazione e il <strong>repository GURU</strong> della community Gentoo abilitato di default.</span>
-                    <span class="lang-en">First official release of the <strong>Cinnamon</strong> edition! Modern and familiar desktop, based on GNOME 3 but with a classic, intuitive experience. Synchronized with Gentoo as of 2026/06/04, includes <strong>OS Prober</strong>, <strong>disk encryption</strong> at install and the <strong>GURU community repository</strong> enabled by default.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-cinnamon">
-                    <li><span class="lang-it">Prima ISO ufficiale di CalamaroOS Cinnamon</span><span class="lang-en">First official CalamaroOS Cinnamon ISO</span></li>
-                    <li><span class="lang-it">Sincronizzato con Gentoo al 04/06/2026</span><span class="lang-en">Synced with Gentoo to 2026/06/04</span></li>
-                    <li><span class="lang-it">Cifratura disco in installazione</span><span class="lang-en">Disk encryption at install</span></li>
-                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
-                    <li><span class="lang-it">Repository GURU · Flatpak · Calamares</span><span class="lang-en">GURU repository · Flatpak · Calamares</span></li>
-                </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/CalamaroOS-Cinnamon-20260604-0746.zip/download" class="dl-btn dl-cinnamon" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS Cinnamon</span>
-                    <span class="lang-en">Download CalamaroOS Cinnamon</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
             </div>
 
             <!-- ══ LXQt ══ -->
             <div class="rcard rcard-lxqt">
-                <span class="rcard-badge badge-lxqt"><span class="lang-it">● 2026.05.10</span><span class="lang-en">● 2026.05.10</span></span>
+                <span class="init-pill init-systemd">⚙️ Systemd</span>
                 <div class="rcard-header">
                     <div class="rcard-icon">⚡</div>
                     <div class="rcard-title-group">
-                        <h2 class="rcard-name name-lxqt">LXQt Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.05.10</p>
+                        <h2 class="rcard-name name-lxqt">LXQt</h2>
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">L'edizione più leggera e reattiva della famiglia CalamaroOS, basata sul framework Qt. Ideale per hardware datato o macchine virtuali. <em>In aggiornamento: a breve sarà rilasciata la versione 2026.06 con cifratura disco e repository GURU.</em></span>
-                    <span class="lang-en">The lightest and most responsive edition in the CalamaroOS family, based on the Qt framework. Ideal for older hardware or virtual machines. <em>Being updated: a 2026.06 release with disk encryption and GURU repository is coming soon.</em></span>
+                    <span class="lang-it">L'edizione più leggera e reattiva della famiglia, basata sul framework Qt. Combina la leggerezza di LXDE con un'interfaccia moderna e pulita. Ottima per chi cerca velocità senza rinunciare a un aspetto contemporaneo.</span>
+                    <span class="lang-en">The lightest and most responsive edition in the family, based on the Qt framework. Combines LXDE-level lightness with a modern, clean interface. Great for those seeking speed without sacrificing a contemporary look.</span>
                 </p>
                 <div class="rcard-divider"></div>
                 <ul class="rcard-features feat-lxqt">
-                    <li><span class="lang-it">Ambiente desktop Qt ultra-leggero</span><span class="lang-en">Ultra-lightweight Qt desktop</span></li>
-                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
-                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
-                    <li>Calamares graphical installer</li>
+                    <li><span class="lang-it">Framework Qt · aspetto moderno</span><span class="lang-en">Qt framework · modern look</span></li>
+                    <li><span class="lang-it">Consumi ridotti · avvio rapido</span><span class="lang-en">Low usage · fast boot</span></li>
+                    <li><span class="lang-it">Ideale per hardware modesto</span><span class="lang-en">Ideal for modest hardware</span></li>
                 </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-lxqt" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS LXQt</span>
-                    <span class="lang-en">Download CalamaroOS LXQt</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
-                </p>
             </div>
 
             <!-- ══ MATE ══ -->
             <div class="rcard rcard-mate">
-                <span class="rcard-badge badge-mate"><span class="lang-it">● 2026.05.08</span><span class="lang-en">● 2026.05.08</span></span>
+                <span class="init-pill init-systemd">⚙️ Systemd</span>
                 <div class="rcard-header">
                     <div class="rcard-icon">🌿</div>
                     <div class="rcard-title-group">
-                        <h2 class="rcard-name name-mate">MATE Desktop</h2>
-                        <p class="rcard-date">CalamaroOS 2026.05.08</p>
+                        <h2 class="rcard-name name-mate">MATE</h2>
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">L'ambiente classico per eccellenza, nato come fork di GNOME 2. Intuitivo, leggero e collaudato nel tempo. <em>In aggiornamento: a breve sarà rilasciata la versione 2026.06 con cifratura disco e repository GURU.</em></span>
-                    <span class="lang-en">The classic environment par excellence, born as a GNOME 2 fork. Intuitive, lightweight and battle-tested. <em>Being updated: a 2026.06 release with disk encryption and GURU repository is coming soon.</em></span>
+                    <span class="lang-it">L'ambiente classico per eccellenza, nato come fork di GNOME 2. Intuitivo fin dal primo avvio, leggero nelle risorse e collaudato nel tempo. Perfetto per chi cerca stabilità assoluta e un workflow familiare e produttivo.</span>
+                    <span class="lang-en">The classic environment par excellence, born as a GNOME 2 fork. Intuitive from the very first boot, light on resources and battle-tested over time. Perfect for those seeking absolute stability and a familiar, productive workflow.</span>
                 </p>
                 <div class="rcard-divider"></div>
                 <ul class="rcard-features feat-mate">
-                    <li><span class="lang-it">Desktop GNOME 2 — classico e stabile</span><span class="lang-en">GNOME 2 desktop — classic and stable</span></li>
-                    <li><span class="lang-it">OS Prober · /boot permanente · 1 GB</span><span class="lang-en">OS Prober · /boot permanent · 1 GB</span></li>
-                    <li>Flatpak · EXT4 / BTRFS / XFS / F2FS</li>
-                    <li>Calamares graphical installer</li>
+                    <li><span class="lang-it">Desktop GNOME 2 · classico e stabile</span><span class="lang-en">GNOME 2 desktop · classic and stable</span></li>
+                    <li><span class="lang-it">Workflow tradizionale e produttivo</span><span class="lang-en">Traditional, productive workflow</span></li>
+                    <li><span class="lang-it">Basso consumo di risorse</span><span class="lang-en">Low resource usage</span></li>
                 </ul>
-                <a href="https://sourceforge.net/projects/calamaroos/files/latest/download" class="dl-btn dl-mate" target="_blank">
-                    <span>⬇</span>
-                    <span class="lang-it">Scarica CalamaroOS MATE</span>
-                    <span class="lang-en">Download CalamaroOS MATE</span>
-                </a>
-                <p class="rcard-note">
-                    <span class="lang-it">Password sudo/root: <code>calamaroos</code></span>
-                    <span class="lang-en">Sudo/root password: <code>calamaroos</code></span>
+            </div>
+
+            <!-- ══ KDE PLASMA ══ -->
+            <div class="rcard rcard-plasma">
+                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🖥️</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-plasma">KDE Plasma</h2>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Desktop moderno e ricco di funzionalità. KDE Plasma offre animazioni fluide, altissima personalizzazione, Discover per la gestione grafica dei pacchetti e supporto completo ai font CJK. È l'unica edizione disponibile sia in versione systemd che OpenRC.</span>
+                    <span class="lang-en">Modern, feature-rich desktop. KDE Plasma offers smooth animations, extreme customizability, Discover for graphical package management and full CJK font support. It is the only edition available in both systemd and OpenRC flavors.</span>
                 </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-plasma">
+                    <li><span class="lang-it">Massima personalizzazione</span><span class="lang-en">Maximum customization</span></li>
+                    <li><span class="lang-it">Discover · Flatpak · Font CJK</span><span class="lang-en">Discover · Flatpak · CJK fonts</span></li>
+                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
+                </ul>
+            </div>
+
+            <!-- ══ XFCE ══ -->
+            <div class="rcard rcard-xfce">
+                <span class="init-pill init-systemd">⚙️ Systemd</span>
+                <div class="rcard-header">
+                    <div class="rcard-icon">🪟</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-xfce">XFCE</h2>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">Il punto di equilibrio perfetto tra leggerezza e funzionalità. Basato su GTK3, veloce all'avvio e reattivo nell'uso quotidiano, ma con un livello di personalizzazione superiore alla media. La scelta bilanciata per tutti gli usi.</span>
+                    <span class="lang-en">The perfect balance between lightness and functionality. GTK3-based, fast to boot and responsive in daily use, yet with above-average customization. The balanced choice for all uses.</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-xfce">
+                    <li><span class="lang-it">GTK3 · veloce e personalizzabile</span><span class="lang-en">GTK3 · fast and customizable</span></li>
+                    <li><span class="lang-it">Ottimo per hardware datato</span><span class="lang-en">Great for older hardware</span></li>
+                    <li><span class="lang-it">Bilanciato tra leggerezza e completezza</span><span class="lang-en">Balanced between lightness and completeness</span></li>
+                </ul>
             </div>
 
 
@@ -809,20 +1072,69 @@
             box-shadow: 0 8px 32px rgba(0,170,255,0.12);
         ">
             <div style="display:flex;align-items:flex-start;gap:16px;">
-                <span style="font-size:1.7rem;flex-shrink:0;">🛠️</span>
+                <span style="font-size:1.7rem;flex-shrink:0;">✅</span>
                 <div style="flex:1;">
                     <h3 style="color:#7fd4ff;font-size:1.05rem;font-weight:800;margin:0 0 10px;letter-spacing:0.02em;">
-                        <span class="lang-it">Lavori in corso</span>
-                        <span class="lang-en">Work in progress</span>
+                        <span class="lang-it">Tutte le edizioni allineate · Luglio 2026</span>
+                        <span class="lang-en">All editions aligned · July 2026</span>
                     </h3>
                     <p style="font-size:0.95rem;color:#a8c8e0;line-height:1.7;margin:0;">
                         <span class="lang-it">
-                            È partita la nuova linea <strong style="color:#a3adf0">OpenRC</strong> di CalamaroOS: le stesse edizioni, con init OpenRC in alternativa a systemd. Con <strong style="color:#a3adf0">Plasma OpenRC</strong> il primo tassello è pronto; il prossimo obiettivo è <strong style="color:#5de89a">XFCE OpenRC</strong>, per poi estendere progressivamente OpenRC a <strong>tutti gli altri ambienti desktop</strong> come traguardo a lungo termine — sempre affiancato alle versioni systemd. In arrivo anche l'aggiornamento di <strong style="color:#c39be0">LXQt</strong> e <strong style="color:#f0a050">MATE</strong> all'ultima base.
+                            Tutte le ISO sono state riallineate a luglio 2026 con gli ultimi aggiornamenti Gentoo. Feature comuni: cifratura disco in installazione, fix OS Prober, partizione <strong>/boot</strong> permanente da 1 GB, installer grafico Calamares, Flatpak, EXT4/BTRFS/XFS/F2FS e <a href="https://wiki.gentoo.org/wiki/Project:GURU" target="_blank" style="color:#7fd4ff;text-decoration:underline;">repository GURU</a> della community abilitato di default.
                         </span>
                         <span class="lang-en">
-                            The new <strong style="color:#a3adf0">OpenRC</strong> line of CalamaroOS has begun: the same editions, with OpenRC init as an alternative to systemd. With <strong style="color:#a3adf0">Plasma OpenRC</strong> the first piece is ready; the next target is <strong style="color:#5de89a">XFCE OpenRC</strong>, then OpenRC will progressively extend to <strong>all other desktop environments</strong> as a long-term goal — always alongside the systemd versions. Updates for <strong style="color:#c39be0">LXQt</strong> and <strong style="color:#f0a050">MATE</strong> to the latest base are also on the way.
+                            All ISOs have been realigned in July 2026 with the latest Gentoo updates. Common features: disk encryption at install, OS Prober fix, permanent <strong>/boot</strong> at 1 GB, Calamares graphical installer, Flatpak, EXT4/BTRFS/XFS/F2FS and the <a href="https://wiki.gentoo.org/wiki/Project:GURU" target="_blank" style="color:#7fd4ff;text-decoration:underline;">GURU community repository</a> enabled by default.
                         </span>
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ ROADMAP / FUTURO ══ -->
+    <section style="max-width:920px;margin:50px auto 0;padding:0 4%;">
+        <div style="
+            position: relative;
+            background: rgba(20,12,40,0.85);
+            border: 1.5px solid rgba(155,89,182,0.45);
+            border-radius: 18px;
+            padding: 30px 32px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 8px 32px rgba(155,89,182,0.15);
+            overflow: hidden;
+        ">
+            <!-- riflesso interno -->
+            <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,rgba(200,168,240,0.25),transparent);"></div>
+
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+                <span style="font-size:1.4rem;">🚀</span>
+                <span style="font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b59ee0;background:rgba(155,89,182,0.15);border:1px solid rgba(155,89,182,0.4);padding:4px 12px;border-radius:20px;">
+                    <span class="lang-it">Roadmap · Prossimi sviluppi</span>
+                    <span class="lang-en">Roadmap · Next developments</span>
+                </span>
+            </div>
+
+            <h3 style="color:#c8a8f0;font-size:1.4rem;font-weight:800;margin:0 0 14px;letter-spacing:0.01em;text-shadow:0 2px 12px rgba(155,89,182,0.4);">
+                <span class="lang-it">OpenRC · Espansione in corso</span>
+                <span class="lang-en">OpenRC · Expansion in progress</span>
+            </h3>
+
+            <p style="font-size:0.97rem;color:#c0b8d0;line-height:1.75;margin:0 0 22px;">
+                <span class="lang-it">La prima edizione OpenRC è ora disponibile: <strong style="color:#c8a8f0">Plasma OpenRC</strong>. Stiamo lavorando per portare l'alternativa a systemd anche sugli altri ambienti desktop, iniziando da XFCE. Una scelta in più per chi preferisce un approccio più tradizionale e minimale alla gestione dei servizi di sistema.</span>
+                <span class="lang-en">The first OpenRC edition is now available: <strong style="color:#c8a8f0">Plasma OpenRC</strong>. We are working to bring the systemd alternative to other desktop environments, starting with XFCE. One more choice for those who prefer a more traditional, minimal approach to system service management.</span>
+            </p>
+
+            <!-- Mini roadmap -->
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:center;margin-top:18px;">
+                <div style="display:flex;align-items:center;gap:10px;background:rgba(0,170,255,0.08);border:1px solid rgba(0,170,255,0.4);border-radius:12px;padding:10px 18px;">
+                    <span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0099ee,#006bb5);color:#fff;font-weight:800;font-size:0.85rem;align-items:center;justify-content:center;">1</span>
+                    <span style="color:#7fd4ff;font-weight:700;font-size:0.95rem;">Plasma OpenRC ✓</span>
+                </div>
+                <span style="color:#b59ee0;font-size:1.2rem;">→</span>
+                <div style="display:flex;align-items:center;gap:10px;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.4);border-radius:12px;padding:10px 18px;">
+                    <span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.85rem;align-items:center;justify-content:center;">2</span>
+                    <span style="color:#5de89a;font-weight:700;font-size:0.95rem;">XFCE OpenRC</span>
                 </div>
             </div>
         </div>
