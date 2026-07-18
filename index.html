@@ -1181,7 +1181,7 @@
                         <span class="lang-en">🌌 The course of CalamaroOS</span>
                     </span>
                     <h2 class="showcase-title">
-                        <span class="lang-it">Naviga la potenza di Gentoo, guidato dalle <em>stelle</em></span>
+                        <span class="lang-it">Naviga con la potenza di Gentoo, guidato dalle <em>stelle</em></span>
                         <span class="lang-en">Sail the power of Gentoo, guided by the <em>stars</em></span>
                     </h2>
                     <p class="showcase-text">
@@ -1366,8 +1366,8 @@
                     <span class="lang-en">Gentoo's historic, lightweight init system. Shell script-based, simple, transparent and minimal in resource usage. Perfect for those who prefer a classic, no-frills approach.</span>
                 </p>
                 <div class="init-availability">
-                    <span class="lang-it"><strong>Attualmente disponibile:</strong><br>KDE Plasma<br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
-                    <span class="lang-en"><strong>Currently available:</strong><br>KDE Plasma<br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
+                    <span class="lang-it"><strong>Attualmente disponibili:</strong><br>KDE Plasma · XFCE<br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
+                    <span class="lang-en"><strong>Currently available:</strong><br>KDE Plasma · XFCE<br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
                 </div>
                 <a href="https://sourceforge.net/projects/calamaroos/files/openrc/" class="init-btn" target="_blank">
                     <span>⬇</span>
@@ -1527,7 +1527,7 @@
 
             <!-- ══ XFCE ══ -->
             <div class="rcard rcard-xfce">
-                <span class="init-pill init-systemd">⚙️ Systemd</span>
+                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
                 <div class="rcard-header">
                     <div class="rcard-icon">🪟</div>
                     <div class="rcard-title-group">
@@ -1543,6 +1543,7 @@
                     <li><span class="lang-it">GTK3 · veloce e personalizzabile</span><span class="lang-en">GTK3 · fast and customizable</span></li>
                     <li><span class="lang-it">Ottimo per hardware datato</span><span class="lang-en">Great for older hardware</span></li>
                     <li><span class="lang-it">Bilanciato tra leggerezza e completezza</span><span class="lang-en">Balanced between lightness and completeness</span></li>
+                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
                 </ul>
             </div>
 
@@ -1608,25 +1609,38 @@
             </div>
 
             <h3 style="color:#c8a8f0;font-size:1.4rem;font-weight:800;margin:0 0 14px;letter-spacing:0.01em;text-shadow:0 2px 12px rgba(155,89,182,0.4);">
-                <span class="lang-it">OpenRC · Espansione in corso</span>
-                <span class="lang-en">OpenRC · Expansion in progress</span>
+                <span class="lang-it">OpenRC · L'espansione continua</span>
+                <span class="lang-en">OpenRC · The expansion continues</span>
             </h3>
 
             <p style="font-size:0.97rem;color:#c0b8d0;line-height:1.75;margin:0 0 22px;">
-                <span class="lang-it">La prima edizione OpenRC è ora disponibile: <strong style="color:#c8a8f0">Plasma OpenRC</strong>. Stiamo lavorando per portare l'alternativa a systemd anche sugli altri ambienti desktop, iniziando da XFCE. Una scelta in più per chi preferisce un approccio più tradizionale e minimale alla gestione dei servizi di sistema.</span>
-                <span class="lang-en">The first OpenRC edition is now available: <strong style="color:#c8a8f0">Plasma OpenRC</strong>. We are working to bring the systemd alternative to other desktop environments, starting with XFCE. One more choice for those who prefer a more traditional, minimal approach to system service management.</span>
+                <span class="lang-it">Le edizioni OpenRC disponibili sono ora due: <strong style="color:#c8a8f0">Plasma</strong> e <strong style="color:#c8a8f0">XFCE</strong>. Stiamo lavorando su <strong style="color:#c8a8f0">MATE</strong> e <strong style="color:#c8a8f0">LXQt</strong>, per poi proseguire con LXDE, Cinnamon e GNOME. L'obiettivo è portare l'alternativa a systemd su tutti gli ambienti desktop, per chi preferisce un approccio più tradizionale e minimale.</span>
+                <span class="lang-en">Two OpenRC editions are now available: <strong style="color:#c8a8f0">Plasma</strong> and <strong style="color:#c8a8f0">XFCE</strong>. We are working on <strong style="color:#c8a8f0">MATE</strong> and <strong style="color:#c8a8f0">LXQt</strong>, then continuing with LXDE, Cinnamon and GNOME. The goal is to bring the systemd alternative to every desktop environment, for those who prefer a more traditional, minimal approach.</span>
             </p>
 
             <!-- Mini roadmap -->
-            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:center;margin-top:18px;">
-                <div style="display:flex;align-items:center;gap:10px;background:rgba(0,170,255,0.08);border:1px solid rgba(0,170,255,0.4);border-radius:12px;padding:10px 18px;">
-                    <span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0099ee,#006bb5);color:#fff;font-weight:800;font-size:0.85rem;align-items:center;justify-content:center;">1</span>
-                    <span style="color:#7fd4ff;font-weight:700;font-size:0.95rem;">Plasma OpenRC ✓</span>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:center;margin-top:20px;">
+                <!-- DONE: Plasma -->
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
+                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
+                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">Plasma</span>
                 </div>
-                <span style="color:#b59ee0;font-size:1.2rem;">→</span>
-                <div style="display:flex;align-items:center;gap:10px;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.4);border-radius:12px;padding:10px 18px;">
-                    <span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.85rem;align-items:center;justify-content:center;">2</span>
-                    <span style="color:#5de89a;font-weight:700;font-size:0.95rem;">XFCE OpenRC</span>
+                <!-- DONE: XFCE -->
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
+                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
+                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">XFCE</span>
+                </div>
+                <span style="color:#b59ee0;font-size:1.1rem;">→</span>
+                <!-- IN PROGRESS: MATE, LXQt -->
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.5);border-radius:12px;padding:9px 16px;box-shadow:0 0 16px rgba(155,89,182,0.2);">
+                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#8e44ad,#6c3483);color:#fff;font-weight:800;font-size:0.7rem;align-items:center;justify-content:center;">⚙</span>
+                    <span style="color:#c8a8f0;font-weight:700;font-size:0.92rem;">MATE · LXQt</span>
+                </div>
+                <span style="color:#667;font-size:1.1rem;">→</span>
+                <!-- PLANNED: LXDE, Cinnamon, GNOME -->
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px dashed rgba(255,255,255,0.22);border-radius:12px;padding:9px 16px;">
+                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.1);color:#99a;font-weight:800;font-size:0.7rem;align-items:center;justify-content:center;">◔</span>
+                    <span style="color:#8899aa;font-weight:700;font-size:0.92rem;">LXDE · Cinnamon · GNOME</span>
                 </div>
             </div>
         </div>
