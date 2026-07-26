@@ -1121,6 +1121,144 @@
             font-size: 0.9em; font-weight: 600;
         }
 
+
+        /* ═══════════════════════════════════════════
+           NEWS TICKER (TG-style, wave background)
+        ═══════════════════════════════════════════ */
+        .ticker {
+            position: relative;
+            max-width: 1180px;
+            margin: 6px auto 0;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(0,170,255,0.3);
+            box-shadow: 0 6px 26px rgba(0,120,220,0.18);
+            text-decoration: none;
+            display: block;
+        }
+        /* wrapper to respect side padding like other sections */
+        .ticker-wrap { padding: 0 4%; max-width: 1180px; margin: 0 auto; }
+
+        /* Animated wave background under the text */
+        .ticker::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(100deg,
+                rgba(4,26,54,0.95) 0%,
+                rgba(6,40,80,0.95) 25%,
+                rgba(10,60,110,0.9) 50%,
+                rgba(6,40,80,0.95) 75%,
+                rgba(4,26,54,0.95) 100%);
+            background-size: 200% 100%;
+            animation: tickerWaveBg 8s ease-in-out infinite;
+            z-index: 0;
+        }
+        @keyframes tickerWaveBg {
+            0%, 100% { background-position: 0% 50%; }
+            50%      { background-position: 100% 50%; }
+        }
+
+        /* Soft moving "water" sheen */
+        .ticker::after {
+            content: '';
+            position: absolute; left: 0; right: 0; bottom: 0; height: 60%;
+            background: radial-gradient(ellipse 50% 120% at 50% 130%, rgba(0,180,255,0.18), transparent 70%);
+            animation: tickerGlow 6s ease-in-out infinite alternate;
+            z-index: 0; pointer-events: none;
+        }
+        @keyframes tickerGlow {
+            0%   { opacity: 0.5; transform: translateX(-6%); }
+            100% { opacity: 0.9; transform: translateX(6%); }
+        }
+
+        .ticker-inner {
+            position: relative;
+            display: flex; align-items: center;
+            z-index: 2;
+            height: 46px;
+        }
+        /* Fixed label on the left */
+        .ticker-label {
+            flex-shrink: 0;
+            display: flex; align-items: center; gap: 7px;
+            height: 100%;
+            padding: 0 16px;
+            background: linear-gradient(135deg, #0099ee, #006bb5);
+            color: #fff; font-weight: 800;
+            font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+            z-index: 3;
+            box-shadow: 4px 0 14px rgba(0,0,0,0.3);
+        }
+        .ticker-label .live-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #7dffb0;
+            box-shadow: 0 0 0 0 rgba(125,255,176,0.7);
+            animation: liveDot 1.8s infinite;
+        }
+        @keyframes liveDot {
+            0%   { box-shadow: 0 0 0 0 rgba(125,255,176,0.6); }
+            70%  { box-shadow: 0 0 0 8px rgba(125,255,176,0); }
+            100% { box-shadow: 0 0 0 0 rgba(125,255,176,0); }
+        }
+
+        /* Scrolling marquee */
+        .ticker-track-wrap {
+            flex: 1; overflow: hidden; height: 100%;
+            display: flex; align-items: center;
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+        }
+        .ticker-track {
+            display: inline-flex; align-items: center;
+            white-space: nowrap;
+            will-change: transform;
+            animation: tickerScroll 26s linear infinite;
+        }
+        .ticker:hover .ticker-track { animation-play-state: paused; }
+        @keyframes tickerScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ticker-item {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 0 26px;
+            font-size: 0.92rem; color: #dbeafe; font-weight: 600;
+        }
+        .ticker-item .sep { color: #4fb8ff; font-size: 1rem; }
+        .ticker-item strong { color: #fff; }
+        .ticker-item .new-badge {
+            background: rgba(125,255,176,0.15);
+            border: 1px solid rgba(125,255,176,0.5);
+            color: #7dffb0; font-weight: 800;
+            font-size: 0.72rem; letter-spacing: 0.05em;
+            padding: 2px 9px; border-radius: 20px;
+        }
+
+        /* SVG wave bottom border */
+        .ticker-wave {
+            position: absolute; left: 0; right: 0; bottom: -1px;
+            width: 100%; height: 10px; z-index: 2; pointer-events: none;
+            display: block;
+        }
+        .ticker-wave path {
+            fill: rgba(0,170,255,0.35);
+            animation: waveShift 5s linear infinite;
+        }
+        @keyframes waveShift {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-88px); }
+        }
+
+        @media (max-width: 600px) {
+            .ticker-label { font-size: 0.68rem; padding: 0 11px; }
+            .ticker-item { font-size: 0.82rem; padding: 0 18px; }
+            .ticker-inner { height: 42px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation-duration: 60s; }
+            .ticker::before, .ticker::after, .ticker-wave path { animation: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -1167,6 +1305,38 @@
             <span class="pill">64-bit</span>
         </div>
     </header>
+
+    <!-- ══ NEWS TICKER ══ -->
+    <div class="ticker-wrap">
+        <a href="https://sourceforge.net/projects/calamaroos/files/" target="_blank" class="ticker" aria-label="Ultime novità CalamaroOS">
+            <div class="ticker-inner">
+                <span class="ticker-label"><span class="live-dot"></span>
+                    <span class="lang-it">Novità</span><span class="lang-en">News</span>
+                </span>
+                <div class="ticker-track-wrap">
+                    <div class="ticker-track">
+                        <span class="ticker-group">
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it"><strong>Ultima uscita:</strong>&nbsp;LXDE OpenRC — 26 luglio 2026</span><span class="lang-en"><strong>Latest release:</strong>&nbsp;LXDE OpenRC — July 26, 2026</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">5 edizioni OpenRC disponibili: Plasma · XFCE · MATE · LXQt · LXDE</span><span class="lang-en">5 OpenRC editions available: Plasma · XFCE · MATE · LXQt · LXDE</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">In arrivo: Cinnamon e GNOME OpenRC</span><span class="lang-en">Coming soon: Cinnamon and GNOME OpenRC</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Tutte le 7 edizioni systemd allineate a luglio 2026</span><span class="lang-en">All 7 systemd editions aligned to July 2026</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
+                        </span>
+                        <span class="ticker-group">
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it"><strong>Ultima uscita:</strong>&nbsp;LXDE OpenRC — 26 luglio 2026</span><span class="lang-en"><strong>Latest release:</strong>&nbsp;LXDE OpenRC — July 26, 2026</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">5 edizioni OpenRC disponibili: Plasma · XFCE · MATE · LXQt · LXDE</span><span class="lang-en">5 OpenRC editions available: Plasma · XFCE · MATE · LXQt · LXDE</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">In arrivo: Cinnamon e GNOME OpenRC</span><span class="lang-en">Coming soon: Cinnamon and GNOME OpenRC</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Tutte le 7 edizioni systemd allineate a luglio 2026</span><span class="lang-en">All 7 systemd editions aligned to July 2026</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <svg class="ticker-wave" viewBox="0 0 88 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 5 Q 11 0 22 5 T 44 5 T 66 5 T 88 5 T 110 5 V10 H0 Z"></path>
+            </svg>
+        </a>
+    </div>
 
     <!-- ══ CINEMATIC SHOWCASE ══ -->
     <section class="showcase">
@@ -1366,8 +1536,8 @@
                     <span class="lang-en">Gentoo's historic, lightweight init system. Shell script-based, simple, transparent and minimal in resource usage. Perfect for those who prefer a classic, no-frills approach.</span>
                 </p>
                 <div class="init-availability">
-                    <span class="lang-it"><strong>Attualmente disponibili:</strong><br>KDE Plasma · XFCE · MATE · LXQt<br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
-                    <span class="lang-en"><strong>Currently available:</strong><br>KDE Plasma · XFCE · MATE · LXQt<br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
+                    <span class="lang-it"><strong>Attualmente disponibili:</strong><br>KDE Plasma · XFCE · MATE · LXQt · LXDE<br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
+                    <span class="lang-en"><strong>Currently available:</strong><br>KDE Plasma · XFCE · MATE · LXQt · LXDE<br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
                 </div>
                 <a href="https://sourceforge.net/projects/calamaroos/files/openrc/" class="init-btn" target="_blank">
                     <span>⬇</span>
@@ -1443,7 +1613,7 @@
 
             <!-- ══ LXDE ══ -->
             <div class="rcard rcard-lxde">
-                <span class="init-pill init-systemd">⚙️ Systemd</span>
+                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
                 <div class="rcard-header">
                     <div class="rcard-icon">🪶</div>
                     <div class="rcard-title-group">
@@ -1459,6 +1629,7 @@
                     <li><span class="lang-it">Ultra-leggero · consumi minimi</span><span class="lang-en">Ultra-lightweight · minimal usage</span></li>
                     <li><span class="lang-it">Perfetto per hardware datato</span><span class="lang-en">Perfect for older hardware</span></li>
                     <li><span class="lang-it">Reattivo anche su VM</span><span class="lang-en">Responsive even on VMs</span></li>
+                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
                 </ul>
             </div>
 
@@ -1616,8 +1787,8 @@
             </h3>
 
             <p style="font-size:0.97rem;color:#c0b8d0;line-height:1.75;margin:0 0 22px;">
-                <span class="lang-it">Le edizioni OpenRC disponibili sono ora quattro: <strong style="color:#c8a8f0">Plasma</strong>, <strong style="color:#c8a8f0">XFCE</strong>, <strong style="color:#c8a8f0">MATE</strong> e <strong style="color:#c8a8f0">LXQt</strong>. Proseguiamo ora con LXDE, Cinnamon e GNOME. L'obiettivo è portare l'alternativa a systemd su tutti gli ambienti desktop, per chi preferisce un approccio più tradizionale e minimale.</span>
-                <span class="lang-en">Four OpenRC editions are now available: <strong style="color:#c8a8f0">Plasma</strong>, <strong style="color:#c8a8f0">XFCE</strong>, <strong style="color:#c8a8f0">MATE</strong> and <strong style="color:#c8a8f0">LXQt</strong>. We now continue with LXDE, Cinnamon and GNOME. The goal is to bring the systemd alternative to every desktop environment, for those who prefer a more traditional, minimal approach.</span>
+                <span class="lang-it">Le edizioni OpenRC disponibili sono ora cinque: <strong style="color:#c8a8f0">Plasma</strong>, <strong style="color:#c8a8f0">XFCE</strong>, <strong style="color:#c8a8f0">MATE</strong>, <strong style="color:#c8a8f0">LXQt</strong> e <strong style="color:#c8a8f0">LXDE</strong>. Restano solo Cinnamon e GNOME. L'obiettivo è portare l'alternativa a systemd su tutti gli ambienti desktop, per chi preferisce un approccio più tradizionale e minimale.</span>
+                <span class="lang-en">Five OpenRC editions are now available: <strong style="color:#c8a8f0">Plasma</strong>, <strong style="color:#c8a8f0">XFCE</strong>, <strong style="color:#c8a8f0">MATE</strong>, <strong style="color:#c8a8f0">LXQt</strong> and <strong style="color:#c8a8f0">LXDE</strong>. Only Cinnamon and GNOME remain. The goal is to bring the systemd alternative to every desktop environment, for those who prefer a more traditional, minimal approach.</span>
             </p>
 
             <!-- Mini roadmap -->
@@ -1642,11 +1813,16 @@
                     <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
                     <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">LXQt</span>
                 </div>
+                <!-- DONE: LXDE -->
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
+                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
+                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">LXDE</span>
+                </div>
                 <span style="color:#b59ee0;font-size:1.1rem;">→</span>
-                <!-- IN PROGRESS / PLANNED: LXDE, Cinnamon, GNOME -->
+                <!-- IN PROGRESS: Cinnamon, GNOME (last two) -->
                 <div style="display:flex;align-items:center;gap:8px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.5);border-radius:12px;padding:9px 16px;box-shadow:0 0 16px rgba(155,89,182,0.2);">
                     <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#8e44ad,#6c3483);color:#fff;font-weight:800;font-size:0.7rem;align-items:center;justify-content:center;">⚙</span>
-                    <span style="color:#c8a8f0;font-weight:700;font-size:0.92rem;">LXDE · Cinnamon · GNOME</span>
+                    <span style="color:#c8a8f0;font-weight:700;font-size:0.92rem;">Cinnamon · GNOME</span>
                 </div>
             </div>
         </div>
