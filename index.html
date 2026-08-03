@@ -1316,16 +1316,16 @@
                 <div class="ticker-track-wrap">
                     <div class="ticker-track">
                         <span class="ticker-group">
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it"><strong>Ultima uscita:</strong>&nbsp;LXDE OpenRC — 26 luglio 2026</span><span class="lang-en"><strong>Latest release:</strong>&nbsp;LXDE OpenRC — July 26, 2026</span></span>
-                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">5 edizioni OpenRC disponibili: Plasma · XFCE · MATE · LXQt · LXDE</span><span class="lang-en">5 OpenRC editions available: Plasma · XFCE · MATE · LXQt · LXDE</span></span>
-                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">In arrivo: Cinnamon e GNOME OpenRC</span><span class="lang-en">Coming soon: Cinnamon and GNOME OpenRC</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it ticker-latest-it"></span><span class="lang-en ticker-latest-en"></span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Tutte le 7 edizioni systemd allineate a luglio 2026</span><span class="lang-en">All 7 systemd editions aligned to July 2026</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
                         <span class="ticker-group">
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it"><strong>Ultima uscita:</strong>&nbsp;LXDE OpenRC — 26 luglio 2026</span><span class="lang-en"><strong>Latest release:</strong>&nbsp;LXDE OpenRC — July 26, 2026</span></span>
-                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">5 edizioni OpenRC disponibili: Plasma · XFCE · MATE · LXQt · LXDE</span><span class="lang-en">5 OpenRC editions available: Plasma · XFCE · MATE · LXQt · LXDE</span></span>
-                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">In arrivo: Cinnamon e GNOME OpenRC</span><span class="lang-en">Coming soon: Cinnamon and GNOME OpenRC</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it ticker-latest-it"></span><span class="lang-en ticker-latest-en"></span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Tutte le 7 edizioni systemd allineate a luglio 2026</span><span class="lang-en">All 7 systemd editions aligned to July 2026</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
@@ -1513,8 +1513,8 @@
                     <span class="lang-en">The most widely-used modern init system. Advanced service management, fast parallel startup, timers, integrated journal. The standard choice for a ready-to-use system.</span>
                 </p>
                 <div class="init-availability">
-                    <span class="lang-it"><strong>Tutte le 7 edizioni disponibili:</strong><br>Cinnamon · GNOME · LXDE · LXQt · XFCE · KDE Plasma · MATE</span>
-                    <span class="lang-en"><strong>All 7 editions available:</strong><br>Cinnamon · GNOME · LXDE · LXQt · XFCE · KDE Plasma · MATE</span>
+                    <span class="lang-it"><strong>Tutte le <span id="sysCountIt">7</span> edizioni disponibili:</strong><br><span id="sysListIt"></span></span>
+                    <span class="lang-en"><strong>All <span id="sysCountEn">7</span> editions available:</strong><br><span id="sysListEn"></span></span>
                 </div>
                 <a href="https://sourceforge.net/projects/calamaroos/files/systemd/" class="init-btn" target="_blank">
                     <span>⬇</span>
@@ -1536,8 +1536,8 @@
                     <span class="lang-en">Gentoo's historic, lightweight init system. Shell script-based, simple, transparent and minimal in resource usage. Perfect for those who prefer a classic, no-frills approach.</span>
                 </p>
                 <div class="init-availability">
-                    <span class="lang-it"><strong>Attualmente disponibili:</strong><br>KDE Plasma · XFCE · MATE · LXQt · LXDE<br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
-                    <span class="lang-en"><strong>Currently available:</strong><br>KDE Plasma · XFCE · MATE · LXQt · LXDE<br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
+                    <span class="lang-it"><strong>Attualmente disponibili:</strong><br><span id="openrcListIt"></span><br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
+                    <span class="lang-en"><strong>Currently available:</strong><br><span id="openrcListEn"></span><br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
                 </div>
                 <a href="https://sourceforge.net/projects/calamaroos/files/openrc/" class="init-btn" target="_blank">
                     <span>⬇</span>
@@ -1568,159 +1568,7 @@
         </div>
 
         <div class="releases-grid">
-
-            <!-- ══ CINNAMON ══ -->
-            <div class="rcard rcard-cinnamon">
-                <span class="init-pill init-systemd">⚙️ Systemd</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🍂</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-cinnamon">Cinnamon</h2>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Desktop moderno e familiare basato su GNOME 3, con un'esperienza classica e intuitiva. Interfaccia elegante, applicazioni ben integrate e un'ottima curva di apprendimento per chi arriva da altri sistemi operativi.</span>
-                    <span class="lang-en">Modern and familiar desktop based on GNOME 3, with a classic and intuitive experience. Elegant interface, well-integrated applications and a smooth learning curve for those coming from other operating systems.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-cinnamon">
-                    <li><span class="lang-it">Interfaccia classica su base moderna</span><span class="lang-en">Classic interface on modern base</span></li>
-                    <li><span class="lang-it">Applicazioni integrate curate (Nemo, ecc.)</span><span class="lang-en">Curated integrated apps (Nemo, etc.)</span></li>
-                    <li><span class="lang-it">Ottimo per utenti che arrivano da Windows</span><span class="lang-en">Great for users coming from Windows</span></li>
-                </ul>
-            </div>
-
-            <!-- ══ GNOME ══ -->
-            <div class="rcard rcard-gnome">
-                <span class="init-pill init-systemd">⚙️ Systemd</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">👣</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-gnome">GNOME</h2>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Il desktop environment moderno per eccellenza: interfaccia elegante, pulita e coerente, progettata per un flusso di lavoro fluido e senza distrazioni. Ideale per chi cerca un'esperienza raffinata e al passo coi tempi.</span>
-                    <span class="lang-en">The modern desktop environment par excellence: elegant, clean and consistent interface designed for a smooth, distraction-free workflow. Ideal for those seeking a refined, up-to-date experience.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-gnome">
-                    <li><span class="lang-it">Design essenziale e minimalista</span><span class="lang-en">Essential and minimalist design</span></li>
-                    <li><span class="lang-it">Wayland nativo, animazioni fluide</span><span class="lang-en">Native Wayland, smooth animations</span></li>
-                    <li><span class="lang-it">Focus totale sulla produttività</span><span class="lang-en">Total focus on productivity</span></li>
-                </ul>
-            </div>
-
-            <!-- ══ LXDE ══ -->
-            <div class="rcard rcard-lxde">
-                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🪶</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-lxde">LXDE</h2>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Desktop environment ultra-leggero basato su GTK. Progettato per essere veloce all'avvio e parco nei consumi di CPU e RAM. La scelta ideale per hardware datato, vecchi notebook o macchine virtuali.</span>
-                    <span class="lang-en">Ultra-lightweight GTK-based desktop environment. Designed to boot fast and keep CPU and RAM usage minimal. The ideal choice for older hardware, old laptops or virtual machines.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-lxde">
-                    <li><span class="lang-it">Ultra-leggero · consumi minimi</span><span class="lang-en">Ultra-lightweight · minimal usage</span></li>
-                    <li><span class="lang-it">Perfetto per hardware datato</span><span class="lang-en">Perfect for older hardware</span></li>
-                    <li><span class="lang-it">Reattivo anche su VM</span><span class="lang-en">Responsive even on VMs</span></li>
-                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
-                </ul>
-            </div>
-
-            <!-- ══ LXQt ══ -->
-            <div class="rcard rcard-lxqt">
-                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">⚡</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-lxqt">LXQt</h2>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">L'edizione più leggera e reattiva della famiglia, basata sul framework Qt. Combina la leggerezza di LXDE con un'interfaccia moderna e pulita. Ottima per chi cerca velocità senza rinunciare a un aspetto contemporaneo.</span>
-                    <span class="lang-en">The lightest and most responsive edition in the family, based on the Qt framework. Combines LXDE-level lightness with a modern, clean interface. Great for those seeking speed without sacrificing a contemporary look.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-lxqt">
-                    <li><span class="lang-it">Framework Qt · aspetto moderno</span><span class="lang-en">Qt framework · modern look</span></li>
-                    <li><span class="lang-it">Consumi ridotti · avvio rapido</span><span class="lang-en">Low usage · fast boot</span></li>
-                    <li><span class="lang-it">Ideale per hardware modesto</span><span class="lang-en">Ideal for modest hardware</span></li>
-                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
-                </ul>
-            </div>
-
-            <!-- ══ MATE ══ -->
-            <div class="rcard rcard-mate">
-                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🌿</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-mate">MATE</h2>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">L'ambiente classico per eccellenza, nato come fork di GNOME 2. Intuitivo fin dal primo avvio, leggero nelle risorse e collaudato nel tempo. Perfetto per chi cerca stabilità assoluta e un workflow familiare e produttivo.</span>
-                    <span class="lang-en">The classic environment par excellence, born as a GNOME 2 fork. Intuitive from the very first boot, light on resources and battle-tested over time. Perfect for those seeking absolute stability and a familiar, productive workflow.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-mate">
-                    <li><span class="lang-it">Desktop GNOME 2 · classico e stabile</span><span class="lang-en">GNOME 2 desktop · classic and stable</span></li>
-                    <li><span class="lang-it">Workflow tradizionale e produttivo</span><span class="lang-en">Traditional, productive workflow</span></li>
-                    <li><span class="lang-it">Basso consumo di risorse</span><span class="lang-en">Low resource usage</span></li>
-                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
-                </ul>
-            </div>
-
-            <!-- ══ KDE PLASMA ══ -->
-            <div class="rcard rcard-plasma">
-                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🖥️</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-plasma">KDE Plasma</h2>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Desktop moderno e ricco di funzionalità. KDE Plasma offre animazioni fluide, altissima personalizzazione, Discover per la gestione grafica dei pacchetti e supporto completo ai font CJK. È l'unica edizione disponibile sia in versione systemd che OpenRC.</span>
-                    <span class="lang-en">Modern, feature-rich desktop. KDE Plasma offers smooth animations, extreme customizability, Discover for graphical package management and full CJK font support. It is the only edition available in both systemd and OpenRC flavors.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-plasma">
-                    <li><span class="lang-it">Massima personalizzazione</span><span class="lang-en">Maximum customization</span></li>
-                    <li><span class="lang-it">Discover · Flatpak · Font CJK</span><span class="lang-en">Discover · Flatpak · CJK fonts</span></li>
-                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
-                </ul>
-            </div>
-
-            <!-- ══ XFCE ══ -->
-            <div class="rcard rcard-xfce">
-                <span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>
-                <div class="rcard-header">
-                    <div class="rcard-icon">🪟</div>
-                    <div class="rcard-title-group">
-                        <h2 class="rcard-name name-xfce">XFCE</h2>
-                    </div>
-                </div>
-                <p class="rcard-desc">
-                    <span class="lang-it">Il punto di equilibrio perfetto tra leggerezza e funzionalità. Basato su GTK3, veloce all'avvio e reattivo nell'uso quotidiano, ma con un livello di personalizzazione superiore alla media. La scelta bilanciata per tutti gli usi.</span>
-                    <span class="lang-en">The perfect balance between lightness and functionality. GTK3-based, fast to boot and responsive in daily use, yet with above-average customization. The balanced choice for all uses.</span>
-                </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-xfce">
-                    <li><span class="lang-it">GTK3 · veloce e personalizzabile</span><span class="lang-en">GTK3 · fast and customizable</span></li>
-                    <li><span class="lang-it">Ottimo per hardware datato</span><span class="lang-en">Great for older hardware</span></li>
-                    <li><span class="lang-it">Bilanciato tra leggerezza e completezza</span><span class="lang-en">Balanced between lightness and completeness</span></li>
-                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>
-                </ul>
-            </div>
-
-
+            <!-- Le card vengono generate automaticamente da EDITIONS (vedi script in fondo) -->
         </div>
     </section>
 
@@ -1786,45 +1634,10 @@
                 <span class="lang-en">OpenRC · The expansion continues</span>
             </h3>
 
-            <p style="font-size:0.97rem;color:#c0b8d0;line-height:1.75;margin:0 0 22px;">
-                <span class="lang-it">Le edizioni OpenRC disponibili sono ora cinque: <strong style="color:#c8a8f0">Plasma</strong>, <strong style="color:#c8a8f0">XFCE</strong>, <strong style="color:#c8a8f0">MATE</strong>, <strong style="color:#c8a8f0">LXQt</strong> e <strong style="color:#c8a8f0">LXDE</strong>. Restano solo Cinnamon e GNOME. L'obiettivo è portare l'alternativa a systemd su tutti gli ambienti desktop, per chi preferisce un approccio più tradizionale e minimale.</span>
-                <span class="lang-en">Five OpenRC editions are now available: <strong style="color:#c8a8f0">Plasma</strong>, <strong style="color:#c8a8f0">XFCE</strong>, <strong style="color:#c8a8f0">MATE</strong>, <strong style="color:#c8a8f0">LXQt</strong> and <strong style="color:#c8a8f0">LXDE</strong>. Only Cinnamon and GNOME remain. The goal is to bring the systemd alternative to every desktop environment, for those who prefer a more traditional, minimal approach.</span>
-            </p>
+            <p id="roadmapText" style="font-size:0.97rem;color:#c0b8d0;line-height:1.75;margin:0 0 22px;"></p>
 
-            <!-- Mini roadmap -->
-            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:center;margin-top:20px;">
-                <!-- DONE: Plasma -->
-                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
-                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">Plasma</span>
-                </div>
-                <!-- DONE: XFCE -->
-                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
-                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">XFCE</span>
-                </div>
-                <!-- DONE: MATE -->
-                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
-                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">MATE</span>
-                </div>
-                <!-- DONE: LXQt -->
-                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
-                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">LXQt</span>
-                </div>
-                <!-- DONE: LXDE -->
-                <div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
-                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">LXDE</span>
-                </div>
-                <span style="color:#b59ee0;font-size:1.1rem;">→</span>
-                <!-- IN PROGRESS: Cinnamon, GNOME (last two) -->
-                <div style="display:flex;align-items:center;gap:8px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.5);border-radius:12px;padding:9px 16px;box-shadow:0 0 16px rgba(155,89,182,0.2);">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#8e44ad,#6c3483);color:#fff;font-weight:800;font-size:0.7rem;align-items:center;justify-content:center;">⚙</span>
-                    <span style="color:#c8a8f0;font-weight:700;font-size:0.92rem;">Cinnamon · GNOME</span>
-                </div>
-            </div>
+            <!-- Mini roadmap (auto-generata) -->
+            <div id="roadmapDiagram" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:center;margin-top:20px;"></div>
         </div>
     </section>
 
@@ -1953,6 +1766,8 @@
             document.querySelectorAll('.lang-en').forEach(el =>
                 el.style.display = lang === 'en' ? 'inline' : 'none');
         }
+        // Esposta globalmente: il motore dati la richiama dopo aver generato i contenuti
+        window.reapplyLanguage = function() { applyLanguage(currentLang); };
 
         applyLanguage('it');
 
@@ -2035,6 +1850,238 @@
                 carousel.addEventListener('mouseleave', restart);
             }
         })();
+    </script>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         MOTORE DATI CALAMAROOS
+         Per aggiornare il sito basta modificare l'array EDITIONS qui sotto.
+         Ogni edizione ha: id, nome, icona, colore, descrizioni, features,
+         e lo stato dei due init system (systemd / openrc) con data di rilascio.
+         Aggiungere/aggiornare una ISO = cambiare una riga qui.
+    ═══════════════════════════════════════════════════════════ -->
+    <script>
+    const EDITIONS = [
+        {
+            id: 'cinnamon', name: 'Cinnamon', icon: '🍂',
+            desc_it: "Desktop moderno e familiare basato su GNOME 3, con un'esperienza classica e intuitiva. Interfaccia elegante, applicazioni ben integrate e un'ottima curva di apprendimento per chi arriva da altri sistemi operativi.",
+            desc_en: "Modern and familiar desktop based on GNOME 3, with a classic and intuitive experience. Elegant interface, well-integrated applications and a smooth learning curve for those coming from other operating systems.",
+            features: [
+                ['Interfaccia classica su base moderna', 'Classic interface on modern base'],
+                ['Applicazioni integrate curate (Nemo, ecc.)', 'Curated integrated apps (Nemo, etc.)'],
+                ['Ottimo per utenti che arrivano da Windows', 'Great for users coming from Windows'],
+            ],
+            systemd: '2026-06-28', openrc: null,
+        },
+        {
+            id: 'gnome', name: 'GNOME', icon: '👣',
+            desc_it: "Il desktop environment moderno per eccellenza: interfaccia elegante, pulita e coerente, progettata per un flusso di lavoro fluido e senza distrazioni. Ideale per chi cerca un'esperienza raffinata e al passo coi tempi.",
+            desc_en: "The modern desktop environment par excellence: elegant, clean and consistent interface designed for a smooth, distraction-free workflow. Ideal for those seeking a refined, up-to-date experience.",
+            features: [
+                ['Design essenziale e minimalista', 'Essential and minimalist design'],
+                ['Wayland nativo, animazioni fluide', 'Native Wayland, smooth animations'],
+                ['Focus totale sulla produttività', 'Total focus on productivity'],
+            ],
+            systemd: '2026-06-22', openrc: null,
+        },
+        {
+            id: 'lxde', name: 'LXDE', icon: '🪶',
+            desc_it: "Desktop environment ultra-leggero basato su GTK. Progettato per essere veloce all'avvio e parco nei consumi di CPU e RAM. La scelta ideale per hardware datato, vecchi notebook o macchine virtuali.",
+            desc_en: "Ultra-lightweight GTK-based desktop environment. Designed to boot fast and keep CPU and RAM usage minimal. The ideal choice for older hardware, old laptops or virtual machines.",
+            features: [
+                ['Ultra-leggero · consumi minimi', 'Ultra-lightweight · minimal usage'],
+                ['Perfetto per hardware datato', 'Perfect for older hardware'],
+                ['Reattivo anche su VM', 'Responsive even on VMs'],
+            ],
+            systemd: '2026-06-20', openrc: '2026-07-26',
+        },
+        {
+            id: 'lxqt', name: 'LXQt', icon: '⚡',
+            desc_it: "L'edizione più leggera e reattiva della famiglia, basata sul framework Qt. Combina la leggerezza di LXDE con un'interfaccia moderna e pulita. Ottima per chi cerca velocità senza rinunciare a un aspetto contemporaneo.",
+            desc_en: "The lightest and most responsive edition in the family, based on the Qt framework. Combines LXDE-level lightness with a modern, clean interface. Great for those seeking speed without sacrificing a contemporary look.",
+            features: [
+                ['Framework Qt · aspetto moderno', 'Qt framework · modern look'],
+                ['Consumi ridotti · avvio rapido', 'Low usage · fast boot'],
+                ['Ideale per hardware modesto', 'Ideal for modest hardware'],
+            ],
+            systemd: '2026-06-06', openrc: '2026-07-25',
+        },
+        {
+            id: 'mate', name: 'MATE', icon: '🌿',
+            desc_it: "L'ambiente classico per eccellenza, nato come fork di GNOME 2. Intuitivo fin dal primo avvio, leggero nelle risorse e collaudato nel tempo. Perfetto per chi cerca stabilità assoluta e un workflow familiare e produttivo.",
+            desc_en: "The classic environment par excellence, born as a GNOME 2 fork. Intuitive from the very first boot, light on resources and battle-tested over time. Perfect for those seeking absolute stability and a familiar, productive workflow.",
+            features: [
+                ['Desktop GNOME 2 · classico e stabile', 'GNOME 2 desktop · classic and stable'],
+                ['Workflow tradizionale e produttivo', 'Traditional, productive workflow'],
+                ['Basso consumo di risorse', 'Low resource usage'],
+            ],
+            systemd: '2026-06-04', openrc: '2026-07-21',
+        },
+        {
+            id: 'plasma', name: 'KDE Plasma', icon: '🖥️',
+            desc_it: "Desktop moderno e ricco di funzionalità. KDE Plasma offre animazioni fluide, altissima personalizzazione, Discover per la gestione grafica dei pacchetti e supporto completo ai font CJK. La prima edizione ad aver ricevuto la versione OpenRC.",
+            desc_en: "Modern, feature-rich desktop. KDE Plasma offers smooth animations, extreme customizability, Discover for graphical package management and full CJK font support. The first edition to receive the OpenRC flavor.",
+            features: [
+                ['Massima personalizzazione', 'Maximum customization'],
+                ['Discover · Flatpak · Font CJK', 'Discover · Flatpak · CJK fonts'],
+            ],
+            systemd: '2026-06-04', openrc: '2026-07-05',
+        },
+        {
+            id: 'xfce', name: 'XFCE', icon: '🪟',
+            desc_it: "Il punto di equilibrio perfetto tra leggerezza e funzionalità. Basato su GTK3, veloce all'avvio e reattivo nell'uso quotidiano, ma con un livello di personalizzazione superiore alla media. La scelta bilanciata per tutti gli usi.",
+            desc_en: "The perfect balance between lightness and functionality. GTK3-based, fast to boot and responsive in daily use, yet with above-average customization. The balanced choice for all uses.",
+            features: [
+                ['GTK3 · veloce e personalizzabile', 'GTK3 · fast and customizable'],
+                ['Ottimo per hardware datato', 'Great for older hardware'],
+                ['Bilanciato tra leggerezza e completezza', 'Balanced between lightness and completeness'],
+            ],
+            systemd: '2026-06-04', openrc: '2026-07-18',
+        },
+    ];
+
+    // Ordine desiderato per la roadmap OpenRC (cronologico di rilascio)
+    const OPENRC_ORDER = ['plasma','xfce','mate','lxqt','lxde','cinnamon','gnome'];
+
+    (function renderSite() {
+        const fmtIt = d => { const [y,m,dd]=d.split('-'); return dd+'/'+m+'/'+y; };
+        const fmtEn = d => { const [y,m,dd]=d.split('-'); const M=['January','February','March','April','May','June','July','August','September','October','November','December']; return M[parseInt(m)-1]+' '+parseInt(dd)+', '+y; };
+
+        // ---------- 1. DE CARDS ----------
+        const grid = document.querySelector('.releases-grid');
+        if (grid) {
+            grid.innerHTML = EDITIONS.map(e => {
+                const both = e.openrc !== null;
+                const pill = both
+                    ? '<span class="init-pill init-both">⚙️ Systemd · 🔧 OpenRC</span>'
+                    : '<span class="init-pill init-systemd">⚙️ Systemd</span>';
+                let feats = e.features.map(f =>
+                    `<li><span class="lang-it">${f[0]}</span><span class="lang-en">${f[1]}</span></li>`
+                ).join('\n                    ');
+                if (both) {
+                    feats += `\n                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>`;
+                }
+                return `
+            <div class="rcard rcard-${e.id}">
+                ${pill}
+                <div class="rcard-header">
+                    <div class="rcard-icon">${e.icon}</div>
+                    <div class="rcard-title-group">
+                        <h2 class="rcard-name name-${e.id}">${e.name}</h2>
+                    </div>
+                </div>
+                <p class="rcard-desc">
+                    <span class="lang-it">${e.desc_it}</span>
+                    <span class="lang-en">${e.desc_en}</span>
+                </p>
+                <div class="rcard-divider"></div>
+                <ul class="rcard-features feat-${e.id}">
+                    ${feats}
+                </ul>
+            </div>`;
+            }).join('\n');
+        }
+
+        // ---------- 2. SYSTEMD list & count ----------
+        const sysList = EDITIONS.map(e => e.name).join(' · ');
+        const sysCount = EDITIONS.length;
+        ['sysListIt','sysListEn'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent = sysList; });
+        ['sysCountIt','sysCountEn'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent = sysCount; });
+
+        // ---------- 3. OPENRC availability list ----------
+        const openrcEds = OPENRC_ORDER
+            .map(id => EDITIONS.find(e => e.id === id))
+            .filter(e => e && e.openrc !== null);
+        const openrcNames = openrcEds.map(e => e.name).join(' · ');
+        ['openrcListIt','openrcListEn'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent = openrcNames; });
+
+        // ---------- 4. ROADMAP text + diagram ----------
+        const done = openrcEds.map(e => e.name);
+        const pending = OPENRC_ORDER
+            .map(id => EDITIONS.find(e => e.id === id))
+            .filter(e => e && e.openrc === null)
+            .map(e => e.name);
+
+        const numWordIt = {1:'una',2:'due',3:'tre',4:'quattro',5:'cinque',6:'sei',7:'sette'};
+        const numWordEn = {1:'One',2:'Two',3:'Three',4:'Four',5:'Five',6:'Six',7:'Seven'};
+        const doneStrong = done.map(n => `<strong style="color:#c8a8f0">${n}</strong>`);
+        function joinList(arr, lang) {
+            if (arr.length === 1) return arr[0];
+            const sep = lang === 'it' ? ' e ' : ' and ';
+            return arr.slice(0,-1).join(', ') + sep + arr[arr.length-1];
+        }
+        const roadmapEl = document.getElementById('roadmapText');
+        if (roadmapEl) {
+            let it, en;
+            if (pending.length === 0) {
+                it = `<span class="lang-it">Tutte le <strong style="color:#c8a8f0">${done.length}</strong> edizioni sono ora disponibili anche in versione OpenRC: ${joinList(doneStrong,'it')}. La famiglia OpenRC è completa! L'alternativa a systemd è ora su ogni ambiente desktop, per chi preferisce un approccio più tradizionale e minimale.</span>`;
+                en = `<span class="lang-en">All <strong style="color:#c8a8f0">${done.length}</strong> editions are now also available in OpenRC flavor: ${joinList(done.map(n=>`<strong style="color:#c8a8f0">${n}</strong>`),'en')}. The OpenRC family is complete! The systemd alternative is now on every desktop environment, for those who prefer a more traditional, minimal approach.</span>`;
+            } else {
+                const wIt = numWordIt[done.length] || done.length;
+                const wEn = numWordEn[done.length] || done.length;
+                it = `<span class="lang-it">Le edizioni OpenRC disponibili sono ora ${wIt}: ${joinList(doneStrong,'it')}. ${pending.length === 1 ? 'Resta solo' : 'Restano'} ${joinList(pending,'it')}. L'obiettivo è portare l'alternativa a systemd su tutti gli ambienti desktop, per chi preferisce un approccio più tradizionale e minimale.</span>`;
+                en = `<span class="lang-en">${wEn} OpenRC editions are now available: ${joinList(done.map(n=>`<strong style="color:#c8a8f0">${n}</strong>`),'en')}. Only ${joinList(pending,'en')} ${pending.length === 1 ? 'remains' : 'remain'}. The goal is to bring the systemd alternative to every desktop environment, for those who prefer a more traditional, minimal approach.</span>`;
+            }
+            roadmapEl.innerHTML = it + en;
+        }
+
+        const diagram = document.getElementById('roadmapDiagram');
+        if (diagram) {
+            let html = '';
+            done.forEach(n => {
+                html += `<div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
+                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
+                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">${n}</span>
+                </div>`;
+            });
+            if (pending.length) {
+                html += `<span style="color:#b59ee0;font-size:1.1rem;">→</span>`;
+                html += `<div style="display:flex;align-items:center;gap:8px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.5);border-radius:12px;padding:9px 16px;box-shadow:0 0 16px rgba(155,89,182,0.2);">
+                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#8e44ad,#6c3483);color:#fff;font-weight:800;font-size:0.7rem;align-items:center;justify-content:center;">⚙</span>
+                    <span style="color:#c8a8f0;font-weight:700;font-size:0.92rem;">${pending.join(' · ')}</span>
+                </div>`;
+            } else {
+                html += `<span style="color:#5de89a;font-size:1.3rem;">✓</span>`;
+            }
+            diagram.innerHTML = html;
+        }
+
+        // ---------- 5. TICKER latest release ----------
+        // Trova l'ultima uscita in assoluto (systemd o openrc) per data
+        let latest = null;
+        EDITIONS.forEach(e => {
+            [['systemd',e.systemd],['openrc',e.openrc]].forEach(([kind,date]) => {
+                if (date && (!latest || date > latest.date)) {
+                    latest = { name: e.name, kind, date };
+                }
+            });
+        });
+        if (latest) {
+            const kindLabel = latest.kind === 'openrc' ? 'OpenRC' : 'Systemd';
+            document.querySelectorAll('.ticker-latest-it').forEach(el =>
+                el.innerHTML = `<strong>Ultima uscita:</strong>&nbsp;${latest.name} ${kindLabel} — ${fmtIt(latest.date)}`);
+            document.querySelectorAll('.ticker-latest-en').forEach(el =>
+                el.innerHTML = `<strong>Latest release:</strong>&nbsp;${latest.name} ${kindLabel} — ${fmtEn(latest.date)}`);
+            // OpenRC count in ticker
+            document.querySelectorAll('.ticker-openrc-count-it').forEach(el =>
+                el.textContent = `${openrcEds.length} edizioni OpenRC disponibili: ${openrcNames}`);
+            document.querySelectorAll('.ticker-openrc-count-en').forEach(el =>
+                el.textContent = `${openrcEds.length} OpenRC editions available: ${openrcNames}`);
+            // Pending in ticker
+            if (pending.length) {
+                document.querySelectorAll('.ticker-coming-it').forEach(el =>
+                    el.textContent = `In arrivo: ${pending.join(' e ')} OpenRC`);
+                document.querySelectorAll('.ticker-coming-en').forEach(el =>
+                    el.textContent = `Coming soon: ${pending.join(' and ')} OpenRC`);
+            } else {
+                document.querySelectorAll('.ticker-coming-it').forEach(el => el.textContent = `Famiglia OpenRC completa: tutte le ${done.length} edizioni disponibili`);
+                document.querySelectorAll('.ticker-coming-en').forEach(el => el.textContent = `OpenRC family complete: all ${done.length} editions available`);
+            }
+        }
+
+        // Re-apply current language after dynamic content injection
+        if (typeof window.reapplyLanguage === 'function') window.reapplyLanguage();
+    })();
     </script>
 
 </body>
