@@ -1259,6 +1259,115 @@
             .ticker::before, .ticker::after, .ticker-wave path { animation: none; }
         }
 
+
+        /* ═══════════════════════════════════════════
+           DONATE / SUPPORT SECTION
+        ═══════════════════════════════════════════ */
+        .donate {
+            max-width: 820px;
+            margin: 60px auto 0;
+            padding: 0 4%;
+        }
+        .donate-inner {
+            position: relative;
+            background:
+                radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,150,60,0.12), transparent 60%),
+                rgba(30,18,10,0.7);
+            border: 1.5px solid rgba(255,150,60,0.35);
+            border-radius: 22px;
+            padding: 40px 36px;
+            text-align: center;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 12px 44px rgba(255,140,50,0.12);
+            overflow: hidden;
+        }
+        .donate-inner::before {
+            content: '';
+            position: absolute; top: 0; left: 12%; right: 12%; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,180,100,0.4), transparent);
+        }
+        /* Sea shimmer at the bottom */
+        .donate-inner::after {
+            content: '';
+            position: absolute; left: 0; right: 0; bottom: 0; height: 50%;
+            background: radial-gradient(ellipse 60% 100% at 50% 130%, rgba(255,140,50,0.1), transparent 70%);
+            pointer-events: none;
+            animation: donateGlow 5s ease-in-out infinite alternate;
+        }
+        @keyframes donateGlow {
+            0%   { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .donate-icon {
+            font-size: 2.8rem;
+            margin-bottom: 14px;
+            display: inline-block;
+            animation: coffeeFloat 4s ease-in-out infinite;
+        }
+        @keyframes coffeeFloat {
+            0%,100% { transform: translateY(0) rotate(-3deg); }
+            50%     { transform: translateY(-7px) rotate(3deg); }
+        }
+        .donate-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 900;
+            margin-bottom: 14px;
+            background: linear-gradient(100deg, #fff 20%, #ffcf9e 60%, #ff9d4c 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .donate-text {
+            font-size: 1rem;
+            color: #e0d4c8;
+            line-height: 1.75;
+            max-width: 580px;
+            margin: 0 auto 26px;
+        }
+        .donate-text strong { color: #ffcf9e; }
+        .donate-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #ff7043, #e8542e);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            padding: 15px 34px;
+            border-radius: 40px;
+            box-shadow: 0 8px 28px rgba(255,110,60,0.4);
+            transition: transform 0.25s cubic-bezier(.22,.68,0,1.2), box-shadow 0.25s, filter 0.25s;
+        }
+        .donate-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(255,110,60,0.55);
+            filter: brightness(1.08);
+        }
+        .donate-btn:active { transform: translateY(-1px) scale(1.0); }
+        .donate-btn .kofi-cup {
+            font-size: 1.3rem;
+            animation: cupWiggle 2.5s ease-in-out infinite;
+        }
+        @keyframes cupWiggle {
+            0%,90%,100% { transform: rotate(0deg); }
+            93%,97%     { transform: rotate(-10deg); }
+            95%         { transform: rotate(10deg); }
+        }
+        .donate-note {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #a89888;
+        }
+        .donate-note .heart { color: #ff7043; }
+
+        @media (max-width: 600px) {
+            .donate-inner { padding: 32px 22px; }
+            .donate-btn { font-size: 0.98rem; padding: 14px 28px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .donate-icon, .donate-inner::after, .donate-btn .kofi-cup { animation: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -1642,6 +1751,31 @@
     </section>
 
 
+
+
+    <!-- ══ DONATE / SUPPORTO ══ -->
+    <section class="donate">
+        <div class="donate-inner">
+            <span class="donate-icon">☕</span>
+            <h2 class="donate-title">
+                <span class="lang-it">Offrici un caffè al porto</span>
+                <span class="lang-en">Buy us a coffee at the harbor</span>
+            </h2>
+            <p class="donate-text">
+                <span class="lang-it">CalamaroOS è un progetto <strong>indipendente</strong>, sviluppato con passione a Livorno nel tempo libero. Se il nostro lavoro ti è utile o semplicemente ti fa piacere, puoi sostenere lo sviluppo con una piccola donazione. Ogni caffè ci aiuta a tenere la barra dritta e a continuare a rilasciare nuove edizioni. Grazie di cuore! 🦑</span>
+                <span class="lang-en">CalamaroOS is an <strong>independent</strong> project, developed with passion in Livorno in our spare time. If our work is useful to you — or you simply enjoy it — you can support development with a small donation. Every coffee helps us keep our course steady and keep releasing new editions. Thank you from the heart! 🦑</span>
+            </p>
+            <a href="https://ko-fi.com/calamaroos" target="_blank" rel="noopener" class="donate-btn">
+                <span class="kofi-cup">☕</span>
+                <span class="lang-it">Sostieni su Ko-fi</span>
+                <span class="lang-en">Support on Ko-fi</span>
+            </a>
+            <p class="donate-note">
+                <span class="lang-it">Nessun obbligo, solo tanta gratitudine <span class="heart">♥</span> Il progetto resta libero e gratuito per tutti.</span>
+                <span class="lang-en">No obligation, just heartfelt gratitude <span class="heart">♥</span> The project stays free and open for everyone.</span>
+            </p>
+        </div>
+    </section>
 
     <!-- ── COMMON FEATURES ── -->
     <section class="common-section">
