@@ -900,11 +900,18 @@
             width: 100%; height: 100%;
             object-fit: cover;
             display: block;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
             animation: slowZoom 8s ease-out forwards;
         }
         @keyframes slowZoom {
-            from { transform: scale(1.0); }
-            to   { transform: scale(1.08); }
+            from { transform: scale(1.0) translateZ(0); }
+            to   { transform: scale(1.06) translateZ(0); }
+        }
+        /* Su schermi piccoli disattiva lo zoom per fluidità massima */
+        @media (max-width: 700px) {
+            .carousel-slide img { animation: none; }
         }
         .carousel-slide-overlay {
             position: absolute; inset: 0;
@@ -1495,7 +1502,7 @@
 
                 <!-- Slide 1 -->
                 <div class="carousel-slide active">
-                    <img src="calamaroosservatori.jpg" alt="Bambini incontrano un calamaro iridescente dalla barca Osservatore II">
+                    <img src="calamaroosservatori.jpg" alt="Bambini incontrano un calamaro iridescente dalla barca Osservatore II" decoding="async">
                     <div class="carousel-slide-overlay">
                         <span class="carousel-cap-tag">
                             <span class="lang-it">La meraviglia</span><span class="lang-en">The wonder</span>
@@ -1513,7 +1520,7 @@
 
                 <!-- Slide 2 -->
                 <div class="carousel-slide">
-                    <img src="calamaroos6.png" alt="Trattoria CalamaroOS nei fossi di Livorno">
+                    <img src="calamaroos6.jpg" alt="Trattoria CalamaroOS nei fossi di Livorno" loading="lazy" decoding="async">
                     <div class="carousel-slide-overlay">
                         <span class="carousel-cap-tag">
                             <span class="lang-it">Le radici</span><span class="lang-en">The roots</span>
@@ -1531,7 +1538,7 @@
 
                 <!-- Slide 3 -->
                 <div class="carousel-slide">
-                    <img src="CALAMAROOS10.png" alt="Bambini pirati al timone del veliero CalamaroOS Gentoo Derived">
+                    <img src="CALAMAROOS10.jpg" alt="Bambini pirati al timone del veliero CalamaroOS Gentoo Derived" loading="lazy" decoding="async">
                     <div class="carousel-slide-overlay">
                         <span class="carousel-cap-tag">
                             <span class="lang-it">L'avventura</span><span class="lang-en">The adventure</span>
@@ -1549,7 +1556,7 @@
 
                 <!-- Slide 4 -->
                 <div class="carousel-slide">
-                    <img src="calamaroos11.png" alt="Pescatori sulla barca Calamaro al tramonto con faro">
+                    <img src="calamaroos11.jpg" alt="Pescatori sulla barca Calamaro al tramonto con faro" loading="lazy" decoding="async">
                     <div class="carousel-slide-overlay">
                         <span class="carousel-cap-tag">
                             <span class="lang-it">La tradizione</span><span class="lang-en">The craft</span>
