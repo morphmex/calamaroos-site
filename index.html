@@ -70,6 +70,22 @@
             background: #00aaff; color: #fff;
             transform: translateY(-1px);
         }
+        .nav-kofi {
+            background: rgba(255,110,60,0.14);
+            border-color: rgba(255,110,60,0.45);
+            color: #ffab8a;
+        }
+        .nav-kofi:hover {
+            background: #ff7043; color: #fff;
+        }
+        .nav-sponsor {
+            background: rgba(219,112,190,0.14);
+            border-color: rgba(219,112,190,0.45);
+            color: #f0a8dc;
+        }
+        .nav-sponsor:hover {
+            background: #db70be; color: #fff;
+        }
         #langSwitcher {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.3);
@@ -128,8 +144,8 @@
             margin-bottom: 20px;
         }
         .hero-sub {
-            max-width: 700px; margin: 0 auto 32px;
-            font-size: 1.08rem; line-height: 1.78;
+            max-width: 720px; margin: 0 auto 30px;
+            font-size: 0.98rem; line-height: 1.7;
             color: #c8d8e8;
             text-shadow: 0 1px 8px rgba(0,0,0,0.8);
         }
@@ -139,6 +155,7 @@
             margin-bottom: 0;
         }
         .pill {
+            font-size: 0.8rem;
             background: rgba(0,170,255,0.1);
             border: 1px solid rgba(0,170,255,0.3);
             color: #a8d8ff;
@@ -282,10 +299,10 @@
 
         /* Init-system pill inside each DE card */
         .init-pill {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-size: 0.72rem; font-weight: 700;
-            padding: 3px 10px; border-radius: 20px;
-            letter-spacing: 0.05em;
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 0.64rem; font-weight: 700;
+            padding: 2px 8px; border-radius: 20px;
+            letter-spacing: 0.03em;
         }
         .init-systemd {
             background: rgba(0,170,255,0.1);
@@ -325,30 +342,28 @@
 
         .releases-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px;
             width: 100%;
-            max-width: 1280px;
+            max-width: 1080px;
             margin: 0 auto;
         }
 
-        /* Card base */
+        /* Card base — COMPATTA */
         .rcard {
-            border-radius: 20px;
-            padding: 28px 22px 24px;
-            display: flex; flex-direction: column; gap: 14px;
-            backdrop-filter: blur(16px);
-            transition: transform 0.28s cubic-bezier(.22,.68,0,1.2),
-                        box-shadow 0.28s ease;
+            border-radius: 14px;
+            padding: 16px 16px 15px;
+            display: flex; flex-direction: column; gap: 9px;
+            backdrop-filter: blur(14px);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
             position: relative; overflow: hidden;
         }
-        /* Riflesso interno in alto */
         .rcard::before {
             content: '';
-            position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+            position: absolute; top: 0; left: 12%; right: 12%; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
         }
-        .rcard:hover { transform: translateY(-7px); }
+        .rcard:hover { transform: translateY(-4px); }
 
         /* Palette per ogni DE */
         .rcard-lxqt {
@@ -416,15 +431,15 @@
         .badge-lxde     { background: rgba(26,188,156,0.18); border: 1px solid rgba(26,188,156,0.5); color: #4fd1b8; }
 
         /* Header card */
-        .rcard-header { display: flex; align-items: center; gap: 14px; }
+        .rcard-header { display: flex; align-items: center; gap: 10px; }
         .rcard-icon {
-            font-size: 2rem; line-height: 1;
+            font-size: 1.5rem; line-height: 1;
             flex-shrink: 0;
         }
         .rcard-title-group { text-align: left; }
         .rcard-name {
-            font-size: 1.22rem; font-weight: 800;
-            line-height: 1.1; margin-bottom: 2px;
+            font-size: 1.02rem; font-weight: 800;
+            line-height: 1.1;
         }
         .name-lxqt   { color: #c39be0; }
         .name-mate   { color: #f0a050; }
@@ -441,8 +456,8 @@
 
         /* Descrizione */
         .rcard-desc {
-            font-size: 0.93rem; color: #c8d0dc;
-            line-height: 1.65; flex: 1;
+            font-size: 0.82rem; color: #b8c4d0;
+            line-height: 1.5; flex: 1;
         }
 
         /* Separatore interno */
@@ -454,9 +469,9 @@
         /* Feature list */
         .rcard-features {
             list-style: none;
-            font-size: 0.84rem; color: #8899aa;
-            line-height: 1.5;
-            display: flex; flex-direction: column; gap: 5px;
+            font-size: 0.75rem; color: #8899aa;
+            line-height: 1.4;
+            display: flex; flex-direction: column; gap: 3px;
         }
         .rcard-features li {
             display: flex; align-items: flex-start; gap: 7px;
@@ -661,22 +676,7 @@
             box-shadow: 0 4px 14px rgba(0,170,255,0.25);
         }
 
-        /* Cards fade-and-rise on load, staggered */
-        .rcard {
-            opacity: 0;
-            animation: cardRise 0.6s cubic-bezier(.22,.68,0,1.2) forwards;
-        }
-        @keyframes cardRise {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .releases-grid .rcard:nth-child(1) { animation-delay: 0.05s; }
-        .releases-grid .rcard:nth-child(2) { animation-delay: 0.12s; }
-        .releases-grid .rcard:nth-child(3) { animation-delay: 0.19s; }
-        .releases-grid .rcard:nth-child(4) { animation-delay: 0.26s; }
-        .releases-grid .rcard:nth-child(5) { animation-delay: 0.33s; }
-        .releases-grid .rcard:nth-child(6) { animation-delay: 0.40s; }
-        .releases-grid .rcard:nth-child(7) { animation-delay: 0.47s; }
+        /* Cards appaiono statiche, senza salti */
 
         /* Download tiles: animated sheen on hover */
         .download-tile .tile-icon {
@@ -703,8 +703,8 @@
         }
 
         /* Section separators glow a touch on hover of section */
-        .rcard-icon { transition: transform 0.3s ease; }
-        .rcard:hover .rcard-icon { transform: scale(1.12) rotate(-4deg); }
+        .rcard-icon { transition: transform 0.25s ease; }
+        .rcard:hover .rcard-icon { transform: scale(1.08); }
 
         /* Respect reduced motion */
         @media (prefers-reduced-motion: reduce) {
@@ -1007,8 +1007,8 @@
         .init-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-            max-width: 880px; margin: 0 auto;
+            gap: 16px;
+            max-width: 780px; margin: 0 auto;
         }
         @media (max-width: 720px) {
             .init-grid { grid-template-columns: 1fr; max-width: 460px; }
@@ -1016,8 +1016,8 @@
         .init-card {
             position: relative;
             display: flex; flex-direction: column;
-            padding: 32px 30px;
-            border-radius: 22px;
+            padding: 24px 24px;
+            border-radius: 18px;
             backdrop-filter: blur(16px);
             transition: transform 0.28s cubic-bezier(.22,.68,0,1.2),
                         box-shadow 0.28s ease;
@@ -1050,14 +1050,14 @@
         .init-card.init-openrc:hover { box-shadow: 0 20px 60px rgba(155,89,182,0.35); }
 
         .init-icon {
-            font-size: 2.6rem; line-height: 1; margin-bottom: 12px;
-            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2);
+            font-size: 2rem; line-height: 1; margin-bottom: 8px;
+            transition: transform 0.3s ease;
         }
         .init-card:hover .init-icon { transform: scale(1.15) rotate(-6deg); }
 
         .init-name {
-            font-size: 1.7rem; font-weight: 900;
-            letter-spacing: -0.01em; margin-bottom: 6px;
+            font-size: 1.35rem; font-weight: 900;
+            letter-spacing: -0.01em; margin-bottom: 5px;
         }
         .init-systemd .init-name {
             background: linear-gradient(100deg,#fff 30%,#7fd4ff 100%);
@@ -1068,24 +1068,24 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .init-tagline {
-            font-size: 0.82rem; font-weight: 700;
-            letter-spacing: 0.06em; text-transform: uppercase;
-            margin-bottom: 16px;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            margin-bottom: 12px;
         }
         .init-systemd .init-tagline { color: #6bb8e8; }
         .init-openrc  .init-tagline { color: #b59ee0; }
 
         .init-desc {
-            color: #c8d0dc; font-size: 0.93rem;
-            line-height: 1.6; margin-bottom: 18px; flex: 1;
+            color: #c8d0dc; font-size: 0.85rem;
+            line-height: 1.55; margin-bottom: 14px; flex: 1;
         }
         .init-availability {
             background: rgba(0,0,0,0.3);
-            border-radius: 12px;
-            padding: 14px 16px;
-            font-size: 0.88rem;
-            color: #c0cddc; line-height: 1.6;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-size: 0.8rem;
+            color: #c0cddc; line-height: 1.5;
+            margin-bottom: 16px;
         }
         .init-availability strong { color: #fff; }
         .init-systemd .init-availability { border-left: 3px solid rgba(0,170,255,0.5); }
@@ -1271,21 +1271,21 @@
            DONATE / SUPPORT SECTION
         ═══════════════════════════════════════════ */
         .donate {
-            max-width: 820px;
-            margin: 60px auto 0;
+            max-width: 640px;
+            margin: 40px auto 0;
             padding: 0 4%;
         }
         .donate-inner {
             position: relative;
             background:
-                radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,150,60,0.12), transparent 60%),
-                rgba(30,18,10,0.7);
-            border: 1.5px solid rgba(255,150,60,0.35);
-            border-radius: 22px;
-            padding: 40px 36px;
+                radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,150,60,0.1), transparent 60%),
+                rgba(30,18,10,0.6);
+            border: 1px solid rgba(255,150,60,0.3);
+            border-radius: 18px;
+            padding: 26px 28px;
             text-align: center;
             backdrop-filter: blur(14px);
-            box-shadow: 0 12px 44px rgba(255,140,50,0.12);
+            box-shadow: 0 8px 30px rgba(255,140,50,0.1);
             overflow: hidden;
         }
         .donate-inner::before {
@@ -1316,9 +1316,9 @@
             50%     { transform: translateY(-7px) rotate(3deg); }
         }
         .donate-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 900;
-            margin-bottom: 14px;
+            font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+            font-weight: 800;
+            margin-bottom: 16px;
             background: linear-gradient(100deg, #fff 20%, #ffcf9e 60%, #ff9d4c 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
@@ -1367,6 +1367,71 @@
         }
         .donate-note .heart { color: #ff7043; }
 
+        .donate-link-small {
+            display: inline-block;
+            color: #ffab8a;
+            font-weight: 700;
+            font-size: 0.98rem;
+            text-decoration: none;
+            padding: 8px 4px;
+            border-bottom: 2px solid rgba(255,110,60,0.4);
+            transition: color 0.2s, border-color 0.2s;
+            margin-bottom: 6px;
+        }
+        .donate-link-small:hover {
+            color: #ff7043;
+            border-color: #ff7043;
+        }
+        .donate-links {
+            display: flex; flex-wrap: wrap;
+            justify-content: center; gap: 14px 26px;
+            margin-top: 4px;
+        }
+        .donate-link-sponsor {
+            color: #f0a8dc;
+            border-bottom-color: rgba(219,112,190,0.4);
+        }
+        .donate-link-sponsor:hover {
+            color: #db70be;
+            border-color: #db70be;
+        }
+
+        .donors {
+            margin-top: 30px;
+            padding-top: 26px;
+            border-top: 1px solid rgba(255,180,100,0.18);
+        }
+        .donors-title {
+            font-size: 1.1rem; font-weight: 800;
+            color: #ffcf9e; margin-bottom: 8px;
+        }
+        .donors-sub {
+            font-size: 0.9rem; color: #c8b8a8;
+            margin-bottom: 16px;
+        }
+        .donors-list {
+            display: flex; flex-wrap: wrap;
+            justify-content: center; gap: 10px;
+            margin: 20px 0 16px;
+        }
+        .donor-chip {
+            background: rgba(255,110,60,0.12);
+            border: 1px solid rgba(255,110,60,0.35);
+            color: #ffab8a;
+            padding: 7px 16px; border-radius: 20px;
+            font-size: 0.9rem; font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .donor-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(255,110,60,0.25);
+        }
+        .donors-total {
+            font-size: 0.9rem; color: #d8c8b8;
+            margin-bottom: 14px;
+        }
+        .donors-total strong { color: #ffcf9e; }
+
         @media (max-width: 600px) {
             .donate-inner { padding: 32px 22px; }
             .donate-btn { font-size: 0.98rem; padding: 14px 28px; }
@@ -1388,6 +1453,8 @@
                 <span class="lang-it">📘 Guida NVIDIA</span>
                 <span class="lang-en">📘 NVIDIA Guide</span>
             </a>
+            <a href="https://ko-fi.com/B1C1247WTD" target="_blank" rel="noopener" class="nav-link nav-kofi">☕ Ko-fi</a>
+            <a href="https://github.com/sponsors/morphmex" target="_blank" rel="noopener" class="nav-link nav-sponsor">💜 Sponsor</a>
             <button id="langSwitcher">🌐 EN / IT</button>
         </div>
     </nav>
@@ -1404,21 +1471,22 @@
         <h1 class="hero-title">CalamaroOS</h1>
         <p class="hero-sub">
             <span class="lang-it">
-                Una distribuzione universale costruita su <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, con <strong style="color:#c8a8f0">OpenRC in sviluppo</strong>, e l'installer grafico <strong style="color:#7fd4ff">Calamares</strong> per rendere Gentoo accessibile a chiunque. Pacchetti binari ufficiali, compilazione dai sorgenti quando necessario, Flatpak integrato e <strong style="color:#7fd4ff">repository GURU</strong> della community abilitato di default. <strong style="color:#7fd4ff">7 ambienti desktop</strong> tra cui scegliere: la potenza di Gentoo, senza barriere. E se questo non basta, una volta installato personalizzi tutto secondo le tue esigenze.
+                Una distribuzione universale costruita su <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, con <strong style="color:#c8a8f0">OpenRC in sviluppo</strong>, e l'installer grafico <strong style="color:#7fd4ff">Calamares</strong> per rendere Gentoo accessibile a chiunque. Ogni edizione include <strong style="color:#7fd4ff">Flatpak</strong>, i repository della community <strong style="color:#7fd4ff">GURU</strong> e <strong style="color:#ffab8a">Brave</strong> abilitati di default, <strong style="color:#7fd4ff">cifratura del disco</strong> in installazione, rilevamento automatico di altri sistemi operativi installati (<strong style="color:#7fd4ff">OS Prober</strong>) e supporto a <strong style="color:#7fd4ff">EXT4 · BTRFS · XFS · F2FS</strong>. <strong style="color:#7fd4ff">7 ambienti desktop</strong> tra cui scegliere: la potenza di Gentoo, senza barriere — e una volta installato, personalizzi tutto secondo le tue esigenze.
             </span>
             <span class="lang-en">
-                A universal distribution built on <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, with <strong style="color:#c8a8f0">OpenRC in development</strong>, and the <strong style="color:#7fd4ff">Calamares</strong> graphical installer to make Gentoo accessible to everyone. Official binary packages, source compilation when needed, Flatpak integrated and the <strong style="color:#7fd4ff">GURU community repository</strong> enabled by default. <strong style="color:#7fd4ff">7 desktop environments</strong> to choose from: the power of Gentoo, without barriers. And if that's not enough, once installed you can customize everything to your needs.
+                A universal distribution built on <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, with <strong style="color:#c8a8f0">OpenRC in development</strong>, and the <strong style="color:#7fd4ff">Calamares</strong> graphical installer to make Gentoo accessible to everyone. Every edition ships with <strong style="color:#7fd4ff">Flatpak</strong>, the community <strong style="color:#7fd4ff">GURU</strong> and <strong style="color:#ffab8a">Brave</strong> repositories enabled by default, <strong style="color:#7fd4ff">disk encryption</strong> at install, automatic detection of other installed operating systems (<strong style="color:#7fd4ff">OS Prober</strong>) and support for <strong style="color:#7fd4ff">EXT4 · BTRFS · XFS · F2FS</strong>. <strong style="color:#7fd4ff">7 desktop environments</strong> to choose from: the power of Gentoo, without barriers — and once installed, you customize everything to your needs.
             </span>
         </p>
         <div class="hero-pills">
             <span class="pill">Gentoo Stage 3</span>
             <span class="pill pill-init">Systemd · OpenRC</span>
-            <span class="pill">Calamares Installer</span>
+            <span class="pill">Calamares</span>
             <span class="pill">Flatpak</span>
-            <span class="pill">GURU Repository</span>
+            <span class="pill">Repository community GURU + Brave</span>
+            <span class="pill">Cifratura disco</span>
+            <span class="pill">Rileva altri OS</span>
             <span class="pill">EXT4 · BTRFS · XFS · F2FS</span>
             <span class="pill">7 Desktop Environments</span>
-            <span class="pill">64-bit</span>
         </div>
     </header>
 
@@ -1432,17 +1500,15 @@
                 <div class="ticker-track-wrap">
                     <div class="ticker-track">
                         <span class="ticker-group">
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it ticker-latest-it"></span><span class="lang-en ticker-latest-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
-                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Tutte le 7 edizioni systemd allineate a luglio 2026</span><span class="lang-en">All 7 systemd editions aligned to July 2026</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Tutte le edizioni systemd aggiornate ad agosto 2026 · repository Brave aggiunto</span><span class="lang-en">All systemd editions updated to August 2026 · Brave repository added</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
                         <span class="ticker-group">
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it ticker-latest-it"></span><span class="lang-en ticker-latest-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
-                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Tutte le 7 edizioni systemd allineate a luglio 2026</span><span class="lang-en">All 7 systemd editions aligned to July 2026</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Tutte le edizioni systemd aggiornate ad agosto 2026 · repository Brave aggiunto</span><span class="lang-en">All systemd editions updated to August 2026 · Brave repository added</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
                     </div>
@@ -1602,6 +1668,20 @@
 
 
 
+    <!-- ══ AMBIENTI DESKTOP (panoramica compatta) ══ -->
+    <section class="releases-section">
+        <div class="section-sep">
+            <span class="section-sep-label">
+                <span class="lang-it">Ambienti Desktop</span>
+                <span class="lang-en">Desktop Environments</span>
+            </span>
+        </div>
+
+        <div class="releases-grid">
+            <!-- Le card vengono generate automaticamente da EDITIONS (vedi script in fondo) -->
+        </div>
+    </section>
+
     <!-- ══ SCEGLI IL TUO INIT SYSTEM ══ -->
     <section class="init-section">
         <div class="init-title">
@@ -1652,8 +1732,8 @@
                     <span class="lang-en">Gentoo's historic, lightweight init system. Shell script-based, simple, transparent and minimal in resource usage. Perfect for those who prefer a classic, no-frills approach.</span>
                 </p>
                 <div class="init-availability">
-                    <span class="lang-it"><strong>Attualmente disponibili:</strong><br><span id="openrcListIt"></span><br><em style="color:#b59ee0;font-size:0.82rem;">Altre edizioni in lavorazione</em></span>
-                    <span class="lang-en"><strong>Currently available:</strong><br><span id="openrcListEn"></span><br><em style="color:#b59ee0;font-size:0.82rem;">More editions in the works</em></span>
+                    <span class="lang-it"><strong>Attualmente disponibili:</strong><br><span id="openrcListIt"></span><br><em style="color:#b59ee0;font-size:0.82rem;"><span id="openrcPendingIt"></span></em></span>
+                    <span class="lang-en"><strong>Currently available:</strong><br><span id="openrcListEn"></span><br><em style="color:#b59ee0;font-size:0.82rem;"><span id="openrcPendingEn"></span></em></span>
                 </div>
                 <a href="https://sourceforge.net/projects/calamaroos/files/openrc/" class="init-btn" target="_blank">
                     <span>⬇</span>
@@ -1675,112 +1755,35 @@
     </section>
 
     <!-- ── EDIZIONI DISPONIBILI ── -->
-    <section class="releases-section">
-        <div class="section-sep">
-            <span class="section-sep-label">
-                <span class="lang-it">Ambienti Desktop</span>
-                <span class="lang-en">Desktop Environments</span>
-            </span>
-        </div>
-
-        <div class="releases-grid">
-            <!-- Le card vengono generate automaticamente da EDITIONS (vedi script in fondo) -->
-        </div>
-    </section>
 
 
 
     
-    <!-- ══ WORK IN PROGRESS BANNER ══ -->
-    <section style="max-width:920px;margin:0 auto;padding:0 4%;">
-        <div style="
-            background: rgba(10,30,50,0.85);
-            border: 1.5px solid rgba(0,170,255,0.4);
-            border-radius: 18px;
-            padding: 26px 30px;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 8px 32px rgba(0,170,255,0.12);
-        ">
-            <div style="display:flex;align-items:flex-start;gap:16px;">
-                <span style="font-size:1.7rem;flex-shrink:0;">✅</span>
-                <div style="flex:1;">
-                    <h3 style="color:#7fd4ff;font-size:1.05rem;font-weight:800;margin:0 0 10px;letter-spacing:0.02em;">
-                        <span class="lang-it">Tutte le edizioni allineate · Luglio 2026</span>
-                        <span class="lang-en">All editions aligned · July 2026</span>
-                    </h3>
-                    <p style="font-size:0.95rem;color:#a8c8e0;line-height:1.7;margin:0;">
-                        <span class="lang-it">
-                            Tutte le ISO sono state riallineate a luglio 2026 con gli ultimi aggiornamenti Gentoo. Feature comuni: cifratura disco in installazione, fix OS Prober, partizione <strong>/boot</strong> permanente da 1 GB, installer grafico Calamares, Flatpak, EXT4/BTRFS/XFS/F2FS e <a href="https://wiki.gentoo.org/wiki/Project:GURU" target="_blank" style="color:#7fd4ff;text-decoration:underline;">repository GURU</a> della community abilitato di default.
-                        </span>
-                        <span class="lang-en">
-                            All ISOs have been realigned in July 2026 with the latest Gentoo updates. Common features: disk encryption at install, OS Prober fix, permanent <strong>/boot</strong> at 1 GB, Calamares graphical installer, Flatpak, EXT4/BTRFS/XFS/F2FS and the <a href="https://wiki.gentoo.org/wiki/Project:GURU" target="_blank" style="color:#7fd4ff;text-decoration:underline;">GURU community repository</a> enabled by default.
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ══ ROADMAP / FUTURO ══ -->
-    <section style="max-width:920px;margin:50px auto 0;padding:0 4%;">
-        <div style="
-            position: relative;
-            background: rgba(20,12,40,0.85);
-            border: 1.5px solid rgba(155,89,182,0.45);
-            border-radius: 18px;
-            padding: 30px 32px;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 8px 32px rgba(155,89,182,0.15);
-            overflow: hidden;
-        ">
-            <!-- riflesso interno -->
-            <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,rgba(200,168,240,0.25),transparent);"></div>
-
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-                <span style="font-size:1.4rem;">🚀</span>
-                <span style="font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#b59ee0;background:rgba(155,89,182,0.15);border:1px solid rgba(155,89,182,0.4);padding:4px 12px;border-radius:20px;">
-                    <span class="lang-it">Roadmap · Prossimi sviluppi</span>
-                    <span class="lang-en">Roadmap · Next developments</span>
-                </span>
-            </div>
-
-            <h3 style="color:#c8a8f0;font-size:1.4rem;font-weight:800;margin:0 0 14px;letter-spacing:0.01em;text-shadow:0 2px 12px rgba(155,89,182,0.4);">
-                <span class="lang-it">OpenRC · L'espansione continua</span>
-                <span class="lang-en">OpenRC · The expansion continues</span>
-            </h3>
-
-            <p id="roadmapText" style="font-size:0.97rem;color:#c0b8d0;line-height:1.75;margin:0 0 22px;"></p>
-
-            <!-- Mini roadmap (auto-generata) -->
-            <div id="roadmapDiagram" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:center;margin-top:20px;"></div>
-        </div>
-    </section>
-
-
-
-
-    <!-- ══ DONATE / SUPPORTO ══ -->
+    <!-- ══ DONATE / RINGRAZIAMENTI ══ -->
     <section class="donate">
         <div class="donate-inner">
-            <span class="donate-icon">☕</span>
             <h2 class="donate-title">
-                <span class="lang-it">Offrici un caffè al porto</span>
-                <span class="lang-en">Buy us a coffee at the harbor</span>
+                <span class="lang-it">🙏 Grazie a chi ci sostiene</span>
+                <span class="lang-en">🙏 Thanks to our supporters</span>
             </h2>
-            <p class="donate-text">
-                <span class="lang-it">CalamaroOS è un progetto <strong>indipendente</strong>, sviluppato con passione a Livorno nel tempo libero. Se il nostro lavoro ti è utile o semplicemente ti fa piacere, puoi sostenere lo sviluppo con una piccola donazione. Ogni caffè ci aiuta a tenere la barra dritta e a continuare a rilasciare nuove edizioni. Grazie di cuore! 🦑</span>
-                <span class="lang-en">CalamaroOS is an <strong>independent</strong> project, developed with passion in Livorno in our spare time. If our work is useful to you — or you simply enjoy it — you can support development with a small donation. Every coffee helps us keep our course steady and keep releasing new editions. Thank you from the heart! 🦑</span>
+            <div class="donors-list">
+                <span class="donor-chip">🩷 higleync2018</span>
+                <span class="donor-chip">🩷 Silvia</span>
+            </div>
+            <p class="donors-total">
+                <span class="lang-it">Totale raccolto finora: <strong>21$</strong> — grazie di cuore! 🦑</span>
+                <span class="lang-en">Total raised so far: <strong>$21</strong> — thank you so much! 🦑</span>
             </p>
-            <a href="https://ko-fi.com/B1C1247WTD" target="_blank" rel="noopener" class="donate-btn">
-                <span class="kofi-cup">☕</span>
-                <span class="lang-it">Sostieni su Ko-fi</span>
-                <span class="lang-en">Support on Ko-fi</span>
-            </a>
-            <p class="donate-note">
-                <span class="lang-it">Nessun obbligo, solo tanta gratitudine <span class="heart">♥</span> Il progetto resta libero e gratuito per tutti.</span>
-                <span class="lang-en">No obligation, just heartfelt gratitude <span class="heart">♥</span> The project stays free and open for everyone.</span>
-            </p>
+            <div class="donate-links">
+                <a href="https://ko-fi.com/B1C1247WTD" target="_blank" rel="noopener" class="donate-link-small">
+                    <span class="lang-it">☕ Offrici un caffè su Ko-fi</span>
+                    <span class="lang-en">☕ Buy us a coffee on Ko-fi</span>
+                </a>
+                <a href="https://github.com/sponsors/morphmex" target="_blank" rel="noopener" class="donate-link-small donate-link-sponsor">
+                    <span class="lang-it">💜 Sostienici su GitHub Sponsors</span>
+                    <span class="lang-en">💜 Support us on GitHub Sponsors</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1811,15 +1814,15 @@
             <div class="common-card">
                 <span class="common-card-icon">⚙️</span>
                 <h3>
-                    <span class="lang-it">Profilo desktop/systemd</span>
-                    <span class="lang-en">Desktop/systemd profile</span>
+                    <span class="lang-it">Systemd &amp; OpenRC</span>
+                    <span class="lang-en">Systemd &amp; OpenRC</span>
                 </h3>
                 <p>
                     <span class="lang-it">
-                        Ogni ambiente usa il profilo <strong>desktop/systemd</strong> ottimizzato di Gentoo. Il sistema è pronto all'uso subito dopo l'installazione, senza configurazioni manuali. Aggiornamenti, servizi e avvio gestiti in modo moderno e affidabile.
+                        Ogni ambiente è disponibile con il profilo <strong>desktop/systemd</strong> ottimizzato di Gentoo, e sempre più edizioni offrono anche la variante <strong>OpenRC</strong> per chi preferisce un init più tradizionale e minimale. In entrambi i casi il sistema è pronto all'uso subito dopo l'installazione.
                     </span>
                     <span class="lang-en">
-                        Every environment uses Gentoo's optimized <strong>desktop/systemd</strong> profile. The system is ready right after installation, with no manual configuration. Updates, services and boot managed in a modern, reliable way.
+                        Every environment is available with Gentoo's optimized <strong>desktop/systemd</strong> profile, and a growing number of editions also offer the <strong>OpenRC</strong> variant for those who prefer a more traditional, minimal init. In both cases the system is ready right after installation.
                     </span>
                 </p>
             </div>
@@ -2020,6 +2023,7 @@
     const EDITIONS = [
         {
             id: 'cinnamon', name: 'Cinnamon', icon: '🍂',
+            short_it: "Desktop moderno basato su GNOME 3, con un\'esperienza classica e familiare. Ideale per chi arriva da Windows.", short_en: "Modern desktop based on GNOME 3, with a classic, familiar experience. Great for those coming from Windows.",
             desc_it: "Desktop moderno e familiare basato su GNOME 3, con un'esperienza classica e intuitiva. Interfaccia elegante, applicazioni ben integrate e un'ottima curva di apprendimento per chi arriva da altri sistemi operativi.",
             desc_en: "Modern and familiar desktop based on GNOME 3, with a classic and intuitive experience. Elegant interface, well-integrated applications and a smooth learning curve for those coming from other operating systems.",
             features: [
@@ -2027,10 +2031,11 @@
                 ['Applicazioni integrate curate (Nemo, ecc.)', 'Curated integrated apps (Nemo, etc.)'],
                 ['Ottimo per utenti che arrivano da Windows', 'Great for users coming from Windows'],
             ],
-            systemd: '2026-06-28', openrc: null,
+            systemd: '2026-08-06', openrc: null,
         },
         {
             id: 'gnome', name: 'GNOME', icon: '👣',
+            short_it: "Il desktop moderno per eccellenza: interfaccia pulita e minimalista, pensata per un flusso di lavoro senza distrazioni.", short_en: "The modern desktop par excellence: clean, minimal interface designed for a distraction-free workflow.",
             desc_it: "Il desktop environment moderno per eccellenza: interfaccia elegante, pulita e coerente, progettata per un flusso di lavoro fluido e senza distrazioni. Ideale per chi cerca un'esperienza raffinata e al passo coi tempi.",
             desc_en: "The modern desktop environment par excellence: elegant, clean and consistent interface designed for a smooth, distraction-free workflow. Ideal for those seeking a refined, up-to-date experience.",
             features: [
@@ -2038,10 +2043,11 @@
                 ['Wayland nativo, animazioni fluide', 'Native Wayland, smooth animations'],
                 ['Focus totale sulla produttività', 'Total focus on productivity'],
             ],
-            systemd: '2026-06-22', openrc: null,
+            systemd: '2026-08-06', openrc: null,
         },
         {
             id: 'lxde', name: 'LXDE', icon: '🪶',
+            short_it: "Ambiente GTK ultra-leggero, velocissimo all\'avvio. La scelta ideale per hardware datato e vecchi notebook.", short_en: "Ultra-lightweight GTK environment, very fast to boot. The ideal choice for old hardware and laptops.",
             desc_it: "Desktop environment ultra-leggero basato su GTK. Progettato per essere veloce all'avvio e parco nei consumi di CPU e RAM. La scelta ideale per hardware datato, vecchi notebook o macchine virtuali.",
             desc_en: "Ultra-lightweight GTK-based desktop environment. Designed to boot fast and keep CPU and RAM usage minimal. The ideal choice for older hardware, old laptops or virtual machines.",
             features: [
@@ -2049,10 +2055,11 @@
                 ['Perfetto per hardware datato', 'Perfect for older hardware'],
                 ['Reattivo anche su VM', 'Responsive even on VMs'],
             ],
-            systemd: '2026-06-20', openrc: '2026-07-26',
+            systemd: '2026-08-06', openrc: '2026-07-26',
         },
         {
             id: 'lxqt', name: 'LXQt', icon: '⚡',
+            short_it: "Basato sul framework Qt: leggero e reattivo, ma con un\'interfaccia moderna e pulita. Ottimo su hardware modesto.", short_en: "Qt-based: light and responsive, yet with a modern, clean interface. Great on modest hardware.",
             desc_it: "L'edizione più leggera e reattiva della famiglia, basata sul framework Qt. Combina la leggerezza di LXDE con un'interfaccia moderna e pulita. Ottima per chi cerca velocità senza rinunciare a un aspetto contemporaneo.",
             desc_en: "The lightest and most responsive edition in the family, based on the Qt framework. Combines LXDE-level lightness with a modern, clean interface. Great for those seeking speed without sacrificing a contemporary look.",
             features: [
@@ -2060,10 +2067,11 @@
                 ['Consumi ridotti · avvio rapido', 'Low usage · fast boot'],
                 ['Ideale per hardware modesto', 'Ideal for modest hardware'],
             ],
-            systemd: '2026-06-06', openrc: '2026-07-25',
+            systemd: '2026-08-06', openrc: '2026-07-25',
         },
         {
             id: 'mate', name: 'MATE', icon: '🌿',
+            short_it: "L\'ambiente classico per eccellenza, erede di GNOME 2. Intuitivo, stabile e collaudato, con un workflow tradizionale.", short_en: "The classic environment, heir to GNOME 2. Intuitive, stable and battle-tested, with a traditional workflow.",
             desc_it: "L'ambiente classico per eccellenza, nato come fork di GNOME 2. Intuitivo fin dal primo avvio, leggero nelle risorse e collaudato nel tempo. Perfetto per chi cerca stabilità assoluta e un workflow familiare e produttivo.",
             desc_en: "The classic environment par excellence, born as a GNOME 2 fork. Intuitive from the very first boot, light on resources and battle-tested over time. Perfect for those seeking absolute stability and a familiar, productive workflow.",
             features: [
@@ -2071,20 +2079,23 @@
                 ['Workflow tradizionale e produttivo', 'Traditional, productive workflow'],
                 ['Basso consumo di risorse', 'Low resource usage'],
             ],
-            systemd: '2026-06-04', openrc: '2026-07-21',
+            systemd: '2026-08-06', openrc: '2026-07-21',
         },
         {
             id: 'plasma', name: 'KDE Plasma', icon: '🖥️',
-            desc_it: "Desktop moderno e ricco di funzionalità. KDE Plasma offre animazioni fluide, altissima personalizzazione, Discover per la gestione grafica dei pacchetti e supporto completo ai font CJK. La prima edizione ad aver ricevuto la versione OpenRC.",
-            desc_en: "Modern, feature-rich desktop. KDE Plasma offers smooth animations, extreme customizability, Discover for graphical package management and full CJK font support. The first edition to receive the OpenRC flavor.",
+            short_it: "Desktop ricco di funzionalità e altamente personalizzabile, con animazioni fluide ed effetti moderni. Il più completo e configurabile della famiglia.", short_en: "Feature-rich, highly customizable desktop with smooth animations and modern effects. The most complete and configurable in the family.",
+            desc_it: "Desktop moderno e ricco di funzionalità. KDE Plasma offre animazioni fluide e altissima personalizzazione. La prima edizione ad aver ricevuto la versione OpenRC. In questa release è stata risolta la localizzazione automatica all'avvio del sistema installato.",
+            desc_en: "Modern, feature-rich desktop. KDE Plasma offers smooth animations and extreme customizability. The first edition to receive the OpenRC flavor. This release fixes automatic localization at boot on the installed system.",
             features: [
                 ['Massima personalizzazione', 'Maximum customization'],
-                ['Discover · Flatpak · Font CJK', 'Discover · Flatpak · CJK fonts'],
+                ['Massima personalizzazione', 'Maximum customization'],
+                ['Fix localizzazione automatica all\'avvio', 'Automatic localization fix at boot'],
             ],
-            systemd: '2026-06-04', openrc: '2026-07-05',
+            systemd: '2026-08-06', openrc: '2026-07-05',
         },
         {
             id: 'xfce', name: 'XFCE', icon: '🪟',
+            short_it: "Il giusto equilibrio tra leggerezza e funzionalità. Veloce e personalizzabile, adatto a ogni tipo di utilizzo.", short_en: "The right balance between lightness and features. Fast and customizable, suited to any use.",
             desc_it: "Il punto di equilibrio perfetto tra leggerezza e funzionalità. Basato su GTK3, veloce all'avvio e reattivo nell'uso quotidiano, ma con un livello di personalizzazione superiore alla media. La scelta bilanciata per tutti gli usi.",
             desc_en: "The perfect balance between lightness and functionality. GTK3-based, fast to boot and responsive in daily use, yet with above-average customization. The balanced choice for all uses.",
             features: [
@@ -2092,7 +2103,7 @@
                 ['Ottimo per hardware datato', 'Great for older hardware'],
                 ['Bilanciato tra leggerezza e completezza', 'Balanced between lightness and completeness'],
             ],
-            systemd: '2026-06-04', openrc: '2026-07-18',
+            systemd: '2026-08-06', openrc: '2026-07-18',
         },
     ];
 
@@ -2119,7 +2130,6 @@
                 }
                 return `
             <div class="rcard rcard-${e.id}">
-                ${pill}
                 <div class="rcard-header">
                     <div class="rcard-icon">${e.icon}</div>
                     <div class="rcard-title-group">
@@ -2127,13 +2137,10 @@
                     </div>
                 </div>
                 <p class="rcard-desc">
-                    <span class="lang-it">${e.desc_it}</span>
-                    <span class="lang-en">${e.desc_en}</span>
+                    <span class="lang-it">${e.short_it}</span>
+                    <span class="lang-en">${e.short_en}</span>
                 </p>
-                <div class="rcard-divider"></div>
-                <ul class="rcard-features feat-${e.id}">
-                    ${feats}
-                </ul>
+                ${pill}
             </div>`;
             }).join('\n');
         }
@@ -2150,6 +2157,20 @@
             .filter(e => e && e.openrc !== null);
         const openrcNames = openrcEds.map(e => e.name).join(' · ');
         ['openrcListIt','openrcListEn'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent = openrcNames; });
+        // Pending editions text in the OpenRC download card
+        const pendingForCard = OPENRC_ORDER
+            .map(id => EDITIONS.find(e => e.id === id))
+            .filter(e => e && e.openrc === null)
+            .map(e => e.name);
+        const pendIt = document.getElementById('openrcPendingIt');
+        const pendEn = document.getElementById('openrcPendingEn');
+        if (pendingForCard.length) {
+            if (pendIt) pendIt.textContent = pendingForCard.join(' e ') + ' in lavorazione';
+            if (pendEn) pendEn.textContent = pendingForCard.join(' and ') + ' in progress';
+        } else {
+            if (pendIt) pendIt.textContent = 'Famiglia OpenRC completa!';
+            if (pendEn) pendEn.textContent = 'OpenRC family complete!';
+        }
 
         // ---------- 4. ROADMAP text + diagram ----------
         const done = openrcEds.map(e => e.name);
@@ -2166,58 +2187,31 @@
             const sep = lang === 'it' ? ' e ' : ' and ';
             return arr.slice(0,-1).join(', ') + sep + arr[arr.length-1];
         }
-        const roadmapEl = document.getElementById('roadmapText');
-        if (roadmapEl) {
-            let it, en;
-            if (pending.length === 0) {
-                it = `<span class="lang-it">Tutte le <strong style="color:#c8a8f0">${done.length}</strong> edizioni sono ora disponibili anche in versione OpenRC: ${joinList(doneStrong,'it')}. La famiglia OpenRC è completa! L'alternativa a systemd è ora su ogni ambiente desktop, per chi preferisce un approccio più tradizionale e minimale.</span>`;
-                en = `<span class="lang-en">All <strong style="color:#c8a8f0">${done.length}</strong> editions are now also available in OpenRC flavor: ${joinList(done.map(n=>`<strong style="color:#c8a8f0">${n}</strong>`),'en')}. The OpenRC family is complete! The systemd alternative is now on every desktop environment, for those who prefer a more traditional, minimal approach.</span>`;
-            } else {
-                const wIt = numWordIt[done.length] || done.length;
-                const wEn = numWordEn[done.length] || done.length;
-                it = `<span class="lang-it">Le edizioni OpenRC disponibili sono ora ${wIt}: ${joinList(doneStrong,'it')}. ${pending.length === 1 ? 'Resta solo' : 'Restano'} ${joinList(pending,'it')}. L'obiettivo è portare l'alternativa a systemd su tutti gli ambienti desktop, per chi preferisce un approccio più tradizionale e minimale.</span>`;
-                en = `<span class="lang-en">${wEn} OpenRC editions are now available: ${joinList(done.map(n=>`<strong style="color:#c8a8f0">${n}</strong>`),'en')}. Only ${joinList(pending,'en')} ${pending.length === 1 ? 'remains' : 'remain'}. The goal is to bring the systemd alternative to every desktop environment, for those who prefer a more traditional, minimal approach.</span>`;
-            }
-            roadmapEl.innerHTML = it + en;
-        }
-
-        const diagram = document.getElementById('roadmapDiagram');
-        if (diagram) {
-            let html = '';
-            done.forEach(n => {
-                html += `<div style="display:flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.45);border-radius:12px;padding:9px 16px;">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:0.75rem;align-items:center;justify-content:center;">✓</span>
-                    <span style="color:#5de89a;font-weight:700;font-size:0.92rem;">${n}</span>
-                </div>`;
-            });
-            if (pending.length) {
-                html += `<span style="color:#b59ee0;font-size:1.1rem;">→</span>`;
-                html += `<div style="display:flex;align-items:center;gap:8px;background:rgba(155,89,182,0.12);border:1px solid rgba(155,89,182,0.5);border-radius:12px;padding:9px 16px;box-shadow:0 0 16px rgba(155,89,182,0.2);">
-                    <span style="display:inline-flex;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#8e44ad,#6c3483);color:#fff;font-weight:800;font-size:0.7rem;align-items:center;justify-content:center;">⚙</span>
-                    <span style="color:#c8a8f0;font-weight:700;font-size:0.92rem;">${pending.join(' · ')}</span>
-                </div>`;
-            } else {
-                html += `<span style="color:#5de89a;font-size:1.3rem;">✓</span>`;
-            }
-            diagram.innerHTML = html;
-        }
-
         // ---------- 5. TICKER latest release ----------
-        // Trova l'ultima uscita in assoluto (systemd o openrc) per data
-        let latest = null;
+        // Trova la data piu' recente in assoluto
+        let latestDate = null, latestKind = null, latestName = null;
         EDITIONS.forEach(e => {
             [['systemd',e.systemd],['openrc',e.openrc]].forEach(([kind,date]) => {
-                if (date && (!latest || date > latest.date)) {
-                    latest = { name: e.name, kind, date };
+                if (date && (!latestDate || date > latestDate)) {
+                    latestDate = date; latestKind = kind; latestName = e.name;
                 }
             });
         });
-        if (latest) {
-            const kindLabel = latest.kind === 'openrc' ? 'OpenRC' : 'Systemd';
-            document.querySelectorAll('.ticker-latest-it').forEach(el =>
-                el.innerHTML = `<strong>Ultima uscita:</strong>&nbsp;${latest.name} ${kindLabel} — ${fmtIt(latest.date)}`);
-            document.querySelectorAll('.ticker-latest-en').forEach(el =>
-                el.innerHTML = `<strong>Latest release:</strong>&nbsp;${latest.name} ${kindLabel} — ${fmtEn(latest.date)}`);
+        // Quante edizioni condividono la data piu' recente per lo stesso init?
+        const sharedCount = EDITIONS.filter(e => e[latestKind] === latestDate).length;
+        if (latestDate) {
+            const kindLabel = latestKind === 'openrc' ? 'OpenRC' : 'Systemd';
+            let latestIt, latestEn;
+            if (sharedCount > 1) {
+                // Aggiornamento collettivo (es. tutte le systemd insieme)
+                latestIt = `<strong>Ultimo aggiornamento:</strong>&nbsp;tutte le edizioni ${kindLabel} — ${fmtIt(latestDate)}`;
+                latestEn = `<strong>Latest update:</strong>&nbsp;all ${kindLabel} editions — ${fmtEn(latestDate)}`;
+            } else {
+                latestIt = `<strong>Ultima uscita:</strong>&nbsp;${latestName} ${kindLabel} — ${fmtIt(latestDate)}`;
+                latestEn = `<strong>Latest release:</strong>&nbsp;${latestName} ${kindLabel} — ${fmtEn(latestDate)}`;
+            }
+            document.querySelectorAll('.ticker-latest-it').forEach(el => el.innerHTML = latestIt);
+            document.querySelectorAll('.ticker-latest-en').forEach(el => el.innerHTML = latestEn);
             // OpenRC count in ticker
             document.querySelectorAll('.ticker-openrc-count-it').forEach(el =>
                 el.textContent = `${openrcEds.length} edizioni OpenRC disponibili: ${openrcNames}`);
