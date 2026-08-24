@@ -467,6 +467,16 @@
         }
 
         /* Feature list */
+        .rcard-note-special {
+            font-size: 0.75rem;
+            line-height: 1.45;
+            color: #b8a0d8;
+            background: rgba(155,89,182,0.1);
+            border-left: 2px solid rgba(155,89,182,0.5);
+            border-radius: 6px;
+            padding: 7px 10px;
+            margin-top: 2px;
+        }
         .rcard-features {
             list-style: none;
             font-size: 0.75rem; color: #8899aa;
@@ -1471,10 +1481,10 @@
         <h1 class="hero-title">CalamaroOS</h1>
         <p class="hero-sub">
             <span class="lang-it">
-                Una distribuzione universale costruita su <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, con <strong style="color:#c8a8f0">OpenRC in sviluppo</strong>, e l'installer grafico <strong style="color:#7fd4ff">Calamares</strong> per rendere Gentoo accessibile a chiunque. Ogni edizione include <strong style="color:#7fd4ff">Flatpak</strong>, i repository della community <strong style="color:#7fd4ff">GURU</strong> e <strong style="color:#ffab8a">Brave</strong> abilitati di default, <strong style="color:#7fd4ff">cifratura del disco</strong> in installazione, rilevamento automatico di altri sistemi operativi installati (<strong style="color:#7fd4ff">OS Prober</strong>) e supporto a <strong style="color:#7fd4ff">EXT4 · BTRFS · XFS · F2FS</strong>. <strong style="color:#7fd4ff">7 ambienti desktop</strong> tra cui scegliere: la potenza di Gentoo, senza barriere — e una volta installato, personalizzi tutto secondo le tue esigenze.
+                Una distribuzione universale costruita su <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, ora disponibile anche con <strong style="color:#c8a8f0">OpenRC</strong> su tutte le edizioni, e l'installer grafico <strong style="color:#7fd4ff">Calamares</strong> per rendere Gentoo accessibile a chiunque. Ogni edizione include <strong style="color:#7fd4ff">Flatpak</strong>, i repository della community <strong style="color:#7fd4ff">GURU</strong>, <strong style="color:#ffab8a">Brave</strong> e <strong style="color:#a8d0f0">LibreWolf</strong> abilitati di default, <strong style="color:#7fd4ff">cifratura del disco</strong> in installazione, rilevamento automatico di altri sistemi operativi installati (<strong style="color:#7fd4ff">OS Prober</strong>) e supporto a <strong style="color:#7fd4ff">EXT4 · BTRFS · XFS · F2FS</strong>. <strong style="color:#7fd4ff">7 ambienti desktop</strong> tra cui scegliere: la potenza di Gentoo, senza barriere — e una volta installato, personalizzi tutto secondo le tue esigenze.
             </span>
             <span class="lang-en">
-                A universal distribution built on <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, with <strong style="color:#c8a8f0">OpenRC in development</strong>, and the <strong style="color:#7fd4ff">Calamares</strong> graphical installer to make Gentoo accessible to everyone. Every edition ships with <strong style="color:#7fd4ff">Flatpak</strong>, the community <strong style="color:#7fd4ff">GURU</strong> and <strong style="color:#ffab8a">Brave</strong> repositories enabled by default, <strong style="color:#7fd4ff">disk encryption</strong> at install, automatic detection of other installed operating systems (<strong style="color:#7fd4ff">OS Prober</strong>) and support for <strong style="color:#7fd4ff">EXT4 · BTRFS · XFS · F2FS</strong>. <strong style="color:#7fd4ff">7 desktop environments</strong> to choose from: the power of Gentoo, without barriers — and once installed, you customize everything to your needs.
+                A universal distribution built on <strong style="color:#7fd4ff">Gentoo Stage 3 + Systemd</strong>, now also available with <strong style="color:#c8a8f0">OpenRC</strong> on every edition, and the <strong style="color:#7fd4ff">Calamares</strong> graphical installer to make Gentoo accessible to everyone. Every edition ships with <strong style="color:#7fd4ff">Flatpak</strong>, the community <strong style="color:#7fd4ff">GURU</strong>, <strong style="color:#ffab8a">Brave</strong> and <strong style="color:#a8d0f0">LibreWolf</strong> repositories enabled by default, <strong style="color:#7fd4ff">disk encryption</strong> at install, automatic detection of other installed operating systems (<strong style="color:#7fd4ff">OS Prober</strong>) and support for <strong style="color:#7fd4ff">EXT4 · BTRFS · XFS · F2FS</strong>. <strong style="color:#7fd4ff">7 desktop environments</strong> to choose from: the power of Gentoo, without barriers — and once installed, you customize everything to your needs.
             </span>
         </p>
         <div class="hero-pills">
@@ -1482,7 +1492,7 @@
             <span class="pill pill-init">Systemd · OpenRC</span>
             <span class="pill">Calamares</span>
             <span class="pill">Flatpak</span>
-            <span class="pill">Repository community GURU + Brave</span>
+            <span class="pill">Repository GURU + Brave + LibreWolf</span>
             <span class="pill">Cifratura disco</span>
             <span class="pill">Rileva altri OS</span>
             <span class="pill">EXT4 · BTRFS · XFS · F2FS</span>
@@ -1500,15 +1510,19 @@
                 <div class="ticker-track-wrap">
                     <div class="ticker-track">
                         <span class="ticker-group">
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">🎉 GNOME OpenRC disponibile da oggi (24/08/2026) · famiglia OpenRC completa: 14 ISO!</span><span class="lang-en">🎉 GNOME OpenRC available today (Aug 24, 2026) · OpenRC family complete: 14 ISOs!</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
                             <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Tutte le edizioni systemd aggiornate ad agosto 2026 · repository Brave aggiunto</span><span class="lang-en">All systemd editions updated to August 2026 · Brave repository added</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Prossime ISO: Firefox con uBlock Origin e telemetria off · repository Brave e LibreWolf</span><span class="lang-en">Upcoming ISOs: Firefox with uBlock Origin and telemetry off · Brave and LibreWolf repositories</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
                         <span class="ticker-group">
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">🎉 GNOME OpenRC disponibile da oggi (24/08/2026) · famiglia OpenRC completa: 14 ISO!</span><span class="lang-en">🎉 GNOME OpenRC available today (Aug 24, 2026) · OpenRC family complete: 14 ISOs!</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
                             <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Tutte le edizioni systemd aggiornate ad agosto 2026 · repository Brave aggiunto</span><span class="lang-en">All systemd editions updated to August 2026 · Brave repository added</span></span>
+                            <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Prossime ISO: Firefox con uBlock Origin e telemetria off · repository Brave e LibreWolf</span><span class="lang-en">Upcoming ISOs: Firefox with uBlock Origin and telemetry off · Brave and LibreWolf repositories</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
                     </div>
@@ -1819,10 +1833,10 @@
                 </h3>
                 <p>
                     <span class="lang-it">
-                        Ogni ambiente è disponibile con il profilo <strong>desktop/systemd</strong> ottimizzato di Gentoo, e sempre più edizioni offrono anche la variante <strong>OpenRC</strong> per chi preferisce un init più tradizionale e minimale. In entrambi i casi il sistema è pronto all'uso subito dopo l'installazione.
+                        Tutte e 7 le edizioni sono disponibili sia con systemd sia con <strong>OpenRC</strong>, l'init tradizionale e minimale di Gentoo. Scegli la variante che preferisci: in entrambi i casi il sistema è pronto all'uso subito dopo l'installazione.
                     </span>
                     <span class="lang-en">
-                        Every environment is available with Gentoo's optimized <strong>desktop/systemd</strong> profile, and a growing number of editions also offer the <strong>OpenRC</strong> variant for those who prefer a more traditional, minimal init. In both cases the system is ready right after installation.
+                        All 7 editions are available with both systemd and <strong>OpenRC</strong>, Gentoo's traditional, minimal init. Pick the variant you prefer: in both cases the system is ready right after installation.
                     </span>
                 </p>
             </div>
@@ -2031,11 +2045,12 @@
                 ['Applicazioni integrate curate (Nemo, ecc.)', 'Curated integrated apps (Nemo, etc.)'],
                 ['Ottimo per utenti che arrivano da Windows', 'Great for users coming from Windows'],
             ],
-            systemd: '2026-08-06', openrc: null,
+            systemd: '2026-08-06', openrc: '2026-08-10',
         },
         {
             id: 'gnome', name: 'GNOME', icon: '👣',
             short_it: "Il desktop moderno per eccellenza: interfaccia pulita e minimalista, pensata per un flusso di lavoro senza distrazioni.", short_en: "The modern desktop par excellence: clean, minimal interface designed for a distraction-free workflow.",
+            note_it: "La versione OpenRC è disponibile solo in sessione Wayland, in linea con l'abbandono di X11 da parte di GNOME (dalla versione 49). Include Firefox con uBlock Origin e telemetria disattivata.", note_en: "The OpenRC flavor is Wayland-only, in line with GNOME dropping X11 (since version 49). It ships Firefox with uBlock Origin and telemetry disabled.",
             desc_it: "Il desktop environment moderno per eccellenza: interfaccia elegante, pulita e coerente, progettata per un flusso di lavoro fluido e senza distrazioni. Ideale per chi cerca un'esperienza raffinata e al passo coi tempi.",
             desc_en: "The modern desktop environment par excellence: elegant, clean and consistent interface designed for a smooth, distraction-free workflow. Ideal for those seeking a refined, up-to-date experience.",
             features: [
@@ -2043,7 +2058,7 @@
                 ['Wayland nativo, animazioni fluide', 'Native Wayland, smooth animations'],
                 ['Focus totale sulla produttività', 'Total focus on productivity'],
             ],
-            systemd: '2026-08-06', openrc: null,
+            systemd: '2026-08-06', openrc: '2026-08-24',
         },
         {
             id: 'lxde', name: 'LXDE', icon: '🪶',
@@ -2128,6 +2143,11 @@
                 if (both) {
                     feats += `\n                    <li><span class="lang-it">Disponibile anche in versione OpenRC</span><span class="lang-en">Also available in OpenRC flavor</span></li>`;
                 }
+                const noteHtml = e.note_it ? `
+                <p class="rcard-note-special">
+                    <span class="lang-it">✨ ${e.note_it}</span>
+                    <span class="lang-en">✨ ${e.note_en}</span>
+                </p>` : '';
                 return `
             <div class="rcard rcard-${e.id}">
                 <div class="rcard-header">
@@ -2140,6 +2160,7 @@
                     <span class="lang-it">${e.short_it}</span>
                     <span class="lang-en">${e.short_en}</span>
                 </p>
+                ${noteHtml}
                 ${pill}
             </div>`;
             }).join('\n');
@@ -2224,8 +2245,8 @@
                 document.querySelectorAll('.ticker-coming-en').forEach(el =>
                     el.textContent = `Coming soon: ${pending.join(' and ')} OpenRC`);
             } else {
-                document.querySelectorAll('.ticker-coming-it').forEach(el => el.textContent = `Famiglia OpenRC completa: tutte le ${done.length} edizioni disponibili`);
-                document.querySelectorAll('.ticker-coming-en').forEach(el => el.textContent = `OpenRC family complete: all ${done.length} editions available`);
+                document.querySelectorAll('.ticker-coming-it').forEach(el => el.textContent = `Famiglia OpenRC completa: tutte le ${done.length} edizioni disponibili!`);
+                document.querySelectorAll('.ticker-coming-en').forEach(el => el.textContent = `OpenRC family complete: all ${done.length} editions available!`);
             }
         }
 
