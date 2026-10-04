@@ -86,6 +86,39 @@
         .nav-sponsor:hover {
             background: #db70be; color: #fff;
         }
+        /* Menu Dona: raccoglie Ko-fi e GitHub Sponsors */
+        .nav-donate { position: relative; }
+        .nav-donate-btn {
+            cursor: pointer; font-family: inherit;
+            background: rgba(255,110,60,0.14);
+            border-color: rgba(255,110,60,0.45);
+            color: #ffab8a;
+        }
+        .nav-donate-btn:hover, .nav-donate.open .nav-donate-btn { background: #ff7043; color: #fff; }
+        .nav-caret { display: inline-block; margin-left: 2px; font-size: 0.7rem; transition: transform 0.2s; }
+        .nav-donate.open .nav-caret { transform: rotate(180deg); }
+        .nav-donate-menu {
+            position: absolute; top: calc(100% + 10px); right: 0; min-width: 230px;
+            padding: 8px; border-radius: 16px;
+            background: rgba(10,14,28,0.94); backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 18px 48px rgba(0,0,0,0.55);
+            opacity: 0; visibility: hidden; transform: translateY(-6px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 1100;
+        }
+        .nav-donate.open .nav-donate-menu { opacity: 1; visibility: visible; transform: none; }
+        .nav-donate-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px 12px; border-radius: 11px; text-decoration: none;
+            border: 1px solid transparent; transition: 0.2s;
+        }
+        .nav-donate-item + .nav-donate-item { margin-top: 6px; }
+        .nav-donate-item .nd-ico { font-size: 1.3rem; }
+        .nav-donate-item .nd-txt strong { display: block; font-size: 0.9rem; }
+        .nav-donate-item .nd-txt small { color: #9aa6bf; font-size: 0.78rem; }
+        .nav-donate-item.nav-kofi:hover { background: rgba(255,110,60,0.16); border-color: rgba(255,110,60,0.45); }
+        .nav-donate-item.nav-sponsor:hover { background: rgba(219,112,190,0.16); border-color: rgba(219,112,190,0.45); }
         #langSwitcher {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.3);
@@ -96,6 +129,20 @@
             transition: 0.25s;
         }
         #langSwitcher:hover { background: #fff; color: #000; }
+        @media (max-width: 520px) {
+            nav { padding: 10px 12px; }
+            .nav-brand { font-size: 1rem; }
+            .nav-right { gap: 6px; }
+            #langSwitcher { letter-spacing: 0; }
+            .nav-link, #langSwitcher { white-space: nowrap; padding: 6px 10px; font-size: 0.74rem; }
+            .nav-hide-sm { display: none; }
+        }
+        @media (max-width: 380px) {
+            nav { padding: 10px 8px; }
+            .nav-brand { font-size: 0.9rem; }
+            .nav-right { gap: 4px; }
+            .nav-link, #langSwitcher { padding: 6px 8px; font-size: 0.7rem; }
+        }
 
         /* ═══════════════════════════════════════════
            HERO
@@ -1459,12 +1506,29 @@
     <nav>
         <div class="nav-brand">Calamaro<span>OS</span></div>
         <div class="nav-right">
-            <a href="nvidia.html" class="nav-link" id="nvidiaLink">
-                <span class="lang-it">📘 Guida NVIDIA</span>
-                <span class="lang-en">📘 NVIDIA Guide</span>
+            <a href="#novita" class="nav-link nav-news">
+                <span class="lang-it">📰 Novità</span>
+                <span class="lang-en">📰 News</span>
             </a>
-            <a href="https://ko-fi.com/B1C1247WTD" target="_blank" rel="noopener" class="nav-link nav-kofi">☕ Ko-fi</a>
-            <a href="https://github.com/sponsors/morphmex" target="_blank" rel="noopener" class="nav-link nav-sponsor">💜 Sponsor</a>
+            <a href="nvidia.html" class="nav-link" id="nvidiaLink">
+                <span class="lang-it">📘 <span class="nav-hide-sm">Guida </span>NVIDIA</span>
+                <span class="lang-en">📘 NVIDIA<span class="nav-hide-sm"> Guide</span></span>
+            </a>
+            <div class="nav-donate" id="navDonate">
+                <button type="button" class="nav-link nav-donate-btn" id="navDonateBtn" aria-haspopup="true" aria-expanded="false">
+                    <span class="lang-it">💝 Dona</span><span class="lang-en">💝 Donate</span> <span class="nav-caret">▾</span>
+                </button>
+                <div class="nav-donate-menu" role="menu">
+                    <a href="https://ko-fi.com/B1C1247WTD" target="_blank" rel="noopener" class="nav-donate-item nav-kofi" role="menuitem">
+                        <span class="nd-ico">☕</span>
+                        <span class="nd-txt"><strong>Ko-fi</strong><small><span class="lang-it">Offrici un caffè</span><span class="lang-en">Buy us a coffee</span></small></span>
+                    </a>
+                    <a href="https://github.com/sponsors/morphmex" target="_blank" rel="noopener" class="nav-donate-item nav-sponsor" role="menuitem">
+                        <span class="nd-ico">💜</span>
+                        <span class="nd-txt"><strong>GitHub Sponsors</strong><small><span class="lang-it">Sostegno mensile</span><span class="lang-en">Monthly support</span></small></span>
+                    </a>
+                </div>
+            </div>
             <button id="langSwitcher">🌐 EN / IT</button>
         </div>
     </nav>
@@ -1510,18 +1574,18 @@
                 <div class="ticker-track-wrap">
                     <div class="ticker-track">
                         <span class="ticker-group">
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">🎉 GNOME OpenRC disponibile da oggi (24/08/2026) · famiglia OpenRC completa: 14 ISO!</span><span class="lang-en">🎉 GNOME OpenRC available today (Aug 24, 2026) · OpenRC family complete: 14 ISOs!</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">🎉 Ottobre 2026: nuove ISO rivedute e collaudate · già disponibili Plasma, GNOME, Cinnamon e LXDE</span><span class="lang-en">🎉 October 2026: reworked and tested ISOs · Plasma, GNOME, Cinnamon and LXDE already available</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Tutte le edizioni systemd aggiornate ad agosto 2026 · repository Brave aggiunto</span><span class="lang-en">All systemd editions updated to August 2026 · Brave repository added</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Hai una ISO scaricata prima di ottobre? Passa alla nuova versione della tua edizione</span><span class="lang-en">Got an ISO from before October? Switch to the new version of your edition</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Prossime ISO: Firefox con uBlock Origin e telemetria off · repository Brave e LibreWolf</span><span class="lang-en">Upcoming ISOs: Firefox with uBlock Origin and telemetry off · Brave and LibreWolf repositories</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
                         <span class="ticker-group">
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">🎉 GNOME OpenRC disponibile da oggi (24/08/2026) · famiglia OpenRC completa: 14 ISO!</span><span class="lang-en">🎉 GNOME OpenRC available today (Aug 24, 2026) · OpenRC family complete: 14 ISOs!</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">🎉 Ottobre 2026: nuove ISO rivedute e collaudate · già disponibili Plasma, GNOME, Cinnamon e LXDE</span><span class="lang-en">🎉 October 2026: reworked and tested ISOs · Plasma, GNOME, Cinnamon and LXDE already available</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-openrc-count-it"></span><span class="lang-en ticker-openrc-count-en"></span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it ticker-coming-it"></span><span class="lang-en ticker-coming-en"></span></span>
-                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Tutte le edizioni systemd aggiornate ad agosto 2026 · repository Brave aggiunto</span><span class="lang-en">All systemd editions updated to August 2026 · Brave repository added</span></span>
+                            <span class="ticker-item"><span class="new-badge">NEW</span> <span class="lang-it">Hai una ISO scaricata prima di ottobre? Passa alla nuova versione della tua edizione</span><span class="lang-en">Got an ISO from before October? Switch to the new version of your edition</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Prossime ISO: Firefox con uBlock Origin e telemetria off · repository Brave e LibreWolf</span><span class="lang-en">Upcoming ISOs: Firefox with uBlock Origin and telemetry off · Brave and LibreWolf repositories</span></span>
                             <span class="ticker-item"><span class="sep">✦</span> <span class="lang-it">Scarica ora dalla cartella SourceForge</span><span class="lang-en">Download now from the SourceForge folder</span></span>
                         </span>
@@ -1533,6 +1597,259 @@
             </svg>
         </a>
     </div>
+
+    <!-- ═══════════════ NOVITÀ OTTOBRE 2026 ═══════════════ -->
+<section id="novita" class="cn-news" aria-labelledby="cn-news-title">
+<style>
+  .cn-news {
+    --cn-bg: rgba(18, 24, 40, .62);
+    --cn-line: rgba(255, 255, 255, .09);
+    --cn-text: #e6ebf5;
+    --cn-muted: #9aa6bf;
+    --cn-blue: #4f8cff;
+    --cn-cyan: #2fd4e0;
+    --cn-green: #3ccf7a;
+    --cn-orange: #ff9a3c;
+    --cn-purple: #a77bff;
+    --cn-pink: #ff5fa2;
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 96px 20px 72px;
+    color: var(--cn-text);
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+  .cn-news *, .cn-news *::before, .cn-news *::after { box-sizing: border-box; }
+  @media (max-width: 760px) { .nav-news { display: none !important; } }
+  .cn-news .lang-en { display: none; }
+
+  /* Intestazione */
+  .cn-head { text-align: center; margin-bottom: 44px; }
+  .cn-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: rgba(79, 140, 255, .12); border: 1px solid rgba(79, 140, 255, .35);
+    color: #b9cfff; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  }
+  .cn-badge .cn-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cn-green); box-shadow: 0 0 0 0 rgba(60,207,122,.7); animation: cn-pulse 2s infinite; }
+  @keyframes cn-pulse { 0% { box-shadow: 0 0 0 0 rgba(60,207,122,.6); } 70% { box-shadow: 0 0 0 10px rgba(60,207,122,0); } 100% { box-shadow: 0 0 0 0 rgba(60,207,122,0); } }
+  .cn-title {
+    margin: 18px 0 14px; font-size: clamp(30px, 5vw, 50px); line-height: 1.1; font-weight: 800; letter-spacing: -.02em;
+    background: linear-gradient(100deg, var(--cn-blue), var(--cn-cyan) 45%, var(--cn-purple));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .cn-lead { max-width: 760px; margin: 0 auto; color: var(--cn-muted); font-size: 17px; line-height: 1.65; }
+  .cn-lead strong { color: var(--cn-text); font-weight: 600; }
+
+  /* Pannello vetro */
+  .cn-glass {
+    background: var(--cn-bg); border: 1px solid var(--cn-line); border-radius: 20px;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  }
+
+  /* Griglia novità */
+  .cn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 26px; }
+  @media (min-width: 900px) { .cn-grid { grid-template-columns: repeat(3, 1fr); } }
+  .cn-card {
+    position: relative; padding: 24px 22px 22px; overflow: hidden;
+    transition: transform .25s ease, border-color .25s ease;
+  }
+  .cn-card::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--c), transparent);
+  }
+  .cn-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+  .cn-card.cn-wide { grid-column: 1 / -1; }
+  .cn-icon {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 14px;
+    background: color-mix(in srgb, var(--c) 16%, transparent); color: var(--c);
+  }
+  .cn-icon svg { width: 22px; height: 22px; }
+  .cn-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: var(--cn-text); }
+  .cn-card p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--cn-muted); }
+  .cn-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .cn-tag {
+    font-size: 12.5px; padding: 4px 10px; border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); color: color-mix(in srgb, var(--c) 70%, white);
+    background: color-mix(in srgb, var(--c) 8%, transparent);
+  }
+
+  /* Avanzamento edizioni */
+  .cn-rollout { padding: 28px; margin-bottom: 26px; }
+  .cn-rollout-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+  .cn-rollout h3 { margin: 0; font-size: 19px; }
+  .cn-count { color: var(--cn-muted); font-size: 14px; }
+  .cn-count b { color: var(--cn-green); font-size: 18px; }
+  .cn-cells { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .cn-de { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .cn-chip {
+    display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; font-size: 14px; font-weight: 600;
+    color: color-mix(in srgb, var(--c) 65%, white); background: color-mix(in srgb, var(--c) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  }
+  .cn-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
+  .cn-cell { height: 14px; border-radius: 4px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.06); }
+  .cn-cell.cn-done { background: linear-gradient(90deg, var(--cn-blue), var(--cn-cyan)); border-color: transparent; box-shadow: 0 0 14px rgba(79,140,255,.5); }
+  .cn-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 16px; font-size: 14px; color: var(--cn-muted); }
+  .cn-legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .cn-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .cn-ready {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 10px 16px; border-radius: 12px;
+    background: rgba(79,140,255,.12); border: 1px solid rgba(79,140,255,.35); color: #cfe0ff; font-weight: 600; font-size: 15px;
+  }
+
+  /* Avviso aggiornamento */
+  .cn-alert {
+    display: flex; gap: 16px; align-items: flex-start; padding: 22px 24px; margin-bottom: 26px; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255,154,60,.14), rgba(255,95,162,.08));
+    border: 1px solid rgba(255,154,60,.4);
+  }
+  .cn-alert svg { flex: 0 0 26px; width: 26px; height: 26px; color: var(--cn-orange); margin-top: 2px; }
+  .cn-alert p { margin: 0; font-size: 15.5px; line-height: 1.6; color: #ffe2c7; }
+  .cn-alert strong { color: #fff; }
+
+  /* Chiusura */
+  .cn-thanks { text-align: center; padding: 30px 24px; }
+  .cn-thanks p { margin: 0 auto; max-width: 680px; color: var(--cn-muted); font-size: 16px; line-height: 1.65; }
+  .cn-thanks .cn-sign { margin-top: 14px; font-weight: 700; font-size: 17px;
+    background: linear-gradient(90deg, var(--cn-cyan), var(--cn-purple)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* Comparsa allo scorrimento */
+  .cn-reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .cn-reveal.cn-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .cn-reveal { opacity: 1; transform: none; transition: none; }
+    .cn-badge .cn-dot { animation: none; }
+  }
+  @media (max-width: 600px) {
+    .cn-news { padding: 72px 16px 56px; }
+    .cn-cells { gap: 4px; }
+    .cn-rollout { padding: 22px 18px; }
+  }
+</style>
+
+  <header class="cn-head cn-reveal">
+    <span class="cn-badge"><span class="cn-dot"></span>
+      <span class="lang-it">Aggiornamento · Ottobre 2026</span><span class="lang-en">Update · October 2026</span>
+    </span>
+    <h2 class="cn-title" id="cn-news-title">
+      <span class="lang-it">CalamaroOS: a che punto siamo</span><span class="lang-en">CalamaroOS: where we stand</span>
+    </h2>
+    <p class="cn-lead">
+      <span class="lang-it">È un po' che non scrivo qui, ma il progetto è <strong>più attivo che mai</strong>. In queste settimane stiamo rivedendo da cima a fondo sia il modo in cui vengono prodotte le ISO sia i controlli dopo l'installazione.</span>
+      <span class="lang-en">It's been a while since I last wrote here, but the project is <strong>more active than ever</strong>. Over the past weeks we've been reworking, top to bottom, both how the ISOs are built and the checks run after installation.</span>
+    </p>
+  </header>
+
+  <div class="cn-grid">
+    <article class="cn-card cn-glass cn-wide cn-reveal" style="--c: var(--cn-cyan)">
+      <div class="cn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+      <h3><span class="lang-it">Un collaudo automatico per ogni ISO</span><span class="lang-en">Automated testing for every ISO</span></h3>
+      <p><span class="lang-it">Dopo l'installazione, uno script controlla decine di punti sia su macchine virtuali sia su PC reali, anche nei casi più delicati.</span>
+         <span class="lang-en">After installation, a script checks dozens of points on both virtual machines and real PCs, including the trickiest setups.</span></p>
+      <div class="cn-tags">
+        <span class="cn-tag">VM</span>
+        <span class="cn-tag"><span class="lang-it">PC reali</span><span class="lang-en">Real hardware</span></span>
+        <span class="cn-tag">BIOS legacy</span>
+        <span class="cn-tag">Safe Mode</span>
+        <span class="cn-tag"><span class="lang-it">Disco cifrato</span><span class="lang-en">Encrypted disk</span></span>
+      </div>
+    </article>
+
+    <article class="cn-card cn-glass cn-reveal" style="--c: var(--cn-blue)">
+      <div class="cn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+      <h3><span class="lang-it">14 edizioni riallineate</span><span class="lang-en">14 editions realigned</span></h3>
+      <p><span class="lang-it">7 desktop × OpenRC e systemd, rivisti uno alla volta: ogni correzione arriva a tutte le edizioni.</span>
+         <span class="lang-en">7 desktops × OpenRC and systemd, reviewed one at a time so every fix reaches all editions.</span></p>
+    </article>
+
+    <article class="cn-card cn-glass cn-reveal" style="--c: var(--cn-purple)">
+      <div class="cn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/><path d="M12 2v10"/></svg></div>
+      <h3><span class="lang-it">GNOME: Riavvia e Spegni</span><span class="lang-en">GNOME: Restart and Power Off</span></h3>
+      <p><span class="lang-it">Nella schermata di accesso i pulsanti Riavvia e Spegni ora funzionano.</span>
+         <span class="lang-en">Restart and Power Off now work from the login screen.</span></p>
+    </article>
+
+    <article class="cn-card cn-glass cn-reveal" style="--c: var(--cn-green)">
+      <div class="cn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><path d="M18 16l2 2-2 2"/></svg></div>
+      <h3><span class="lang-it">Avvio multiplo corretto</span><span class="lang-en">Dual boot fixed</span></h3>
+      <p><span class="lang-it">Le voci degli altri sistemi trovati da os-prober ora sono corrette e si avviano.</span>
+         <span class="lang-en">Entries for other systems detected by os-prober are now correct and boot properly.</span></p>
+    </article>
+
+    <article class="cn-card cn-glass cn-reveal" style="--c: var(--cn-pink)">
+      <div class="cn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <h3><span class="lang-it">Sicurezza</span><span class="lang-en">Security</span></h3>
+      <p><span class="lang-it">Ogni installazione ha il proprio identificativo di sistema, sudo chiede sempre la password e nell'immagine non restano file della macchina di sviluppo.</span>
+         <span class="lang-en">Every installation gets its own system identifier, sudo always asks for the password, and no files from the build machine are left in the image.</span></p>
+    </article>
+
+    <article class="cn-card cn-glass cn-reveal" style="--c: var(--cn-cyan)">
+      <div class="cn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <h3><span class="lang-it">Data e ora di costruzione</span><span class="lang-en">Build date and time</span></h3>
+      <p><span class="lang-it">Ogni ISO dichiara quando è stata costruita, sia nel menu di avvio sia nell'installer.</span>
+         <span class="lang-en">Every ISO shows when it was built, both in the boot menu and in the installer.</span></p>
+    </article>
+
+    <article class="cn-card cn-glass cn-reveal" style="--c: var(--cn-orange)">
+      <div class="cn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h4v4H6zM14 10h4M14 14h4"/></svg></div>
+      <h3><span class="lang-it">Safe Mode più robusta</span><span class="lang-en">Sturdier Safe Mode</span></h3>
+      <p><span class="lang-it">Funziona meglio anche con le schede video più difficili.</span>
+         <span class="lang-en">It now copes better with difficult graphics cards.</span></p>
+    </article>
+  </div>
+
+  <div class="cn-rollout cn-glass cn-reveal">
+    <div class="cn-rollout-top">
+      <h3><span class="lang-it">Uscita delle nuove ISO</span><span class="lang-en">New ISO rollout</span></h3>
+      <span class="cn-count"><b>4</b> / 7 <span class="lang-it">desktop già disponibili</span><span class="lang-en">desktops already available</span></span>
+    </div>
+    <div class="cn-cells" role="img" aria-label="4 / 7">
+      <span class="cn-cell cn-done"></span><span class="cn-cell cn-done"></span><span class="cn-cell cn-done"></span><span class="cn-cell cn-done"></span><span class="cn-cell"></span><span class="cn-cell"></span><span class="cn-cell"></span>
+    </div>
+    <div class="cn-de">
+      <span class="cn-chip" style="--c:#00aaff">KDE Plasma</span>
+      <span class="cn-chip" style="--c:#e74c3c">GNOME</span>
+      <span class="cn-chip" style="--c:#d4316c">Cinnamon</span>
+      <span class="cn-chip" style="--c:#16a085">LXDE</span>
+    </div>
+    <div class="cn-legend">
+      <span><i style="background:linear-gradient(90deg,#4f8cff,#2fd4e0)"></i><span class="lang-it">Disponibile</span><span class="lang-en">Available</span></span>
+      <span><i style="background:rgba(255,255,255,.12)"></i><span class="lang-it">In arrivo, una alla volta</span><span class="lang-en">Coming, one at a time</span></span>
+    </div>
+    <div class="cn-ready">✓ <span class="lang-it">Disponibili da ottobre: Plasma, GNOME, Cinnamon e LXDE. Gli altri desktop arrivano a breve.</span><span class="lang-en">Available since October: Plasma, GNOME, Cinnamon and LXDE. The remaining desktops are coming soon.</span></div>
+  </div>
+
+  <div class="cn-alert cn-reveal" role="note">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19L12 3z"/><path d="M12 10v4M12 17.5v.5"/></svg>
+    <p><span class="lang-it"><strong>Hai scaricato una ISO prima di ottobre?</strong> Ti conviene passare alla nuova versione della tua edizione non appena esce.</span>
+       <span class="lang-en"><strong>Downloaded an ISO before October?</strong> You should switch to the new version of your edition as soon as it's out.</span></p>
+  </div>
+
+  <div class="cn-thanks cn-glass cn-reveal">
+    <p><span class="lang-it">Le nuove ISO arriveranno man mano. Appena il lavoro di revisione sarà finito, gli aggiornamenti torneranno a essere più frequenti.</span>
+       <span class="lang-en">New ISOs will roll out gradually. Once the review work is done, updates will go back to being more frequent.</span></p>
+    <p class="cn-sign"><span class="lang-it">Grazie a chi segue il progetto: stiamo lavorando sodo. 🦑</span><span class="lang-en">Thanks to everyone following the project: we're working hard. 🦑</span></p>
+  </div>
+
+<script>
+  (function () {
+    var sec = document.getElementById('novita');
+    // La lingua la gestisce applyLanguage() del sito tramite le classi lang-it / lang-en
+
+    var items = sec.querySelectorAll('.cn-reveal');
+    if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('cn-in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('cn-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+  })();
+</script>
+</section>
+<!-- ═══════════════ FINE NOVITÀ OTTOBRE 2026 ═══════════════ -->
 
     <!-- ══ CINEMATIC SHOWCASE ══ -->
     <section class="showcase">
@@ -2255,5 +2572,24 @@
     })();
     </script>
 
+
+    <script>
+        // Menu Dona nella navbar
+        (function () {
+            const box = document.getElementById('navDonate');
+            const b = document.getElementById('navDonateBtn');
+            b.addEventListener('click', e => {
+                e.stopPropagation();
+                const open = box.classList.toggle('open');
+                b.setAttribute('aria-expanded', open);
+            });
+            document.addEventListener('click', e => {
+                if (!box.contains(e.target)) { box.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') { box.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
+            });
+        })();
+    </script>
 </body>
 </html>
