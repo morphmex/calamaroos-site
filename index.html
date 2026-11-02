@@ -42,7 +42,8 @@
         nav {
             position: fixed; top: 0; left: 0; right: 0;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 32px;
+            flex-wrap: wrap; gap: 8px;
+            padding: 12px 24px;
             background: rgba(0,0,0,0.45);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(0,170,255,0.12);
@@ -54,17 +55,18 @@
             text-shadow: 0 0 20px rgba(0,170,255,0.5);
         }
         .nav-brand span { color: #00aaff; }
-        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-right { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
 
         .nav-link {
             background: rgba(0,170,255,0.12);
             border: 1px solid rgba(0,170,255,0.4);
-            color: #7fd4ff; padding: 7px 16px;
+            color: #7fd4ff; padding: 6px 13px;
             border-radius: 20px; text-decoration: none;
-            font-weight: 700; font-size: 0.82rem;
-            letter-spacing: 0.04em;
+            font-weight: 700; font-size: 0.8rem;
+            letter-spacing: 0.03em;
             transition: 0.25s;
             display: inline-block;
+            white-space: nowrap;
         }
         .nav-link:hover {
             background: #00aaff; color: #fff;
@@ -1453,6 +1455,13 @@
         @media (max-width: 600px) {
             .donate-inner { padding: 32px 22px; }
             .donate-btn { font-size: 0.98rem; padding: 14px 28px; }
+        }
+        @media (max-width: 640px) {
+            nav { padding: 10px 14px; }
+            .nav-brand { font-size: 1rem; }
+            .nav-link, #langSwitcher { font-size: 0.72rem; padding: 5px 10px; letter-spacing: 0.02em; }
+            .nav-right { gap: 6px; }
+            header { padding-top: 150px; }
         }
         @media (prefers-reduced-motion: reduce) {
             .donate-icon, .donate-inner::after, .donate-btn .kofi-cup { animation: none; }
