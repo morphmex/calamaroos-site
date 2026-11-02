@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novità · Novembre 2026 | CalamaroOS</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body, html {
+            font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+            color: #fff; min-height: 100vh;
+            background:
+                linear-gradient(160deg, rgba(0,0,0,0.78) 0%, rgba(5,10,25,0.92) 100%),
+                url('logo.png') no-repeat center center fixed;
+            background-size: cover; overflow-x: hidden; line-height: 1.6;
+        }
+        body::before {
+            content: ''; position: fixed; inset: 0;
+            background-image: radial-gradient(rgba(0,170,255,0.04) 1px, transparent 1px);
+            background-size: 32px 32px; pointer-events: none; z-index: 0;
+        }
+        nav, main, footer { position: relative; z-index: 1; }
+        .lang-en { display: none; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 32px; background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(18px); border-bottom: 1px solid rgba(0,170,255,0.12); z-index: 1000;
+        }
+        .nav-brand { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.04em; color: #fff; text-decoration: none; text-shadow: 0 0 20px rgba(0,170,255,0.5); }
+        .nav-brand span { color: #00aaff; }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-link {
+            background: rgba(0,170,255,0.12); border: 1px solid rgba(0,170,255,0.4);
+            color: #7fd4ff; padding: 7px 16px; border-radius: 20px; text-decoration: none;
+            font-weight: 700; font-size: 0.82rem; letter-spacing: 0.04em; transition: 0.25s;
+        }
+        .nav-link:hover { background: #00aaff; color: #fff; transform: translateY(-1px); }
+        #langSwitcher {
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.3);
+            color: #fff; padding: 7px 16px; border-radius: 20px; cursor: pointer;
+            font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; transition: 0.25s;
+        }
+        #langSwitcher:hover { background: #fff; color: #000; }
+
+        main { max-width: 920px; margin: 0 auto; padding: 120px 24px 60px; }
+        .page-header { text-align: center; margin-bottom: 44px; }
+        .page-tag {
+            display: inline-block; background: rgba(0,170,255,0.15);
+            border: 1px solid rgba(0,170,255,0.45); color: #7fd4ff;
+            padding: 5px 16px; border-radius: 20px; font-size: 0.78rem;
+            font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px;
+        }
+        .page-title {
+            font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 900; line-height: 1.15;
+            background: linear-gradient(100deg, #fff 30%, #7fd4ff 70%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px;
+        }
+        .page-sub { font-size: 1.05rem; color: #c8d8e8; max-width: 680px; margin: 0 auto; }
+
+        /* Intro box */
+        .intro-box {
+            background: rgba(10,22,42,0.8); border: 1.5px solid rgba(0,170,255,0.4);
+            border-radius: 16px; padding: 24px 28px; margin-bottom: 40px;
+            backdrop-filter: blur(14px); box-shadow: 0 8px 32px rgba(0,170,255,0.12);
+        }
+        .intro-box h3 { color: #7fd4ff; font-size: 1.05rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 0.02em; }
+        .intro-box p { color: #c8d4e4; font-size: 0.97rem; line-height: 1.75; }
+        .intro-box code {
+            background: rgba(0,0,0,0.4); padding: 1px 7px; border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace; font-size: 0.88em; color: #7fd4ff;
+        }
+
+        /* Section block */
+        .section { margin-bottom: 42px; }
+        .section-head {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+        }
+        .section-head .ic { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+        .section-head h2 {
+            font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 900;
+            background: linear-gradient(100deg, #fff 30%, #7fd4ff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .section > p { color: #c0cdda; font-size: 0.97rem; line-height: 1.75; margin-bottom: 14px; }
+        .section > p strong { color: #fff; }
+
+        /* Feature list (what the user notices) */
+        .feat-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .feat-list li {
+            background: rgba(10,20,40,0.6); border: 1px solid rgba(0,170,255,0.16);
+            border-left: 3px solid rgba(0,170,255,0.55);
+            border-radius: 12px; padding: 14px 18px; backdrop-filter: blur(10px);
+            font-size: 0.95rem; color: #c8d4e2; line-height: 1.65;
+        }
+        .feat-list li strong { color: #7fd4ff; font-weight: 700; }
+        .feat-list li code {
+            background: rgba(0,0,0,0.4); padding: 1px 6px; border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace; font-size: 0.86em; color: #ffd080;
+        }
+
+        /* Status grid for editions */
+        .status-grid { display: flex; flex-direction: column; gap: 12px; }
+        .status-row {
+            background: rgba(10,20,40,0.6); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 14px 18px; backdrop-filter: blur(10px);
+            display: flex; align-items: flex-start; gap: 14px;
+        }
+        .status-badge {
+            flex-shrink: 0; font-size: 0.68rem; font-weight: 800;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            padding: 4px 11px; border-radius: 20px; margin-top: 2px; white-space: nowrap;
+        }
+        .st-done { background: rgba(46,204,113,0.15); border: 1px solid rgba(46,204,113,0.5); color: #5de89a; }
+        .st-prog { background: rgba(0,170,255,0.12); border: 1px solid rgba(0,170,255,0.45); color: #7fd4ff; }
+        .st-redo { background: rgba(155,89,182,0.14); border: 1px solid rgba(155,89,182,0.5); color: #c8a8f0; }
+        .status-row .st-text { font-size: 0.94rem; color: #c8d4e2; line-height: 1.6; }
+        .status-row .st-text strong { color: #fff; }
+
+        /* Numbered steps (what's left) */
+        .next-list { counter-reset: nx; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .next-list li {
+            position: relative; padding-left: 44px;
+            background: rgba(10,20,40,0.5); border: 1px solid rgba(0,170,255,0.14);
+            border-radius: 12px; padding-top: 14px; padding-bottom: 14px; padding-right: 18px;
+            font-size: 0.95rem; color: #c8d4e2; line-height: 1.65;
+        }
+        .next-list li::before {
+            counter-increment: nx; content: counter(nx);
+            position: absolute; left: 12px; top: 12px;
+            width: 24px; height: 24px; border-radius: 50%;
+            background: linear-gradient(135deg, #0099ee, #006bb5); color: #fff;
+            font-weight: 800; font-size: 0.8rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Callout */
+        .callout {
+            background: rgba(255,110,60,0.08); border: 1px solid rgba(255,110,60,0.35);
+            border-radius: 14px; padding: 20px 24px; margin-top: 40px; text-align: center;
+        }
+        .callout p { color: #e0d4c8; font-size: 0.97rem; line-height: 1.7; margin-bottom: 14px; }
+        .callout .donate-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, #ff7043, #e8542e); color: #fff;
+            font-weight: 800; font-size: 1rem; text-decoration: none;
+            padding: 12px 28px; border-radius: 40px;
+            box-shadow: 0 8px 28px rgba(255,110,60,0.4); transition: transform 0.25s, filter 0.25s;
+        }
+        .callout .donate-btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+
+        footer {
+            text-align: center; margin-top: 60px; padding: 30px 20px;
+            border-top: 1px solid rgba(0,170,255,0.1);
+        }
+        footer p { font-size: 0.85rem; color: #556677; line-height: 1.7; }
+        footer a { color: #4488bb; text-decoration: none; border-bottom: 1px solid rgba(68,136,187,0.3); transition: 0.2s; }
+        footer a:hover { color: #66aadd; border-color: rgba(100,170,220,0.6); }
+
+        @media (max-width: 600px) {
+            nav { padding: 10px 16px; }
+            .nav-link, #langSwitcher { font-size: 0.72rem; padding: 6px 11px; }
+            .nav-right { gap: 8px; }
+            main { padding: 110px 16px 40px; }
+            .intro-box { padding: 20px 18px; }
+            .status-row { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── NAV ── -->
+    <nav>
+        <a href="index.html" class="nav-brand">Calamaro<span>OS</span></a>
+        <div class="nav-right">
+            <a href="index.html" class="nav-link">
+                <span class="lang-it">← Home</span>
+                <span class="lang-en">← Home</span>
+            </a>
+            <button id="langSwitcher">🌐 EN / IT</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HEADER -->
+        <div class="page-header">
+            <span class="page-tag">
+                <span class="lang-it">Aggiornamento · Novembre 2026</span>
+                <span class="lang-en">Update · November 2026</span>
+            </span>
+            <h1 class="page-title">
+                <span class="lang-it">A che punto è CalamaroOS</span>
+                <span class="lang-en">Where CalamaroOS stands</span>
+            </h1>
+            <p class="page-sub">
+                <span class="lang-it">Una distribuzione basata su Gentoo con installer grafico Calamares. 14 edizioni: sette desktop, ognuno con due sistemi di avvio, systemd e OpenRC.</span>
+                <span class="lang-en">A Gentoo-based distribution with the Calamares graphical installer. 14 editions: seven desktops, each with two init systems, systemd and OpenRC.</span>
+            </p>
+        </div>
+
+        <!-- INTRO -->
+        <div class="intro-box">
+            <h3>
+                <span class="lang-it">🎯 Cosa stiamo facendo</span>
+                <span class="lang-en">🎯 What we're doing</span>
+            </h3>
+            <p>
+                <span class="lang-it">In queste settimane stiamo portando tutte e 14 le edizioni allo stesso livello. Ogni correzione trovata su un'edizione viene applicata a tutte, e ogni ISO deve passare gli stessi controlli. L'obiettivo è che non ci siano più differenze di qualità fra un desktop e l'altro.</span>
+                <span class="lang-en">In these weeks we're bringing all 14 editions up to the same level. Every fix found on one edition is applied to all of them, and every ISO must pass the same checks. The goal is that there are no more quality differences from one desktop to another.</span>
+            </p>
+        </div>
+
+        <!-- WHAT THE USER NOTICES -->
+        <div class="section">
+            <div class="section-head">
+                <span class="ic">✨</span>
+                <h2>
+                    <span class="lang-it">Cosa nota l'utente</span>
+                    <span class="lang-en">What the user notices</span>
+                </h2>
+            </div>
+            <ul class="feat-list">
+                <li>
+                    <span class="lang-it"><strong>Fuso orario giusto.</strong> L'installer usa il tuo fuso orario: Calamares lo propone già corretto e, se non c'è rete, ripiega su <code>Europe/Rome</code> invece che su un fuso sbagliato.</span>
+                    <span class="lang-en"><strong>Correct time zone.</strong> The installer uses your time zone: Calamares pre-selects the right one and, with no network, falls back to <code>Europe/Rome</code> instead of a wrong zone.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Pulsanti di Calamares funzionanti.</strong> «Supporto» apre il manuale di Gentoo e «Dona» apre il nostro sito, anche con Firefox già aperto.</span>
+                    <span class="lang-en"><strong>Working Calamares buttons.</strong> "Support" opens the Gentoo handbook and "Donate" opens our site, even with Firefox already open.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Sistema installato pulito.</strong> Non restano utenti, password, icone o file della versione live, né file della macchina su cui è stata costruita la ISO.</span>
+                    <span class="lang-en"><strong>Clean installed system.</strong> No leftover users, passwords, icons or files from the live session, nor files from the machine the ISO was built on.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Un solo gestore di rete,</strong> senza conflitti all'avvio.</span>
+                    <span class="lang-en"><strong>A single network manager,</strong> with no conflicts at boot.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Btrfs più leggero sul disco,</strong> montato con <code>noatime</code>.</span>
+                    <span class="lang-en"><strong>Lighter Btrfs on disk,</strong> mounted with <code>noatime</code>.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Safe Mode</strong> per le schede video che danno problemi, uguale su tutte le edizioni.</span>
+                    <span class="lang-en"><strong>Safe Mode</strong> for troublesome graphics cards, identical across all editions.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Disco cifrato (LUKS)</strong> con la swap cifrata che funziona anche dal secondo avvio in poi.</span>
+                    <span class="lang-en"><strong>Encrypted disk (LUKS)</strong> with encrypted swap that keeps working from the second boot onward.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Aspetto scuro coerente,</strong> anche in programmi come GParted.</span>
+                    <span class="lang-en"><strong>Consistent dark theme,</strong> even in apps like GParted.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- HOW WE TEST -->
+        <div class="section">
+            <div class="section-head">
+                <span class="ic">🧪</span>
+                <h2>
+                    <span class="lang-it">Come proviamo ogni ISO</span>
+                    <span class="lang-en">How we test each ISO</span>
+                </h2>
+            </div>
+            <p>
+                <span class="lang-it">Ogni ISO viene installata due volte: in una macchina virtuale e su un PC vero. Sul PC si usano avvio BIOS tradizionale, Safe Mode, disco cifrato e un altro sistema operativo accanto. Dopo il secondo avvio gira un controllo automatico che verifica <strong>più di 70 punti</strong> del sistema installato. Una ISO si pubblica solo se non ci sono errori.</span>
+                <span class="lang-en">Each ISO is installed twice: in a virtual machine and on a real PC. On the PC we use legacy BIOS boot, Safe Mode, an encrypted disk and another operating system alongside it. After the second boot an automatic check verifies <strong>more than 70 points</strong> of the installed system. An ISO is published only if there are no errors.</span>
+            </p>
+        </div>
+
+        <!-- WHERE WE ARE -->
+        <div class="section">
+            <div class="section-head">
+                <span class="ic">📊</span>
+                <h2>
+                    <span class="lang-it">Dove siamo arrivati</span>
+                    <span class="lang-en">Where we've got to</span>
+                </h2>
+            </div>
+            <p>
+                <span class="lang-it"><strong>Edizioni systemd:</strong></span>
+                <span class="lang-en"><strong>systemd editions:</strong></span>
+            </p>
+            <div class="status-grid">
+                <div class="status-row">
+                    <span class="status-badge st-done">
+                        <span class="lang-it">Complete</span><span class="lang-en">Done</span>
+                    </span>
+                    <span class="st-text">
+                        <span class="lang-it"><strong>LXQt</strong> (31 ottobre) e <strong>LXDE</strong> (1° novembre): complete, con tutte le correzioni e tutti i controlli.</span>
+                        <span class="lang-en"><strong>LXQt</strong> (Oct 31) and <strong>LXDE</strong> (Nov 1): complete, with all fixes and all checks passed.</span>
+                    </span>
+                </div>
+                <div class="status-row">
+                    <span class="status-badge st-prog">
+                        <span class="lang-it">Da completare</span><span class="lang-en">To finish</span>
+                    </span>
+                    <span class="st-text">
+                        <span class="lang-it"><strong>XFCE, Cinnamon e GNOME:</strong> pubblicate, da completare con le ultime correzioni.</span>
+                        <span class="lang-en"><strong>XFCE, Cinnamon and GNOME:</strong> published, to be completed with the latest fixes.</span>
+                    </span>
+                </div>
+                <div class="status-row">
+                    <span class="status-badge st-redo">
+                        <span class="lang-it">Da rifare</span><span class="lang-en">To redo</span>
+                    </span>
+                    <span class="st-text">
+                        <span class="lang-it"><strong>Plasma e MATE:</strong> pubblicate, verranno rifatte con le ultime correzioni.</span>
+                        <span class="lang-en"><strong>Plasma and MATE:</strong> published, will be rebuilt with the latest fixes.</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- WHAT'S LEFT -->
+        <div class="section">
+            <div class="section-head">
+                <span class="ic">🧭</span>
+                <h2>
+                    <span class="lang-it">Cosa manca</span>
+                    <span class="lang-en">What's left</span>
+                </h2>
+            </div>
+            <ol class="next-list">
+                <li>
+                    <span class="lang-it"><strong>Completare le systemd:</strong> prima Cinnamon e GNOME, poi Plasma, XFCE e MATE.</span>
+                    <span class="lang-en"><strong>Finish the systemd editions:</strong> first Cinnamon and GNOME, then Plasma, XFCE and MATE.</span>
+                </li>
+                <li>
+                    <span class="lang-it"><strong>Poi il giro delle 7 edizioni OpenRC,</strong> con lo stesso metodo.</span>
+                    <span class="lang-en"><strong>Then the round of the 7 OpenRC editions,</strong> with the same method.</span>
+                </li>
+            </ol>
+            <p style="margin-top:16px;">
+                <span class="lang-it">Le ISO già pubblicate si possono usare. Quelle nuove sostituiranno le vecchie man mano che passano i controlli.</span>
+                <span class="lang-en">The ISOs already published can be used. The new ones will replace the old ones as they pass the checks.</span>
+            </p>
+        </div>
+
+        <!-- CALLOUT DONATE -->
+        <div class="callout">
+            <p>
+                <span class="lang-it">☕ Se vuoi sostenere il progetto, trovi il pulsante <strong>Dona</strong> sul sito. Ogni contributo aiuta a tenere la barra dritta.</span>
+                <span class="lang-en">☕ If you'd like to support the project, you'll find the <strong>Donate</strong> button on the site. Every contribution helps us keep our course steady.</span>
+            </p>
+            <a href="https://ko-fi.com/B1C1247WTD" target="_blank" rel="noopener" class="donate-btn">
+                <span class="lang-it">Sostieni il progetto</span>
+                <span class="lang-en">Support the project</span>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            <span class="lang-it">Hai bisogno di aiuto? Apri una segnalazione su</span>
+            <span class="lang-en">Need help? Open an issue on</span>
+            <a href="https://sourceforge.net/projects/calamaroos/" target="_blank">SourceForge</a>
+        </p>
+        <p style="margin-top:12px;">CalamaroOS · 2026 · <a href="index.html"><span class="lang-it">Torna alla home</span><span class="lang-en">Back to home</span></a></p>
+    </footer>
+
+    <script>
+        const langSwitcher = document.getElementById('langSwitcher');
+        let currentLang = 'it';
+        function applyLanguage(lang) {
+            document.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.documentElement.lang = lang;
+        }
+        applyLanguage('it');
+        langSwitcher.addEventListener('click', () => {
+            currentLang = currentLang === 'it' ? 'en' : 'it';
+            applyLanguage(currentLang);
+        });
+    </script>
+
+</body>
+</html>
